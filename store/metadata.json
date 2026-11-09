@@ -25,10 +25,10 @@
     ]
   },
   "urls": {
-    "website": "https://github.com/DevTunaSoft/VoiceBlueprint-Pro",
-    "privacyPolicy": "https://github.com/DevTunaSoft/VoiceBlueprint-Pro",
-    "support": "https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues",
-    "source": "https://github.com/DevTunaSoft/VoiceBlueprint-Pro"
+    "website": "https://github.com/DevTunaSoft/VoiceBlueprintPro",
+    "privacyPolicy": "https://github.com/DevTunaSoft/VoiceBlueprintPro",
+    "support": "https://github.com/DevTunaSoft/VoiceBlueprintPro/issues",
+    "source": "https://github.com/DevTunaSoft/VoiceBlueprintPro"
   },
   "requirements": {
     "diskGib": 10,

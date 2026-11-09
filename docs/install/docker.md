@@ -12,9 +12,9 @@ and declining or skipping it keeps them off. Set
 `-e VOICEBLUEPRINT_ANALYTICS_DISABLED=1` to switch analytics off entirely. Model
 weights download from Hugging Face when you install a model.
 
-**Official images:** [`ghcr.io/devtunasoft/voiceblueprint-pro`](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/pkgs/container/voiceblueprint)
-and [`devtunasoft/voiceblueprint-pro` on Docker Hub](https://hub.docker.com/r/devtunasoft/voiceblueprint-pro) — same images, same tags.
-The former `ghcr.io/devtunasoft/voiceblueprint-pro` path remains a compatible alias.
+**Official images:** [`ghcr.io/devtunasoft/voiceblueprintpro`](https://github.com/DevTunaSoft/VoiceBlueprintPro/pkgs/container/voiceblueprint)
+and [`devtunasoft/voiceblueprintpro` on Docker Hub](https://hub.docker.com/r/devtunasoft/voiceblueprintpro) — same images, same tags.
+The former `ghcr.io/devtunasoft/voiceblueprintpro` path remains a compatible alias.
 
 **Upgrading an existing container?** Follow the
 [backup and path-preserving migration procedure](docker-data-recovery.md)
@@ -85,19 +85,19 @@ master key.
 ## Pull and run (CPU)
 
 ```bash
-docker pull ghcr.io/devtunasoft/voiceblueprint-pro:stable
+docker pull ghcr.io/devtunasoft/voiceblueprintpro:stable
 
 docker run -d --name omnivoice \
   -p 127.0.0.1:3900:3900 \
   -e VOICEBLUEPRINT_API_KEY="$VOICEBLUEPRINT_API_KEY" \
   -e VOICEBLUEPRINT_DATA_DIR=/app/voiceblueprint_data \
   -v voiceblueprint-data:/app/voiceblueprint_data \
-  ghcr.io/devtunasoft/voiceblueprint-pro:stable
+  ghcr.io/devtunasoft/voiceblueprintpro:stable
 ```
 
 > **Docker Hub mirror:** the same images are published to
-> `devtunasoft/voiceblueprint-pro` on Docker Hub with identical tags — swap the
-> image for `devtunasoft/voiceblueprint-pro:stable` if you prefer Docker Hub.
+> `devtunasoft/voiceblueprintpro` on Docker Hub with identical tags — swap the
+> image for `devtunasoft/voiceblueprintpro:stable` if you prefer Docker Hub.
 > Tag semantics (`:latest` = rolling main preview, `:stable`/`:X.Y.Z` =
 > releases) are the same on both registries.
 
@@ -112,7 +112,7 @@ docker run -d --name omnivoice --gpus all \
   -e VOICEBLUEPRINT_API_KEY="$VOICEBLUEPRINT_API_KEY" \
   -e VOICEBLUEPRINT_DATA_DIR=/app/voiceblueprint_data \
   -v voiceblueprint-data:/app/voiceblueprint_data \
-  ghcr.io/devtunasoft/voiceblueprint-pro:stable
+  ghcr.io/devtunasoft/voiceblueprintpro:stable
 ```
 
 GPU mode requires the
@@ -132,7 +132,7 @@ docker run -d --name omnivoice --gpus all \
   -e VOICEBLUEPRINT_API_KEY="$VOICEBLUEPRINT_API_KEY" \
   -e VOICEBLUEPRINT_DATA_DIR=/app/voiceblueprint_data \
   -v voiceblueprint-data:/app/voiceblueprint_data \
-  ghcr.io/devtunasoft/voiceblueprint-pro:stable-cuda-arm64
+  ghcr.io/devtunasoft/voiceblueprintpro:stable-cuda-arm64
 ```
 
 It needs the NVIDIA Container Toolkit and a driver that supports CUDA 12.9.
@@ -174,7 +174,7 @@ docker run -d --name omnivoice \
   -e VOICEBLUEPRINT_API_KEY="$VOICEBLUEPRINT_API_KEY" \
   -e VOICEBLUEPRINT_DATA_DIR=/app/voiceblueprint_data \
   -v voiceblueprint-data:/app/voiceblueprint_data \
-  ghcr.io/devtunasoft/voiceblueprint-pro:stable-rocm
+  ghcr.io/devtunasoft/voiceblueprintpro:stable-rocm
 ```
 
 ### AMD GPU on WSL2
@@ -199,7 +199,7 @@ docker run -d --name omnivoice \
   -e VOICEBLUEPRINT_API_KEY="$VOICEBLUEPRINT_API_KEY" \
   -e VOICEBLUEPRINT_DATA_DIR=/app/voiceblueprint_data \
   -v voiceblueprint-data:/app/voiceblueprint_data \
-  ghcr.io/devtunasoft/voiceblueprint-pro:stable-rocm
+  ghcr.io/devtunasoft/voiceblueprintpro:stable-rocm
 ```
 
 The image currently uses ROCm 7.2.x, so `HSA_ENABLE_DXG_DETECTION=1` is
@@ -242,7 +242,7 @@ The same flags work with **Podman** (`podman run --device /dev/kfd
 ```ini
 # ~/.config/containers/systemd/omnivoice.container
 [Container]
-Image=ghcr.io/devtunasoft/voiceblueprint-pro:stable-rocm
+Image=ghcr.io/devtunasoft/voiceblueprintpro:stable-rocm
 AddDevice=/dev/kfd
 AddDevice=/dev/dri
 PublishPort=127.0.0.1:3900:3900
@@ -400,7 +400,7 @@ docker run -e VOICEBLUEPRINT_API_KEY="$VOICEBLUEPRINT_API_KEY" \
   -e VOICEBLUEPRINT_PUBLIC_API_BASE=https://api.your-host.example \
   -e VOICEBLUEPRINT_ALLOWED_ORIGINS=https://ui.your-host.example \
   -p 0.0.0.0:3900:3900 \
-  ghcr.io/devtunasoft/voiceblueprint-pro:stable
+  ghcr.io/devtunasoft/voiceblueprintpro:stable
 ```
 
 List the UI's origin in `VOICEBLUEPRINT_ALLOWED_ORIGINS` so the API accepts its
@@ -439,7 +439,7 @@ docker run -d -p 127.0.0.1:3900:3900 \
   -e VOICEBLUEPRINT_TRUST_HOST_LOOPBACK=1 \
   -e VOICEBLUEPRINT_DATA_DIR=/app/voiceblueprint_data \
   -v voiceblueprint_data:/app/voiceblueprint_data \
-  ghcr.io/devtunasoft/voiceblueprint-pro:stable
+  ghcr.io/devtunasoft/voiceblueprintpro:stable
 ```
 
 With `VOICEBLUEPRINT_TRUST_HOST_LOOPBACK=1`, requests whose socket address is

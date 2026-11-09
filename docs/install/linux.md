@@ -43,7 +43,7 @@ sudo snap connect voiceblueprint:audio-record
 <a id="install-appimage"></a>
 
 Download a package from the
-[Releases page](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/latest):
+[Releases page](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/latest):
 
 | Package | File |
 |---|---|
@@ -58,7 +58,7 @@ chmod +x VoiceBlueprint-*-linux-x64.AppImage
 ```
 
 The AppImage uses the static AppImage runtime, so it does not need `libfuse2`.
-The [shell installer](script.md) (`curl -fsSL https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprint-Pro/main/scripts/install.sh | sh`)
+The [shell installer](script.md) (`curl -fsSL https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprintPro/main/scripts/install.sh | sh`)
 downloads the latest AppImage, verifies it against the release's
 `SHA256SUMS.txt`, and installs it as `~/.local/bin/VoiceBlueprint`.
 
@@ -126,7 +126,7 @@ Prerequisites:
 Then, from a clone of the repository:
 
 ```bash
-git clone https://github.com/DevTunaSoft/VoiceBlueprint-Pro.git
+git clone https://github.com/DevTunaSoft/VoiceBlueprintPro.git
 cd VoiceBlueprint
 bun install
 bun run setup:api   # create the Python environment with uv
@@ -301,7 +301,7 @@ an AMD-only machine `torch.cuda.is_available()` is `False` and VoiceBlueprint ru
 on CPU until you opt into the ROCm variant.
 
 > **Running in Docker or Podman instead?** There's a prebuilt ROCm image —
-> `ghcr.io/devtunasoft/voiceblueprint-pro:stable-rocm` — with GPU acceleration out of the
+> `ghcr.io/devtunasoft/voiceblueprintpro:stable-rocm` — with GPU acceleration out of the
 > box; see [docker.md](docker.md#pull-and-run-amd-gpu--rocm). The rest of this
 > section is about source/desktop installs. Windows has its own opt-in ROCm
 > setup; see [windows-rocm.md](windows-rocm.md).
@@ -398,7 +398,7 @@ Notes:
 - ZLUDA (CUDA-on-ROCm translation) can work but is unsupported here — prefer a
   native ROCm wheel.
 
-Tracking issue: [#124](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/124).
+Tracking issue: [#124](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/124).
 
 ## Hugging Face token (optional but recommended)
 

@@ -40,7 +40,7 @@ it('links to the shared contextual docs while preserving an explicit error class
   );
   expect(screen.getByRole('link', { name: 'errors.openDocs' })).toHaveAttribute(
     'href',
-    'https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/main/docs/features/diarization.md#license-acceptance-flow',
+    'https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/main/docs/features/diarization.md#license-acceptance-flow',
   );
 });
 

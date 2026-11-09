@@ -7,7 +7,7 @@ import VoiceBlueprintKit
 enum HomeContributors {
     static let logins = ["contributor-a", "contributor-b", "kevin9327", "jaketame", "psiberfunk", "rudycelekli", "paoloantinori", "Chang-Jin-Lee", "swadhinbiswas", "BichengWang", "nirmalchatur", "Shivendra-Coherent", "marreiradigital", "nvtoan0201-swe"]
     static let coreMaintainers: Set<String> = ["contributor-a", "contributor-b"]
-    static let repository = URL(string: "https://github.com/DevTunaSoft/VoiceBlueprint-Pro")!
+    static let repository = URL(string: "https://github.com/DevTunaSoft/VoiceBlueprintPro")!
     static func profile(_ login: String) -> URL { URL(string: "https://github.com/" + login)! }
     static let cards: [String: MaintainerCard] = {
         guard let url = Bundle.main.url(forResource: "maintainer-cards", withExtension: "json", subdirectory: "Catalogs"),

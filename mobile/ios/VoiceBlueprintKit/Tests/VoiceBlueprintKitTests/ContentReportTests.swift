@@ -19,7 +19,7 @@ private final class KeySequence: @unchecked Sendable {
     private var next = 0
     func make() -> String { lock.withLock { next += 1; return String(repeating: "k", count: 31) + String(next) } }
 }
-private let base = URL(string: "https://github.com/DevTunaSoft/VoiceBlueprint-Pro")!
+private let base = URL(string: "https://github.com/DevTunaSoft/VoiceBlueprintPro")!
 private func body(_ request: URLRequest) throws -> [String: String] {
     let raw = try #require(request.httpBody)
     return try #require(JSONSerialization.jsonObject(with: raw) as? [String: String])
@@ -85,7 +85,7 @@ private let speak = ContentReportSubject.phone(.speak, id: "take", repo: "k2-fsa
     await reports.update(picked, for: speak)
     #expect(await reports.send(speak) == .sent)
     let request = try #require(await server.requests.first)
-    #expect(request.url?.absoluteString == "https://github.com/DevTunaSoft/VoiceBlueprint-Pro")
+    #expect(request.url?.absoluteString == "https://github.com/DevTunaSoft/VoiceBlueprintPro")
     #expect(request.httpMethod == "POST")
     #expect(request.value(forHTTPHeaderField: "Content-Type") == "application/json")
     #expect(request.value(forHTTPHeaderField: "Idempotency-Key") == draft.idempotencyKey)
@@ -175,10 +175,10 @@ private let speak = ContentReportSubject.phone(.speak, id: "take", repo: "k2-fsa
 
 @Test func contentReportBaseURLAndAppVersionPerBuild() {
     // Production unless the build carries an https override; debug builds get no special default.
-    #expect(ContentReportClient.baseURL(info: nil).absoluteString == "https://github.com/DevTunaSoft/VoiceBlueprint-Pro")
-    #expect(ContentReportClient.baseURL(info: ["VoiceBlueprintContentReportsURL": " "]).absoluteString == "https://github.com/DevTunaSoft/VoiceBlueprint-Pro")
-    #expect(ContentReportClient.baseURL(info: ["VoiceBlueprintContentReportsURL": "https://github.com/DevTunaSoft/VoiceBlueprint-Pro"]).absoluteString == "https://github.com/DevTunaSoft/VoiceBlueprint-Pro")
-    #expect(ContentReportClient.baseURL(info: ["VoiceBlueprintContentReportsURL": "https://github.com/DevTunaSoft/VoiceBlueprint-Pro"]).absoluteString == "https://github.com/DevTunaSoft/VoiceBlueprint-Pro")
+    #expect(ContentReportClient.baseURL(info: nil).absoluteString == "https://github.com/DevTunaSoft/VoiceBlueprintPro")
+    #expect(ContentReportClient.baseURL(info: ["VoiceBlueprintContentReportsURL": " "]).absoluteString == "https://github.com/DevTunaSoft/VoiceBlueprintPro")
+    #expect(ContentReportClient.baseURL(info: ["VoiceBlueprintContentReportsURL": "https://github.com/DevTunaSoft/VoiceBlueprintPro"]).absoluteString == "https://github.com/DevTunaSoft/VoiceBlueprintPro")
+    #expect(ContentReportClient.baseURL(info: ["VoiceBlueprintContentReportsURL": "https://github.com/DevTunaSoft/VoiceBlueprintPro"]).absoluteString == "https://github.com/DevTunaSoft/VoiceBlueprintPro")
     #expect(ContentReportClient.appVersion(info: ["VoiceBlueprintAppVersion": "0.5.7-beta.2", "CFBundleShortVersionString": "0.5.7"]) == "0.5.7-beta.2")
     #expect(ContentReportClient.appVersion(info: ["CFBundleShortVersionString": "0.5.7"]) == "0.5.7")
     #expect(ContentReportClient.appVersion(info: nil) == "unknown")

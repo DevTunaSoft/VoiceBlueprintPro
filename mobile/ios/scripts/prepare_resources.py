@@ -13,7 +13,7 @@ import subprocess
 
 ROOT = pathlib.Path(__file__).resolve().parents[3]
 IOS = ROOT / "mobile/ios"
-PRODUCTION_REPORTS_URL = "https://github.com/DevTunaSoft/VoiceBlueprint-Pro"
+PRODUCTION_REPORTS_URL = "https://github.com/DevTunaSoft/VoiceBlueprintPro"
 REPORTS_URL = re.compile(r"https://[A-Za-z0-9.-]+(?::\d+)?(?:/[A-Za-z0-9._~/-]*)?")
 
 

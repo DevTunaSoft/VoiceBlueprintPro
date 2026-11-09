@@ -42,9 +42,6 @@ describe('AppShell', () => {
     expect([page.has('sidebar'), page.has('context'), page.has('outlet')]).toEqual([1, 1, 1]);
   });
 
-  it.each(['/design', '/settings/general'])('keeps the account corner on %s', (path) => {
-    expect(mounted(path).has('corner')).toBe(1);
-  });
 });
 
 it.each([

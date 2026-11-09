@@ -142,7 +142,7 @@ if (platform === 'win32') {
   const header = readFileSync(control).subarray(0, 4096).toString('utf8');
   assert(
     header.includes(
-      `URL: https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/download/v${expectedVersion}/${fileUrl}\n`,
+      `URL: https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/download/v${expectedVersion}/${fileUrl}\n`,
     ),
     'zsync downloads the matching release artifact',
   );

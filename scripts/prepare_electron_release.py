@@ -20,7 +20,7 @@ def validate_sunset(manifest, tag):
         raise ValueError("Missing Tauri platforms")
     for entry in manifest["platforms"].values():
         url = urlparse(entry.get("url", ""))
-        prefix = f"/DevTunaSoft/VoiceBlueprint-Pro/releases/download/{tag}/"
+        prefix = f"/DevTunaSoft/VoiceBlueprintPro/releases/download/{tag}/"
         if url.scheme != "https" or url.netloc != "github.com" or not url.path.startswith(prefix):
             raise ValueError("Tauri URLs must point to immutable sunset assets")
         if not entry.get("signature"):

@@ -3,7 +3,7 @@ GNU Library General Public License version 2 or later.
 Source: https://downloads.sourceforge.net/project/lame/lame/3.100/lame-3.100.tar.gz
 SHA-256: ddfe36cab873794038ae2c1210557ad34857a4b6bdc515785d1da9e175b1da1e
 Corresponding encoder/application sources and relink instructions:
-https://github.com/DevTunaSoft/VoiceBlueprint-Pro (mobile/native/mp3/README.md)
+https://github.com/DevTunaSoft/VoiceBlueprintPro (mobile/native/mp3/README.md)
 Vendored source: mobile/ios/VoiceBlueprintKit/Sources/VSNative/Lame
 
 Original upstream COPYING:

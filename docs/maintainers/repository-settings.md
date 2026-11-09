@@ -3,7 +3,7 @@
 GitHub stores these settings outside the repository, so no file or CI check can
 enforce them. Apply them once as a repository admin, then re-check them after
 changing workflow or job names. The `gh api` commands below assume an
-authenticated `gh` with admin access to `DevTunaSoft/VoiceBlueprint-Pro`.
+authenticated `gh` with admin access to `DevTunaSoft/VoiceBlueprintPro`.
 
 ## Rolling out the CLA check
 
@@ -103,7 +103,7 @@ statuses count whichever token the trusted workflows use. `strict_required_statu
 to date with `main` before merging.
 
 ```bash
-gh api --method POST repos/DevTunaSoft/VoiceBlueprint-Pro/rulesets --input - <<'JSON'
+gh api --method POST repos/DevTunaSoft/VoiceBlueprintPro/rulesets --input - <<'JSON'
 {
   "name": "main",
   "target": "branch",
@@ -166,7 +166,7 @@ does not restrict updates or require checks, so the workflow can keep committing
 You can create the ruleset before the branch exists.
 
 ```bash
-gh api --method POST repos/DevTunaSoft/VoiceBlueprint-Pro/rulesets --input - <<'JSON'
+gh api --method POST repos/DevTunaSoft/VoiceBlueprintPro/rulesets --input - <<'JSON'
 {
   "name": "cla-signatures",
   "target": "branch",
@@ -181,7 +181,7 @@ gh api --method POST repos/DevTunaSoft/VoiceBlueprint-Pro/rulesets --input - <<'
 JSON
 ```
 
-Check both rulesets with `gh api repos/DevTunaSoft/VoiceBlueprint-Pro/rulesets`.
+Check both rulesets with `gh api repos/DevTunaSoft/VoiceBlueprintPro/rulesets`.
 
 ## Secret scanning and push protection
 
@@ -189,7 +189,7 @@ UI: **Settings → Code security → Secret Protection**. Enable **Secret scanni
 and **Push protection**.
 
 ```bash
-gh api --method PATCH repos/DevTunaSoft/VoiceBlueprint-Pro --input - <<'JSON'
+gh api --method PATCH repos/DevTunaSoft/VoiceBlueprintPro --input - <<'JSON'
 { "security_and_analysis": {
     "secret_scanning": { "status": "enabled" },
     "secret_scanning_push_protection": { "status": "enabled" } } }
@@ -209,7 +209,7 @@ and that link only works while this setting is on.
 UI: **Settings → Code security → Private vulnerability reporting → Enable**.
 
 ```bash
-gh api --method PUT repos/DevTunaSoft/VoiceBlueprint-Pro/private-vulnerability-reporting
+gh api --method PUT repos/DevTunaSoft/VoiceBlueprintPro/private-vulnerability-reporting
 ```
 
 ## Dependabot alerts
@@ -219,7 +219,7 @@ turns on security alerts. Version updates for GitHub Actions are configured
 separately in `.github/dependabot.yml`.
 
 ```bash
-gh api --method PUT repos/DevTunaSoft/VoiceBlueprint-Pro/vulnerability-alerts
+gh api --method PUT repos/DevTunaSoft/VoiceBlueprintPro/vulnerability-alerts
 ```
 
 ## Maintainer commit email

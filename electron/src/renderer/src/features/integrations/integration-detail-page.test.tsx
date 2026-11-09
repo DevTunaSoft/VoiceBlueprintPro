@@ -5,11 +5,6 @@ import '@/i18n';
 import { IntegrationDetailPage } from './integration-detail-page';
 import { INTEGRATION_SETUPS } from './setup-registry';
 import en from '@/i18n/locales/en.json';
-vi.mock('@shared/config/sponsors', () => ({
-  SPONSORS: [
-    { name: 'Example sponsor', url: 'https://example.org', logoUrl: '/example.svg', tier: 'strategic' },
-  ],
-}));
 const route = vi.hoisted(() => ({ slug: 'claude-code' }));
 const save = vi.hoisted(() => vi.fn());
 vi.mock('@/lib/local-export', () => ({ saveLocalFile: save }));
@@ -31,7 +26,7 @@ vi.mock('@/hooks/use-backend-status', () => ({
 const toast = vi.hoisted(() => ({ success: vi.fn(), error: vi.fn() }));
 vi.mock('sonner', () => ({ toast }));
 vi.mock('./twilio-setup', () => ({
-  TWILIO_DOCS: 'https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/main/docs/integrations/twilio.md',
+  TWILIO_DOCS: 'https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/main/docs/integrations/twilio.md',
   TwilioSetup: ({
     hero,
     rail,

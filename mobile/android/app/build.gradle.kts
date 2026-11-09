@@ -15,12 +15,12 @@ val appVersionCode = providers.environmentVariable("VOICEBLUEPRINT_ANDROID_VERSI
 // The Play upload key, supplied only by the Play workflow; other builds stay debug-signed.
 val uploadKeystore = providers.environmentVariable("VOICEBLUEPRINT_ANDROID_KEYSTORE").orNull
 // Content reports (mobile/contract/SPEC.md) go to production unless VOICEBLUEPRINT_CONTENT_REPORTS_URL,
-// from the environment or mobile/.env, points this build elsewhere (e.g. https://github.com/DevTunaSoft/VoiceBlueprint-Pro).
+// from the environment or mobile/.env, points this build elsewhere (e.g. https://github.com/DevTunaSoft/VoiceBlueprintPro).
 val mobileDotenv = repository.resolve("mobile/.env").takeIf { it.isFile }?.readLines().orEmpty()
     .mapNotNull { Regex("""\s*(?:export\s+)?([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*?)\s*""").matchEntire(it)?.destructured }
     .associate { (key, value) -> key to value.trim('"', '\'') }
 val contentReportsUrl = (providers.environmentVariable("VOICEBLUEPRINT_CONTENT_REPORTS_URL").orNull?.takeIf { it.isNotBlank() }
-    ?: mobileDotenv["VOICEBLUEPRINT_CONTENT_REPORTS_URL"]).orEmpty().trim().trimEnd('/').ifEmpty { "https://github.com/DevTunaSoft/VoiceBlueprint-Pro" }
+    ?: mobileDotenv["VOICEBLUEPRINT_CONTENT_REPORTS_URL"]).orEmpty().trim().trimEnd('/').ifEmpty { "https://github.com/DevTunaSoft/VoiceBlueprintPro" }
 require(Regex("""https://[A-Za-z0-9.-]+(?::\d+)?(?:/[A-Za-z0-9._~/-]*)?""").matches(contentReportsUrl)) {
     "VOICEBLUEPRINT_CONTENT_REPORTS_URL must be an https URL, got $contentReportsUrl"
 }

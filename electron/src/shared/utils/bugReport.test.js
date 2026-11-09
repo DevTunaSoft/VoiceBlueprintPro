@@ -377,7 +377,7 @@ describe('buildIssueSearchUrl', () => {
       new Error('CUDA error 700 at /home/eve/cache: illegal memory access'),
     );
     const q = decodeURIComponent(url.split('q=')[1]);
-    expect(url).toContain('github.com/DevTunaSoft/VoiceBlueprint-Pro/issues?q=');
+    expect(url).toContain('github.com/DevTunaSoft/VoiceBlueprintPro/issues?q=');
     expect(q).toContain('CUDA error');
     expect(q).not.toContain('700'); // machine-specific noise stripped
     expect(q).not.toContain('/home/eve'); // scrubbed + punctuation-stripped

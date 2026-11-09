@@ -17,7 +17,7 @@ Edit the right-hand column to match whatever vocabulary you actually use.
 ## Repo notes
 
 `wontfix` and `needs-info` **pre-date this file** — they were already in use on
-`DevTunaSoft/VoiceBlueprint-Pro` with exactly these names, which is why the mapping is an
+`DevTunaSoft/VoiceBlueprintPro` with exactly these names, which is why the mapping is an
 identity mapping rather than an alias table. Reuse them; do not create variants
 (`won't-fix`, `needs-information`) alongside them.
 

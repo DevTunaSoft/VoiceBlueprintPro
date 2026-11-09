@@ -7,8 +7,8 @@ ROOT = Path(__file__).resolve().parents[1]
 def test_readme_installs_skills_from_the_canonical_repository() -> None:
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
 
-    assert "npx skills add DevTunaSoft/VoiceBlueprint-Pro" in readme
-    assert "npx skills add devtunasoft/voiceblueprint-pro" not in readme
+    assert "npx skills add DevTunaSoft/VoiceBlueprintPro" in readme
+    assert "npx skills add devtunasoft/voiceblueprintpro" not in readme
 
 
 def test_public_skill_surfaces_use_current_identity_and_license() -> None:
@@ -16,7 +16,7 @@ def test_public_skill_surfaces_use_current_identity_and_license() -> None:
     claude = (ROOT / ".claude/skills/omnivoice/LEGACY.md").read_text(encoding="utf-8")
 
     for skill in (canonical, claude):
-        assert "github.com/DevTunaSoft/VoiceBlueprint-Pro" in skill
+        assert "github.com/DevTunaSoft/VoiceBlueprintPro" in skill
         assert "FSL-1.1" not in skill
 
     # The archived entry keeps only its pointer; the old helper scripts are gone.

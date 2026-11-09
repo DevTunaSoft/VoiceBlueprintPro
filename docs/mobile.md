@@ -7,7 +7,7 @@ computer (desktop app, Docker or a server), you can pair the phone with it and
 choose, per task, to run on **This phone** or **My computer**.
 
 > **Preview.** The apps aren't in the App Store or Google Play yet. Download them
-> from [Releases](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/latest)
+> from [Releases](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/latest)
 > ([Install](#install)) or build them from source (below).
 
 | | iOS | Android |
@@ -18,11 +18,11 @@ choose, per task, to run on **This phone** or **My computer**.
 ## Install
 
 Each release attaches the phone apps next to the desktop installers on the
-[Releases page](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/latest).
+[Releases page](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/latest).
 
 - **Android:** download `VoiceBlueprint-<version>-android.apk` on the phone, open
   it and allow installs from that source when Android asks.
-  For release updates, add `https://github.com/DevTunaSoft/VoiceBlueprint-Pro` in
+  For release updates, add `https://github.com/DevTunaSoft/VoiceBlueprintPro` in
   [Obtainium](https://obtainium.imranr.dev/), or add the
   [publisher-operated F-Droid repository](../store/fdroid/README.md). It carries
   the same release-signed APK; it is separate from F-Droid.org's main catalogue.
@@ -305,7 +305,7 @@ uv run python scripts/export_openapi.py    # mobile/contract/openapi.json from t
 **Reports in test builds.** Every build, debug included, sends reports to
 production. To test against the development API, copy `mobile/.env.example` to
 `mobile/.env` (git-ignored) and set
-`VOICEBLUEPRINT_CONTENT_REPORTS_URL=https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues`, or export
+`VOICEBLUEPRINT_CONTENT_REPORTS_URL=https://github.com/DevTunaSoft/VoiceBlueprintPro/issues`, or export
 that variable; the environment wins over the file. Rebuild after changing it.
 
 **Try the iPhone app without Xcode.** Each `mobile` workflow run uploads an

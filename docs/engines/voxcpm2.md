@@ -41,7 +41,7 @@ the engine logs an upgrade hint at load time. Then select the engine via
 
 The first use downloads a multi-GB checkpoint from HuggingFace. A download
 interrupted near the end used to abort the load outright
-([#1224](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/1224)); the load is
+([#1224](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/1224)); the load is
 now retried once with a fresh client. See
 [downloading-models.md](../downloading-models.md).
 

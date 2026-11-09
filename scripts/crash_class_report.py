@@ -17,7 +17,7 @@ Usage:
     uv run python scripts/crash_class_report.py --since 2026-08-13
     uv run python scripts/crash_class_report.py --version 0.5.0
 
-Needs the `gh` CLI authenticated for DevTunaSoft/VoiceBlueprint-Pro.
+Needs the `gh` CLI authenticated for DevTunaSoft/VoiceBlueprintPro.
 """
 
 from __future__ import annotations
@@ -28,7 +28,7 @@ import re
 import subprocess
 import sys
 
-REPO = "DevTunaSoft/VoiceBlueprint-Pro"
+REPO = "DevTunaSoft/VoiceBlueprintPro"
 
 # One pattern per sub-class, matched against issue TITLES (the auto-reporter
 # seeds titles from the error message, so titles are machine-stable).

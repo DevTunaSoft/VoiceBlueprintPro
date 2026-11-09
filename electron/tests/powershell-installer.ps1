@@ -35,7 +35,7 @@ function Invoke-WebRequest($Uri, $OutFile, [switch]$UseBasicParsing) {
     $script:urls.Add($Uri)
     if ($script:noArmAsset -and $Uri -like '*win-arm64*') { throw '404 Not Found' }
     if ($Uri.EndsWith('/latest')) {
-        $target = [uri]'https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/tag/v1.2.3'
+        $target = [uri]'https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/tag/v1.2.3'
         if ($script:legacyResponse) { return @{ BaseResponse = @{ ResponseUri = $target } } }
         return @{ BaseResponse = @{ RequestMessage = @{ RequestUri = $target } } }
     }
@@ -69,7 +69,7 @@ foreach ($case in @(@('0.5.6', 'VoiceBlueprint-Electron'), @('0.5.7-beta.3', 'Vo
     $script:urls.Clear(); $script:launched = $false
     & $installer -Version $case[0]
     if (-not $script:launched) { throw "Setup was not launched for $($case[0])" }
-    if (-not ($script:urls -contains "https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/download/v$($case[0])/$($case[1])-$($case[0])-win-x64.exe")) { throw "Wrong package name for $($case[0])" }
+    if (-not ($script:urls -contains "https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/download/v$($case[0])/$($case[1])-$($case[0])-win-x64.exe")) { throw "Wrong package name for $($case[0])" }
 }
 # Windows on ARM prefers the native build and falls back to x64 (emulated) when a
 # release has no ARM64 installer. PROCESSOR_ARCHITEW6432 covers an emulated x64

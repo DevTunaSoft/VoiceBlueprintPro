@@ -4,7 +4,7 @@ FunASR drives Alibaba's SenseVoiceSmall with FSMN-VAD: an all-in-one
 multilingual pipeline — transcription with punctuation and inverse text
 normalization across **50+ languages**, plus optional **inline speaker
 diarization** via the cam++ speaker model. It's the opt-in alternative to
-WhisperX ([#182](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/182));
+WhisperX ([#182](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/182));
 WhisperX remains the cross-platform default.
 
 ## Selecting it

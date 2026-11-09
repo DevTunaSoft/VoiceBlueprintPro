@@ -31,7 +31,7 @@ There is no separate preview desktop feed. To try changes between betas:
   [Windows](install/windows.md#building-from-source) ·
   [Linux](install/linux.md#building-from-source)), or build and install a
   package from `main` with the [install script's `--main` mode](install/script.md#building-main).
-- **Docker** — `ghcr.io/devtunasoft/voiceblueprint-pro:latest` follows `main`; see
+- **Docker** — `ghcr.io/devtunasoft/voiceblueprintpro:latest` follows `main`; see
   [image tags](install/docker.md#image-tags).
 
 Downloads show transferred size, total size, speed, percentage and ETA, and
@@ -42,7 +42,7 @@ has finished and current drafts are flushed.
 
 There are **no accounts or updater telemetry**. A check fetches one small
 platform/architecture-specific manifest from
-`github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/latest/download/` (Stable), or, on
+`github.com/DevTunaSoft/VoiceBlueprintPro/releases/latest/download/` (Stable), or, on
 Beta, from the newest beta or stable release found through the public GitHub
 releases list; it carries the
 package's SHA-512 checksum, and the app rejects a package that fails it. On

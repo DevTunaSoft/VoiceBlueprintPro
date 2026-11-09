@@ -87,7 +87,7 @@ describe('errorDocsMap', () => {
   });
 
   it('every URL resolves under the project repo blob', () => {
-    const base = 'https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/main';
+    const base = 'https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/main';
     for (const [key, url] of Object.entries(ERROR_DOCS)) {
       expect(url.startsWith(base), `${key} not under ${base}: ${url}`).toBe(true);
     }

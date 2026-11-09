@@ -5,7 +5,7 @@ import { TAGS } from '@/lib/languages';
 export const KNOWN_TAGS: readonly string[] = [...TAGS, '[breath]'];
 
 export const EXPRESSIVE_DOCS_URL =
-  'https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/main/docs/expressive-speech.md';
+  'https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/main/docs/expressive-speech.md';
 
 /**
  * What the engine does with emotion and reaction tags (#3422). A backend that

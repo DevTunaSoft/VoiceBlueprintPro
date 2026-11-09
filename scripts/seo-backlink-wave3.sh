@@ -6,7 +6,7 @@
 # ──────────────────────────────────────────────────────────────────────────────
 set -euo pipefail
 
-SITE_URL="https://github.com/DevTunaSoft/VoiceBlueprint-Pro"
+SITE_URL="https://github.com/DevTunaSoft/VoiceBlueprintPro"
 
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'

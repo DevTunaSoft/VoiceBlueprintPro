@@ -5,10 +5,10 @@
 # ──────────────────────────────────────────────────────────────────────────────
 set -euo pipefail
 
-SITE_URL="https://github.com/DevTunaSoft/VoiceBlueprint-Pro"
+SITE_URL="https://github.com/DevTunaSoft/VoiceBlueprintPro"
 SITE_NAME="VoiceBlueprint"
 SITE_DESC="Open-source ElevenLabs alternative — cinematic audio dubbing, voice cloning & TTS in 646 languages, runs 100% locally"
-RSS_URL="https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases.atom"
+RSS_URL="https://github.com/DevTunaSoft/VoiceBlueprintPro/releases.atom"
 
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
@@ -154,12 +154,12 @@ echo "${YELLOW}━━━ 7. Developer & Tech Platforms ━━━${NC}"
 submit "LibHunt Lookup"              "https://www.libhunt.com/r/VoiceBlueprint"
 submit "StackShare Lookup"           "https://stackshare.io/voiceblueprint-pro"
 submit "DevHunt Submit"              "https://devhunt.org/submit?url=${ENCODED_URL}"
-submit "OSS Insight Lookup"          "https://ossinsight.io/analyze/DevTunaSoft/VoiceBlueprint-Pro"
-submit "Star History"                "https://star-history.com/#DevTunaSoft/VoiceBlueprint-Pro"
-submit "GitTrends"                   "https://gittrends.io/repo/DevTunaSoft/VoiceBlueprint-Pro"
-submit "RepoTracker"                 "https://repo-tracker.com/r/gh/DevTunaSoft/VoiceBlueprint-Pro"
+submit "OSS Insight Lookup"          "https://ossinsight.io/analyze/DevTunaSoft/VoiceBlueprintPro"
+submit "Star History"                "https://star-history.com/#DevTunaSoft/VoiceBlueprintPro"
+submit "GitTrends"                   "https://gittrends.io/repo/DevTunaSoft/VoiceBlueprintPro"
+submit "RepoTracker"                 "https://repo-tracker.com/r/gh/DevTunaSoft/VoiceBlueprintPro"
 submit "Snyk Advisor"                "https://snyk.io/advisor/python/omnivoice"
-submit "Libraries.io"                "https://libraries.io/github/DevTunaSoft/VoiceBlueprint-Pro"
+submit "Libraries.io"                "https://libraries.io/github/DevTunaSoft/VoiceBlueprintPro"
 submit "OpenHub"                     "https://www.openhub.net/p/VoiceBlueprint"
 submit "Awesome Self-Hosted"         "https://awesome-selfhosted.net/"
 submit "RunaCapital ROSS Index"      "https://runacap.com/ross-index/"
@@ -246,7 +246,7 @@ echo "${YELLOW}━━━ 12. WHOIS & Domain Lookup Caches ━━━${NC}"
 submit "W3Techs"                     "https://w3techs.com/sites/info/github.com"
 submit "BuiltWith"                   "https://builtwith.com/devtunasoft.github.io"
 submit "Netcraft Site Report"        "https://sitereport.netcraft.com/?url=${ENCODED_URL}"
-submit "SimilarWeb"                  "https://www.similarweb.com/website/github.com/DevTunaSoft/VoiceBlueprint-Pro/"
+submit "SimilarWeb"                  "https://www.similarweb.com/website/github.com/DevTunaSoft/VoiceBlueprintPro/"
 submit "Wappalyzer"                  "https://www.wappalyzer.com/lookup/${SITE_URL}/"
 submit "SecurityHeaders"             "https://securityheaders.com/?q=${ENCODED_URL}&followRedirects=on"
 submit "Mozilla Observatory"         "https://observatory.mozilla.org/analyze/${SITE_URL}"
@@ -256,14 +256,14 @@ submit "SSL Labs"                    "https://www.ssllabs.com/ssltest/analyze.ht
 echo ""
 echo "${YELLOW}━━━ 13. Additional Pages to Index ━━━${NC}"
 PAGES=(
-  "https://github.com/DevTunaSoft/VoiceBlueprint-Pro"
-  "https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases"
-  "https://github.com/DevTunaSoft/VoiceBlueprint-Pro/wiki"
-  "https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues"
-  "https://github.com/DevTunaSoft/VoiceBlueprint-Pro/pulls"
-  "https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/main/README.md"
-  "https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/main/ROADMAP.md"
-  "https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/tag/v0.2.4"
+  "https://github.com/DevTunaSoft/VoiceBlueprintPro"
+  "https://github.com/DevTunaSoft/VoiceBlueprintPro/releases"
+  "https://github.com/DevTunaSoft/VoiceBlueprintPro/wiki"
+  "https://github.com/DevTunaSoft/VoiceBlueprintPro/issues"
+  "https://github.com/DevTunaSoft/VoiceBlueprintPro/pulls"
+  "https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/main/README.md"
+  "https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/main/ROADMAP.md"
+  "https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/tag/v0.2.4"
 )
 for page in "${PAGES[@]}"; do
   EPAGE=$(python3 -c "import urllib.parse; print(urllib.parse.quote('$page', safe=''))")

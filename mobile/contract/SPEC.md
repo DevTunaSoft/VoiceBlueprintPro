@@ -397,10 +397,10 @@ repository). It needs no sign-in and accepts no audio or identifiers.
 
 - **Request:** `POST <base>/v1/content-reports`, `Content-Type:
   application/json`, `Idempotency-Key` and no `Authorization`. Every build,
-  debug included, uses `https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues` unless
+  debug included, uses `https://github.com/DevTunaSoft/VoiceBlueprintPro/issues` unless
   `VOICEBLUEPRINT_CONTENT_REPORTS_URL` (an https URL, from the environment or the
   git-ignored `mobile/.env`; see `mobile/.env.example`) points it elsewhere, such
-  as `https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues` for testing. The key (32 characters of
+  as `https://github.com/DevTunaSoft/VoiceBlueprintPro/issues` for testing. The key (32 characters of
   `A-Za-z0-9`) is made when the sheet opens and reused when the user retries,
   so a retried report is stored once.
 - **Responses:**

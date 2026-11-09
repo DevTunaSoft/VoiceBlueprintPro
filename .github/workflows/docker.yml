@@ -42,8 +42,8 @@
 # The un-suffixed and `-rocm` tags stay linux/amd64 only.
 #
 # GHCR images and layer caches use the lowercase repository owner namespace.
-# Upstream: ghcr.io/devtunasoft/voiceblueprint-pro and its voiceblueprint-pro alias.
-# Docker Hub remains docker.io/devtunasoft/voiceblueprint-pro
+# Upstream: ghcr.io/devtunasoft/voiceblueprintpro and its voiceblueprint-pro alias.
+# Docker Hub remains docker.io/devtunasoft/voiceblueprintpro
 # (Docker Hub push gated on the DOCKERHUB_USERNAME/DOCKERHUB_TOKEN secrets;
 # if unset the build still pushes to GHCR.)
 #
@@ -115,7 +115,7 @@ concurrency:
 
 env:
   REGISTRY: ghcr.io
-  DOCKERHUB_IMAGE: devtunasoft/voiceblueprint-pro
+  DOCKERHUB_IMAGE: devtunasoft/voiceblueprintpro
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
   # BuildKit layer cache. It lives in GHCR, not the Actions cache: the GHA cache is
   # capped at 10 GB per repository and these layers (one is 4 GB, 5+ GB in total)

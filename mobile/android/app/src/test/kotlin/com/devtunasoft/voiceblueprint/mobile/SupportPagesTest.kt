@@ -75,7 +75,7 @@ class SupportPagesTest {
         capture("android-donate-large-text")
         assertTrue(opened.isEmpty())
         val expected=listOf("github" to "https://github.com/sponsors/contributor-a","kofi" to "https://ko-fi.com/contributor-a","paypal" to "https://paypal.me/palashCoder",
-            "star" to "https://github.com/DevTunaSoft/VoiceBlueprint-Pro","discord" to "https://discord.gg/bzQavDfVV9")
+            "star" to "https://github.com/DevTunaSoft/VoiceBlueprintPro","discord" to "https://discord.gg/bzQavDfVV9")
         for((id,url) in expected) {
             compose.onNodeWithTag("support.donate.$id").performScrollTo().assertIsDisplayed().assertHeightIsAtLeast(48.dp).performClick()
             assertEquals(url,opened.last())

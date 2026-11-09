@@ -11,7 +11,7 @@
 
 ## Experimental Windows setup
 
-1. Open the [VoiceBlueprint Pro Electron packaging workflow](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/actions/workflows/electron-build.yml) and select a completed rehearsal.
+1. Open the [VoiceBlueprint Pro Electron packaging workflow](https://github.com/DevTunaSoft/VoiceBlueprintPro/actions/workflows/electron-build.yml) and select a completed rehearsal.
 2. Verify the *individual package job* for Windows x64 or ARM64 passed; do not infer success from an overall workflow badge.
 3. Under **Artifacts**, download `electron-rehearsal-win32-x64` for Intel/AMD or `electron-rehearsal-win32-arm64` for a Windows ARM64 device. GitHub sign-in may be required. Artifacts expire.
 4. Extract the ZIP and inspect the installer. During migration, its filename is still `VoiceBlueprint-*-win-x64.exe` or `VoiceBlueprint-*-win-arm64.exe`. Only run software you trust.
@@ -19,7 +19,7 @@
 6. After the runtime is ready, open **Settings → Models**. Review licenses, resource needs and compatibility before downloading a model.
 7. Test one small, authorized audio task and verify file playback and export on your own hardware. **Real-device voice/audio acceptance has not yet been demonstrated.**
 
-[Packaging evidence #42426554733](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/actions/runs/42426554733) covers five package jobs: Windows x64, experimental Windows ARM64, Linux x64, macOS Intel and macOS Apple Silicon. CI includes an isolated Windows managed-runtime setup.
+[Packaging evidence #42426554733](https://github.com/DevTunaSoft/VoiceBlueprintPro/actions/runs/42426554733) covers five package jobs: Windows x64, experimental Windows ARM64, Linux x64, macOS Intel and macOS Apple Silicon. CI includes an isolated Windows managed-runtime setup.
 
 ## Special cases
 

@@ -65,7 +65,7 @@ docker run -d --name omnivoice-migrated \
   -e VOICEBLUEPRINT_DATA_DIR=/root/.voiceblueprint \
   --mount "type=bind,src=$backup_dir/restored-data,dst=/root/.voiceblueprint" \
   --mount "type=bind,src=$backup_dir/restored-volume,dst=/app/voiceblueprint_data" \
-  ghcr.io/devtunasoft/voiceblueprint-pro:stable
+  ghcr.io/devtunasoft/voiceblueprintpro:stable
 ```
 
 Use the same GPU flags, image architecture/flavor and custom environment

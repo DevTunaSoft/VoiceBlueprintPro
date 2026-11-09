@@ -33,7 +33,7 @@ old folder are not moved: reinstall them from Engines, or move the
 ## Install
 
 Download the installer matching your PC from the
-[Releases page](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/latest):
+[Releases page](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/latest):
 
 | PC | Installer |
 |---|---|
@@ -57,7 +57,7 @@ Or, from a regular (non-admin) PowerShell, let the
 wizard:
 
 ```powershell
-irm https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprint-Pro/main/scripts/install.ps1 | iex
+irm https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprintPro/main/scripts/install.ps1 | iex
 ```
 
 ### PCs without an NVIDIA GPU
@@ -158,7 +158,7 @@ saying "no GPU acceleration detected".
 ## Building from source
 
 Use this for development or to run current `main`. The install script's
-`main` mode (`$env:VOICEBLUEPRINT_INSTALL_MODE='main'; irm https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprint-Pro/main/scripts/install.ps1 | iex`)
+`main` mode (`$env:VOICEBLUEPRINT_INSTALL_MODE='main'; irm https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprintPro/main/scripts/install.ps1 | iex`)
 builds and installs a desktop package from `main` without a checkout; see
 [the install script guide](script.md).
 
@@ -177,7 +177,7 @@ Prerequisites:
   tools on Windows on ARM).
 
 ```powershell
-git clone https://github.com/DevTunaSoft/VoiceBlueprint-Pro.git
+git clone https://github.com/DevTunaSoft/VoiceBlueprintPro.git
 cd VoiceBlueprint
 bun install
 bun run setup:api   # create the Python environment with uv
@@ -233,7 +233,7 @@ $env:TORCH_COMPILE_DISABLE = "1"
 bun run dev
 ```
 
-Although [#65](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/65) describes a Windows-only memory problem, the control is intentionally not restricted to Windows. Other hosts can need the same eager fallback for compiler failures, including the older-NVIDIA crash tracked in [#2135](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/2135).
+Although [#65](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/65) describes a Windows-only memory problem, the control is intentionally not restricted to Windows. Other hosts can need the same eager fallback for compiler failures, including the older-NVIDIA crash tracked in [#2135](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/2135).
 
 ## Hugging Face token (optional but recommended)
 

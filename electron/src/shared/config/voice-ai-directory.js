@@ -4,6 +4,7 @@
 // only place that claims what an entry actually does with VoiceBlueprint.
 // Official icon sources and verification links: docs/integration-directory.md.
 import genericLogo from '../assets/integrations/integration-generic.svg';
+import voiceBlueprintLogo from '../assets/integrations/voiceblueprint.svg';
 import twilioLogo from '../assets/integrations/twilio.png';
 import plivoLogo from '../assets/integrations/plivo.svg';
 import telnyxLogo from '../assets/integrations/telnyx.ico';
@@ -15,7 +16,6 @@ import mcpLogo from '../assets/integrations/mcp.png';
 import claudeLogo from '../assets/integrations/claude.svg';
 import cursorLogo from '../assets/integrations/cursor.svg';
 import openaiLogo from '../assets/integrations/openai.svg';
-import voiceBlueprintLogo from '../assets/integrations/voiceblueprint.svg';
 
 export const VOICE_AI_DIRECTORY = [
   {
@@ -82,7 +82,7 @@ export const VOICE_AI_DIRECTORY = [
   },
   {
     name: 'VoiceBlueprint API',
-    url: 'https://github.com/DevTunaSoft/VoiceBlueprint-Pro',
+    url: 'https://github.com/DevTunaSoft/VoiceBlueprintPro',
     logoUrl: voiceBlueprintLogo,
   },
 ];

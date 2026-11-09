@@ -65,8 +65,8 @@ class ContentReportUiTest {
         // Debug builds default to production too; only a deliberate override changes it.
         org.junit.Assume.assumeFalse(overridden)
         assertTrue(BuildConfig.DEBUG)
-        assertEquals("https://github.com/DevTunaSoft/VoiceBlueprint-Pro",BuildConfig.CONTENT_REPORTS_URL)
-        assertEquals("https://github.com/DevTunaSoft/VoiceBlueprint-Pro",contentReportClient().endpoint.toString())
+        assertEquals("https://github.com/DevTunaSoft/VoiceBlueprintPro",BuildConfig.CONTENT_REPORTS_URL)
+        assertEquals("https://github.com/DevTunaSoft/VoiceBlueprintPro",contentReportClient().endpoint.toString())
         val script=File(root,"app/build.gradle.kts").readText()
         assertTrue("one URL for every build type",Regex("""buildConfigField\("String", "CONTENT_REPORTS_URL"""").findAll(script).count()==1)
     }

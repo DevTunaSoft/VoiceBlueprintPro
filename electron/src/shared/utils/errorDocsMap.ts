@@ -13,7 +13,7 @@
 
 import { openExternal } from '../api/external';
 
-const BASE = 'https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/main';
+const BASE = 'https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/main';
 
 export const ERROR_DOCS: Record<string, string> = {
   GPU_ARCH_UNSUPPORTED: `${BASE}/docs/install/troubleshooting.md#generation-failure-diagnosis`,

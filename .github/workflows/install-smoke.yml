@@ -73,7 +73,7 @@ jobs:
             git push "$RUNNER_TEMP/voiceblueprint-main.git" HEAD:refs/heads/main
             export GIT_CONFIG_COUNT=1
             export GIT_CONFIG_KEY_0="url.file://$RUNNER_TEMP/voiceblueprint-main.git.insteadOf"
-            export GIT_CONFIG_VALUE_0=https://github.com/DevTunaSoft/VoiceBlueprint-Pro.git
+            export GIT_CONFIG_VALUE_0=https://github.com/DevTunaSoft/VoiceBlueprintPro.git
           fi
           sh scripts/install.sh --main
       - name: Verify and uninstall Electron (macOS/Linux)
@@ -114,7 +114,7 @@ jobs:
             git --git-dir $bare config receive.shallowUpdate true
             git push $bare HEAD:refs/heads/main
             $env:GIT_CONFIG_COUNT = '1'
-            $env:GIT_CONFIG_VALUE_0 = 'https://github.com/DevTunaSoft/VoiceBlueprint-Pro.git'
+            $env:GIT_CONFIG_VALUE_0 = 'https://github.com/DevTunaSoft/VoiceBlueprintPro.git'
             $env:GIT_CONFIG_KEY_0 = "url.file:///$($bare.Replace('\', '/')).insteadOf"
           }
           ./scripts/install.ps1 -Main -Silent

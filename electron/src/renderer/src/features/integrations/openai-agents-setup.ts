@@ -62,7 +62,7 @@ pipeline = VoicePipeline(
 `;
   return {
     file: 'voiceblueprint_agents.py',
-    docs: 'https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/main/docs/agentic-voice.md#openai-agents-sdk',
+    docs: 'https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/main/docs/agentic-voice.md#openai-agents-sdk',
     text,
   };
 }

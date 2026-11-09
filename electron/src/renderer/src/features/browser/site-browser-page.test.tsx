@@ -23,7 +23,7 @@ vi.mock('@/components/bridge', () => ({
 vi.mock('react-i18next', () => ({ useTranslation: () => ({ t: (key: string) => key }) }));
 let onState: (state: SiteBrowserState) => void;
 const ready = {
-  url: 'https://github.com/DevTunaSoft/VoiceBlueprint-Pro',
+  url: 'https://github.com/DevTunaSoft/VoiceBlueprintPro',
   title: 'VoiceBlueprint',
   loading: false,
   error: false,

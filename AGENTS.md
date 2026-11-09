@@ -84,7 +84,7 @@ Repository rules and tracker mappings override generic skill guidance.
 
 ### Issue tracker
 
-GitHub Issues on `DevTunaSoft/VoiceBlueprint-Pro`, via the `gh` CLI. See `docs/agents/issue-tracker.md`.
+GitHub Issues on `DevTunaSoft/VoiceBlueprintPro`, via the `gh` CLI. See `docs/agents/issue-tracker.md`.
 
 ### Triage labels
 

@@ -82,7 +82,7 @@ the runtime readiness stamp and requires verification/repair.
 
 This feature must be present in the installed build; older releases do not gain
 it from an environment variable. See the
-[Releases page](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases) for available builds.
+[Releases page](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases) for available builds.
 
 ## Verify locally
 
@@ -165,10 +165,10 @@ Only explicitly started installation downloads AMD packages and the pinned
 OpenNMT/CTranslate2 GitHub release, with normal dependency resolution through
 package indexes. Verification and local smoke are offline. This installation
 work incorporates focused contributions from
-[#2600](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/pull/2600) and
-[#2607](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/pull/2607); it does not absorb
+[#2600](https://github.com/DevTunaSoft/VoiceBlueprintPro/pull/2600) and
+[#2607](https://github.com/DevTunaSoft/VoiceBlueprintPro/pull/2607); it does not absorb
 their whole draft or mix the separate recipe proposed in
-[#2908](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/pull/2908).
+[#2908](https://github.com/DevTunaSoft/VoiceBlueprintPro/pull/2908).
 
 Fresh supported AMD hardware inference, packaged Windows execution and upstream
 CI remain separate validation gates; a passing mocked test suite is not that evidence.

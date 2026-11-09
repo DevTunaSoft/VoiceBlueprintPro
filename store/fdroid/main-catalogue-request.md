@@ -4,7 +4,7 @@ This is a packaging-assistance request, not a claim that the current build has
 passed F-Droid's source-build checks. The publisher authorizes inclusion.
 
 - Application ID: `com.devtunasoft.voiceblueprint.mobile`
-- Source: https://github.com/DevTunaSoft/VoiceBlueprint-Pro
+- Source: https://github.com/DevTunaSoft/VoiceBlueprintPro
 - Licence: AGPL-3.0-only
 - Android source: `mobile/android/`
 - Latest published version at preparation: `v0.5.7`, version code `3586502`
@@ -12,8 +12,8 @@ passed F-Droid's source-build checks. The publisher authorizes inclusion.
   `A4CDFD177375F4B8F9448996C34E246C73F1FFA97447A47B842051E27EA74730`
 - Metadata, icon and real Android screenshots:
   `fastlane/metadata/android/en-US/` (introduced in upstream PR #3765)
-- Issue tracker/contact: https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues
-- Privacy policy: https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues
+- Issue tracker/contact: https://github.com/DevTunaSoft/VoiceBlueprintPro/issues
+- Privacy policy: https://github.com/DevTunaSoft/VoiceBlueprintPro/issues
 
 VoiceBlueprint runs speech synthesis, voice cloning with consent, transcription
 and dubbing on the phone after explicit model downloads. It can also pair with

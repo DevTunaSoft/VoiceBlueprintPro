@@ -9,7 +9,7 @@ is no longer maintained; if you still run it, follow the
 > PyTorch stopped shipping Intel-Mac (macOS
 > x86_64) wheels after 2.2.x and VoiceBlueprint's dependencies need a newer torch,
 > so a local Python backend cannot install on an Intel Mac — from the DMG *or*
-> from source ([#889](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/889)).
+> from source ([#889](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/889)).
 > On Intel, packaged setup stops before creating a Python environment or
 > downloading dependencies and shows remote-backend guidance instead: use the
 > remote connection controls on the setup screen to point the app at a backend
@@ -17,7 +17,7 @@ is no longer maintained; if you still run it, follow the
 > Linux. A source checkout behaves the same way: `bun run setup:api` stops
 > before syncing anything, and the app opens the same remote-backend screen
 > instead of reporting an incomplete Python environment
-> ([#3584](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/3584)).
+> ([#3584](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/3584)).
 
 ## Requirements
 
@@ -58,13 +58,13 @@ launch, follow the [Gatekeeper instructions](#gatekeeper-quarantine).
 
 Download the DMG that matches your Mac (check **Apple menu → About This Mac →
 Chip/Processor**) from the
-[Releases page](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/latest),
+[Releases page](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/latest),
 double-click to mount it, and drag **VoiceBlueprint.app** into `/Applications`.
 
 | Mac | DMG to download |
 |-----|-----------------|
 | Apple Silicon (any M-series chip) | `VoiceBlueprint-<version>-mac-arm64.dmg` |
-| Intel | `VoiceBlueprint-<version>-mac-x64.dmg` — **UI only**: the local backend cannot run on Intel ([#889](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/889)) |
+| Intel | `VoiceBlueprint-<version>-mac-x64.dmg` — **UI only**: the local backend cannot run on Intel ([#889](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/889)) |
 
 Every Apple Silicon Mac takes the `arm64` DMG, including chips newer than this
 page: VoiceBlueprint checks the CPU architecture, never the chip's name. If macOS
@@ -85,7 +85,7 @@ checksum, and installs `VoiceBlueprint.app` into `/Applications` (or
 `~/Applications` when `/Applications` is not writable):
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprint-Pro/main/scripts/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprintPro/main/scripts/install.sh | sh
 ```
 
 If the first launch is blocked by macOS Gatekeeper (a "developer cannot be
@@ -178,7 +178,7 @@ Prerequisites (use a native arm64 terminal on Apple Silicon):
   Electron native helper.
 
 ```bash
-git clone https://github.com/DevTunaSoft/VoiceBlueprint-Pro.git
+git clone https://github.com/DevTunaSoft/VoiceBlueprintPro.git
 cd VoiceBlueprint
 bun install
 bun run setup:api   # create the Python environment with uv
@@ -204,7 +204,7 @@ publishing. Local packages are unsigned. See
   never regresses; pin `ASR_MODEL_PARAKEET_MLX` to force it).
 - **Intel Macs:** the local backend is **unsupported** — PyTorch no longer
   ships Intel-Mac wheels, so the Python environment can never install
-  ([#889](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/889)). The UI
+  ([#889](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/889)). The UI
   works only when connected to a remote backend.
 
 The picker in **Model Catalogue** shows which backend is active.

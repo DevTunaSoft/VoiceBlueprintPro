@@ -276,7 +276,7 @@ panels instead so neither editor becomes unusably small.
   If that is not possible (read-only install), either reinstall the backend on
   Python 3.12+ (CTranslate2 4.8+ has no such request) or run
   `patchelf --clear-execstack <library>` once. NLLB (local) stays available
-  meanwhile ([#692](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/692)).
+  meanwhile ([#692](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/692)).
 
 
 

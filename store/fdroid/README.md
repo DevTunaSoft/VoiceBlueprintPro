@@ -1,7 +1,7 @@
 # VoiceBlueprint Android distribution
 
 The publisher-operated repository for F-Droid clients is
-`https://devtunasoft.github.io/VoiceBlueprint-Pro/fdroid/repo`. It distributes the unchanged,
+`https://devtunasoft.github.io/VoiceBlueprint Pro/fdroid/repo`. It distributes the unchanged,
 release-signed APK from the latest stable GitHub Release. This is separate from
 inclusion in F-Droid.org's main catalogue.
 
@@ -19,8 +19,8 @@ in-place update between differently signed installations.
 
 ## Obtainium
 
-Add `https://github.com/DevTunaSoft/VoiceBlueprint-Pro` in Obtainium, or import
-[the generated import file](https://devtunasoft.github.io/VoiceBlueprint-Pro/obtainium.json).
+Add `https://github.com/DevTunaSoft/VoiceBlueprintPro` in Obtainium, or import
+[the generated import file](https://devtunasoft.github.io/VoiceBlueprint Pro/obtainium.json).
 The repository's landing page also has
 an import link. Obtainium follows published APK releases, not CI artifacts or
 unreleased commits on `main`. Prereleases are an explicit client choice.

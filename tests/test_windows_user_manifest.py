@@ -11,7 +11,7 @@ SPEC.loader.exec_module(MODULE)
 
 def test_per_user_manifest_points_only_to_scoped_signed_msi():
     manifest = MODULE.build_manifest(
-        repo="DevTunaSoft/VoiceBlueprint-Pro",
+        repo="DevTunaSoft/VoiceBlueprintPro",
         tag="v1.2.3",
         version="1.2.3",
         asset="VoiceBlueprint_Current_User_1.2.3_x64_en-US.msi",

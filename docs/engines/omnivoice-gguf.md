@@ -142,7 +142,7 @@ location instead.
 ## Setup
 
 The desktop installers ship this native binary under `resources/bin/`
-([#2780](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/2780)): Windows x64,
+([#2780](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/2780)): Windows x64,
 Windows on ARM (the x64 binary, run under emulation like the rest of the local
 backend), macOS Apple Silicon and the Linux AppImage/deb. The Windows binary
 carries its own Visual C++ runtime, so no redistributable install is needed.
@@ -169,7 +169,7 @@ weights if they are not installed yet (see [Weights](#weights)).
 **Source checkouts:** the repo ships zero-byte placeholders in `bin/` — real
 binaries come from CI (`build-omnivoice-tts`) or a local build. The engine detects a placeholder and
 reports unavailable with instructions
-([#1172](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/1172)) instead of
+([#1172](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/1172)) instead of
 failing at spawn time; build one with
 `scripts/build-omnivoice-tts.sh --platform <slug>` or use the default
 in-process engine.
@@ -177,7 +177,7 @@ in-process engine.
 **x86-64 CPUs:** Windows, Linux and Intel Mac builds compile every ggml CPU
 variant (`GGML_CPU_ALL_VARIANTS`) and pick the best one this processor supports
 at startup, so a binary built on a newer machine (for example one with AVX-512)
-also runs on older or AVX2-only CPUs ([#2780](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/2780)).
+also runs on older or AVX2-only CPUs ([#2780](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/2780)).
 A binary built some other way that stops with an *illegal instruction* is
 reported as such, and the engine shows *Unavailable* until that binary is
 rebuilt with `scripts/build-omnivoice-tts.sh` or replaced.
@@ -228,7 +228,7 @@ automatic native backend selection retains its CPU path.
 Dynamic Vulkan builds disable host-native CPU flags and include runtime-selected
 CPU variants, so the optional GPU module can configure against the pinned GGML
 runtime while preserving optimized CPU fallback. This shares CPU dispatch flags
-with [#3075](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/pull/3075); that PR separately
+with [#3075](https://github.com/DevTunaSoft/VoiceBlueprintPro/pull/3075); that PR separately
 addresses CPU-only builds and packaging.
 
 The pinned runtime selects its own GPU independently of PyTorch. When no
@@ -297,7 +297,7 @@ Before reporting ready, the engine:
   `xattr -cr '/Applications/VoiceBlueprint.app'` fix;
 - restores a missing execute bit (a git clone or zip extract on POSIX can
   drop `+x`, which used to surface as a permission error mislabeled as
-  out-of-memory — [#437](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/437)).
+  out-of-memory — [#437](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/437)).
   The chmod runs only after the SHA check confirms it's the right file.
 
 ## Behaviour notes

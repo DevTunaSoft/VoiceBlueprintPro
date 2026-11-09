@@ -2,11 +2,11 @@
 
 **A local-first AI voice production suite focused on reliability, performance, accessibility, audio quality and professional workflows.**
 
-VoiceBlueprint Pro is an independent, open-source fork of [VoiceBlueprint](https://github.com/DevTunaSoft/VoiceBlueprint-Pro). We are modernizing its voice production experience, improving its existing capabilities, and retaining upstream attribution.
+VoiceBlueprint Pro is an independent, open-source fork of [VoiceBlueprint](https://github.com/DevTunaSoft/VoiceBlueprintPro). We are modernizing its voice production experience, improving its existing capabilities, and retaining upstream attribution.
 
-[Features](#what-bettervoiceblueprint-is) · [Get a development build](#try-a-development-build) · [How to use](#how-to-use-the-app) · [Beginner manual](docs/user-guide/README.md) · [Developer setup](#build-and-test-from-source) · [Documentation](docs/README.md) · [Roadmap](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/engineering/modernization-foundation/docs/roadmap/CONSOLIDATED_CAPABILITY_PROGRAM.md) · [Build status](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/actions) · [Fork releases](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases) · [Credits](#open-source-credits-and-licensing)
+[Features](#what-bettervoiceblueprint-is) · [Get a development build](#try-a-development-build) · [How to use](#how-to-use-the-app) · [Beginner manual](docs/user-guide/README.md) · [Developer setup](#build-and-test-from-source) · [Documentation](docs/README.md) · [Roadmap](https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/engineering/modernization-foundation/docs/roadmap/CONSOLIDATED_CAPABILITY_PROGRAM.md) · [Build status](https://github.com/DevTunaSoft/VoiceBlueprintPro/actions) · [Fork releases](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases) · [Credits](#open-source-credits-and-licensing)
 
-[![Development CI](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/actions/workflows/ci.yml/badge.svg?branch=engineering%2Fmodernization-foundation)](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/actions/workflows/ci.yml) [![AGPL-3.0](https://img.shields.io/badge/license-AGPL--3.0-blue)](LICENSE)
+[![Development CI](https://github.com/DevTunaSoft/VoiceBlueprintPro/actions/workflows/ci.yml/badge.svg?branch=engineering%2Fmodernization-foundation)](https://github.com/DevTunaSoft/VoiceBlueprintPro/actions/workflows/ci.yml) [![AGPL-3.0](https://img.shields.io/badge/license-AGPL--3.0-blue)](LICENSE)
 
 <p align="center">
   <img src="docs/media/electron/overview.webp" width="880" alt="Inherited VoiceBlueprint desktop workspace preview" />
@@ -15,7 +15,7 @@ VoiceBlueprint Pro is an independent, open-source fork of [VoiceBlueprint](https
 </p>
 
 > [!IMPORTANT]
-> **Actively in development; no official VoiceBlueprint Pro release is published yet.** Windows x64 and experimental Windows ARM64 packaging have passed automated acceptance, but real-hardware production acceptance remains outstanding. See [fork releases](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases) and [live GitHub Actions](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/actions). An upstream VoiceBlueprint download **will not contain the changes made in this fork**.
+> **Actively in development; no official VoiceBlueprint Pro release is published yet.** Windows x64 and experimental Windows ARM64 packaging have passed automated acceptance, but real-hardware production acceptance remains outstanding. See [fork releases](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases) and [live GitHub Actions](https://github.com/DevTunaSoft/VoiceBlueprintPro/actions). An upstream VoiceBlueprint download **will not contain the changes made in this fork**.
 
 > [!NOTE]
 > **Independent fork, not affiliated with the original authors.** Some inherited application screens and executables still say `VoiceBlueprint` for compatibility. The original project's commercial subscriptions, cloud offerings, website, sponsor programs, installers, and community channels are not VoiceBlueprint Pro offerings.
@@ -78,15 +78,15 @@ The fork's mission is to strengthen and extend those workflows without replacing
 | **Trust and openness** | Consent-aware voice use, local-first processing, clear licensing, upstream credit and reproducible builds |
 | **Engineering quality** | Fuzzing, fault injection, cross-platform regression tests, real-audio verification and honest release gates |
 
-**Planned does not mean implemented.** See the [consolidated capability program](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/engineering/modernization-foundation/docs/roadmap/CONSOLIDATED_CAPABILITY_PROGRAM.md) for the complete backlog and verification standards.
+**Planned does not mean implemented.** See the [consolidated capability program](https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/engineering/modernization-foundation/docs/roadmap/CONSOLIDATED_CAPABILITY_PROGRAM.md) for the complete backlog and verification standards.
 
 ## Development progress
 
 We are strengthening the inherited desktop application through code review, regression coverage, security hardening, fault injection, packaging tests and documentation.
 
-- The [modernization branch](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/tree/engineering/modernization-foundation) contains the current engineering work: runtime stability improvements, queue-recovery fixes, Electron IPC checks, test contracts and ongoing quality improvements.
-- On November 7, 2026, [packaging run #42420264814](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/actions/runs/42420264814) passed all five packaging jobs: **Windows x64, Windows ARM64, Linux x64, macOS Apple Silicon and macOS Intel**. The three supported voice-runtime dependency builds also passed. The Windows jobs exercised packaged startup and isolated local-runtime installation.
-- [Full development CI #42420294120](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/actions/runs/42420294120) passed on commit `ee379096`: Electron, Python, desktop UI, UI crawlers, renderer tests, installer contracts and platform smoke checks.
+- The [modernization branch](https://github.com/DevTunaSoft/VoiceBlueprintPro/tree/engineering/modernization-foundation) contains the current engineering work: runtime stability improvements, queue-recovery fixes, Electron IPC checks, test contracts and ongoing quality improvements.
+- On November 7, 2026, [packaging run #42420264814](https://github.com/DevTunaSoft/VoiceBlueprintPro/actions/runs/42420264814) passed all five packaging jobs: **Windows x64, Windows ARM64, Linux x64, macOS Apple Silicon and macOS Intel**. The three supported voice-runtime dependency builds also passed. The Windows jobs exercised packaged startup and isolated local-runtime installation.
+- [Full development CI #42420294120](https://github.com/DevTunaSoft/VoiceBlueprintPro/actions/runs/42420294120) passed on commit `ee379096`: Electron, Python, desktop UI, UI crawlers, renderer tests, installer contracts and platform smoke checks.
 - **Windows ARM64 remains experimental** despite that passing CI run; it uses emulated x64 Python 3.11 and CPU inference, and has not yet been validated on representative physical ARM64 devices.
 - **Outstanding release gates:** reproducible installation and uninstall on real hardware, audio input/output, real-model generation, GPU compatibility, long-running sessions, recovery and signing/distribution validation. The fork currently has no published stable release.
 
@@ -110,15 +110,15 @@ These describe the **inherited application** and are maintained as the fork evol
 
 There is **no signed, stable VoiceBlueprint Pro installer yet**. Technically experienced testers can inspect and try CI-generated artifacts:
 
-1. Open the [Electron packaging workflow](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/actions/workflows/electron-build.yml).
+1. Open the [Electron packaging workflow](https://github.com/DevTunaSoft/VoiceBlueprintPro/actions/workflows/electron-build.yml).
 2. Choose a completed run and confirm the **package job for your exact operating-system architecture** passed. Inspect individual jobs even when the overall workflow is green; experimental jobs may not affect the overall result.
 3. Under **Artifacts**, download `electron-rehearsal-win32-x64` for Windows x64 or `electron-rehearsal-win32-arm64` for Windows ARM64, if available. Sign-in may be required. Extract the ZIP and locate the installer or packaged application.
 4. Run only artifacts from this repository that you trust. Development builds may be unsigned. Do not turn off operating-system protections solely to run a build.
 5. On first launch, follow the local-runtime setup prompts, then obtain any speech models you want to use. Initial installation needs internet access, sufficient disk space and the correct permissions.
 
-[Windows x64 and ARM64 packaging artifacts](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/actions/runs/42420264814) were generated on November 7, 2026. CI artifacts expire, so use a newer successful run if unavailable. Windows ARM64 remains experimental and uses an emulated x64 Python backend with CPU inference.
+[Windows x64 and ARM64 packaging artifacts](https://github.com/DevTunaSoft/VoiceBlueprintPro/actions/runs/42420264814) were generated on November 7, 2026. CI artifacts expire, so use a newer successful run if unavailable. Windows ARM64 remains experimental and uses an emulated x64 Python backend with CPU inference.
 
-When a stable version is published, use the [VoiceBlueprint Pro releases page](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases), not upstream downloads. The inherited [Windows installation guide](docs/install/windows.md) may not yet cover fork-specific packaging.
+When a stable version is published, use the [VoiceBlueprint Pro releases page](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases), not upstream downloads. The inherited [Windows installation guide](docs/install/windows.md) may not yet cover fork-specific packaging.
 
 ## How to use the app
 
@@ -140,7 +140,7 @@ This repository currently retains upstream build identifiers and development too
 **Prerequisites:** Git, Bun 1.4.2, a supported Python runtime and the platform-specific build tools described in the [development documentation](docs/README.md). The modernization work currently lives on its own branch.
 
 ```sh
-git clone https://github.com/DevTunaSoft/VoiceBlueprint-Pro.git
+git clone https://github.com/DevTunaSoft/VoiceBlueprintPro.git
 cd VoiceBlueprint Pro
 git switch engineering/modernization-foundation
 bun install
@@ -160,24 +160,24 @@ Every substantive change should include a reproducible test, regression verifica
 
 ## Historical upstream translations
 
-The inherited VoiceBlueprint translations in [docs/readme/](docs/readme/) remain available for historical reference and attribution. **They describe the original upstream application, not the current VoiceBlueprint Pro fork**, and may contain upstream installation, sponsorship, commercial or community links. Do not interpret them as translated VoiceBlueprint Pro documentation. Their English reference is preserved in the modernization branch at [legacy_upstream_readme.md](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/engineering/modernization-foundation/tests/fixtures/legacy_upstream_readme.md) until verified fork-specific translations are available.
+The inherited VoiceBlueprint translations in [docs/readme/](docs/readme/) remain available for historical reference and attribution. **They describe the original upstream application, not the current VoiceBlueprint Pro fork**, and may contain upstream installation, sponsorship, commercial or community links. Do not interpret them as translated VoiceBlueprint Pro documentation. Their English reference is preserved in the modernization branch at [legacy_upstream_readme.md](https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/engineering/modernization-foundation/tests/fixtures/legacy_upstream_readme.md) until verified fork-specific translations are available.
 
 ## Open source, credits and licensing
 
-**VoiceBlueprint Pro stands on the work of others.** The primary upstream is [VoiceBlueprint by Palash Debnath and contributors](https://github.com/DevTunaSoft/VoiceBlueprint-Pro). The inherited repository also includes the [OmniVoice](https://github.com/k2-fsa/OmniVoice) ecosystem and components adapted from other open-source projects. See [fork attribution and third-party credits](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/engineering/modernization-foundation/docs/FORK_AND_ATTRIBUTION.md), [LICENSE-NOTICE.md](LICENSE-NOTICE.md), [model credits](docs/model-credits.md), and the original copyright and license notices in the source tree.
+**VoiceBlueprint Pro stands on the work of others.** The primary upstream is [VoiceBlueprint by Palash Debnath and contributors](https://github.com/DevTunaSoft/VoiceBlueprintPro). The inherited repository also includes the [OmniVoice](https://github.com/k2-fsa/OmniVoice) ecosystem and components adapted from other open-source projects. See [fork attribution and third-party credits](https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/engineering/modernization-foundation/docs/FORK_AND_ATTRIBUTION.md), [LICENSE-NOTICE.md](LICENSE-NOTICE.md), [model credits](docs/model-credits.md), and the original copyright and license notices in the source tree.
 
 The application declares **AGPL-3.0-only** for its main codebase; certain incorporated components, model weights, tokenizers, datasets and media assets have **different licenses**. In particular, some model weights have non-commercial restrictions. The application license alone does not grant rights to use every model or voice commercially. Read the applicable terms before use or redistribution.
 
-We retain upstream Git history and attribution rather than taking credit for inherited work. If attribution is missing, please submit a [documentation pull request](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/pulls) with the relevant sources.
+We retain upstream Git history and attribution rather than taking credit for inherited work. If attribution is missing, please submit a [documentation pull request](https://github.com/DevTunaSoft/VoiceBlueprintPro/pulls) with the relevant sources.
 
 ## Contributing and reporting issues
 
 We welcome fixes, tests, documentation, accessibility improvements, and new ideas that build on existing work.
 
-- [Submit a reproducible fix or enhancement as a pull request](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/pulls)
-- [Review development changes](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/pulls)
+- [Submit a reproducible fix or enhancement as a pull request](https://github.com/DevTunaSoft/VoiceBlueprintPro/pulls)
+- [Review development changes](https://github.com/DevTunaSoft/VoiceBlueprintPro/pulls)
 - [Contribution review standards](.github/pull_request_template.md)
-- [Development roadmap](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/engineering/modernization-foundation/docs/roadmap/MODERNIZATION_PROGRAM.md)
+- [Development roadmap](https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/engineering/modernization-foundation/docs/roadmap/MODERNIZATION_PROGRAM.md)
 
 **Issues and Discussions are currently disabled.** Follow the [security policy](.github/SECURITY.md) to report vulnerabilities privately rather than disclosing exploitable details.
 

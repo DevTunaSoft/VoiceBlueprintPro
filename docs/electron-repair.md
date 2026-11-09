@@ -124,7 +124,7 @@ edited. A ZIP download from GitHub is not a checkout either, because it has no g
 against. Make one with:
 
 ```sh
-git clone https://github.com/DevTunaSoft/VoiceBlueprint-Pro.git
+git clone https://github.com/DevTunaSoft/VoiceBlueprintPro.git
 ```
 
 Then turn on **Allow source-code repair**, click **Choose folder…** and pick the new `VoiceBlueprint` folder.

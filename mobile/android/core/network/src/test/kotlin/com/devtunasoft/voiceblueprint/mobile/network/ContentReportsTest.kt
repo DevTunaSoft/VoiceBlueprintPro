@@ -118,8 +118,8 @@ class ContentReportsTest {
         assertEquals(ReportOutcome.FAILED, offline.send(phone, ReportDraft(reason = "other")).outcome)
     }
     @Test fun endpointsUseHttpsAndThePath() {
-        assertEquals("https://github.com/DevTunaSoft/VoiceBlueprint-Pro", ContentReportClient("https://github.com/DevTunaSoft/VoiceBlueprint-Pro", "1").endpoint.toString())
-        assertEquals("https://github.com/DevTunaSoft/VoiceBlueprint-Pro", ContentReportClient("https://github.com/DevTunaSoft/VoiceBlueprint-Pro", "1").endpoint.toString())
-        assertThrows(ClientFailure::class.java) { ContentReportClient("https://github.com/DevTunaSoft/VoiceBlueprint-Pro", "1") }
+        assertEquals("https://github.com/DevTunaSoft/VoiceBlueprintPro", ContentReportClient("https://github.com/DevTunaSoft/VoiceBlueprintPro", "1").endpoint.toString())
+        assertEquals("https://github.com/DevTunaSoft/VoiceBlueprintPro", ContentReportClient("https://github.com/DevTunaSoft/VoiceBlueprintPro", "1").endpoint.toString())
+        assertThrows(ClientFailure::class.java) { ContentReportClient("https://github.com/DevTunaSoft/VoiceBlueprintPro", "1") }
     }
 }

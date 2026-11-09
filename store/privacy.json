@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "policyUrl": "https://github.com/DevTunaSoft/VoiceBlueprint-Pro",
+  "policyUrl": "https://github.com/DevTunaSoft/VoiceBlueprintPro",
   "defaultBehavior": {
     "accountRequired": false,
     "analyticsEnabled": false,

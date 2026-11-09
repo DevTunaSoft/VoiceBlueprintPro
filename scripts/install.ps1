@@ -5,12 +5,12 @@ $vsVersion = $Version
 if ($Help) {
     Write-Output @'
 VoiceBlueprint Electron installer (Windows x64 and ARM64)
-  irm https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprint-Pro/main/scripts/install.ps1 | iex
-  $env:VOICEBLUEPRINT_VERSION='X.Y.Z'; irm https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprint-Pro/main/scripts/install.ps1 | iex
-  $env:VOICEBLUEPRINT_INSTALL_MODE='main'; irm https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprint-Pro/main/scripts/install.ps1 | iex
+  irm https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprintPro/main/scripts/install.ps1 | iex
+  $env:VOICEBLUEPRINT_VERSION='X.Y.Z'; irm https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprintPro/main/scripts/install.ps1 | iex
+  $env:VOICEBLUEPRINT_INSTALL_MODE='main'; irm https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprintPro/main/scripts/install.ps1 | iex
 File usage: .\install.ps1 [-Version X.Y.Z] [-Main | -Source] [-Silent]
 Uninstall: .\install.ps1 -Uninstall (preserves user data)
-  $env:VOICEBLUEPRINT_INSTALL_MODE='uninstall'; irm https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprint-Pro/main/scripts/install.ps1 | iex
+  $env:VOICEBLUEPRINT_INSTALL_MODE='uninstall'; irm https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprintPro/main/scripts/install.ps1 | iex
 Main requires Git, Node.js 22+, Bun, Rust/Cargo, and MSVC build tools.
 Only Electron releases are supported. Quit the app first; user data is preserved.
 '@
@@ -66,7 +66,7 @@ try {
         }
         Run-Checked node @('-e', 'if (Number(process.versions.node.split(".")[0]) < 22) process.exit(1)')
         $checkout = Join-Path $work 'source'
-        Run-Checked git @('clone', '--depth', '1', '--branch', 'main', '--single-branch', 'https://github.com/DevTunaSoft/VoiceBlueprint-Pro.git', $checkout)
+        Run-Checked git @('clone', '--depth', '1', '--branch', 'main', '--single-branch', 'https://github.com/DevTunaSoft/VoiceBlueprintPro.git', $checkout)
         Push-Location $checkout
         try {
             Run-Checked git @('rev-parse', 'HEAD')
@@ -86,13 +86,13 @@ try {
     } else {
         if (-not $vsVersion) {
             try {
-                $release = Invoke-RestMethod 'https://api.github.com/repos/DevTunaSoft/VoiceBlueprint-Pro/releases/latest'
+                $release = Invoke-RestMethod 'https://api.github.com/repos/DevTunaSoft/VoiceBlueprintPro/releases/latest'
                 $vsVersion = $release.tag_name -replace '^v', ''
             } catch {
-                $response = Invoke-WebRequest -UseBasicParsing 'https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/latest'
+                $response = Invoke-WebRequest -UseBasicParsing 'https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/latest'
                 # HttpWebResponse on Windows PowerShell 5.1, HttpResponseMessage on 7.
                 $uri = if ($response.BaseResponse.ResponseUri) { $response.BaseResponse.ResponseUri } else { $response.BaseResponse.RequestMessage.RequestUri }
-                if ([string]$uri -notmatch '^https://github\.com/DevTunaSoft/VoiceBlueprint-Pro/releases/tag/v([^/?#]+)$') { throw 'Could not resolve the latest release tag.' }
+                if ([string]$uri -notmatch '^https://github\.com/DevTunaSoft/VoiceBlueprintPro/releases/tag/v([^/?#]+)$') { throw 'Could not resolve the latest release tag.' }
                 $vsVersion = $Matches[1]
             }
             Assert-Version $vsVersion
@@ -106,7 +106,7 @@ try {
     if ($onArm -and $mode -eq 'main') { $asset = "$prefix-$vsVersion-win-arm64.exe" }
     $package = Join-Path $packageDir $asset
     if ($mode -eq 'binary') {
-        $base = "https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/download/v$vsVersion"
+        $base = "https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/download/v$vsVersion"
         $downloaded = $false
         if ($onArm) {
             # Prefer the native ARM64 shell; releases that predate it (or whose

@@ -4,8 +4,8 @@ contact_links:
     url: https://discord.gg/bzQavDfVV9
     about: Usage questions, setup help, and chat. Faster than an issue for "how do I…".
   - name: 🗣️ GitHub Discussions
-    url: https://github.com/DevTunaSoft/VoiceBlueprint-Pro/discussions
+    url: https://github.com/DevTunaSoft/VoiceBlueprintPro/discussions
     about: Ideas, show-and-tell, and open-ended Q&A that isn't a bug or a specific feature ask.
   - name: 🔒 Security vulnerability
-    url: https://github.com/DevTunaSoft/VoiceBlueprint-Pro/security/policy
+    url: https://github.com/DevTunaSoft/VoiceBlueprintPro/security/policy
     about: Please report security issues privately — do NOT open a public issue.

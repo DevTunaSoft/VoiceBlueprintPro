@@ -15,7 +15,7 @@ The sidebar's Integrations entry opens the directory. Each visible detail page o
 | Claude Code | [Guide](https://docs.anthropic.com/en/docs/claude-code) | Simple Icons 15.0.0 Claude mark (CC0), Claude orange |
 | Cursor | [Website](https://cursor.com) | Official site icon (`cursor.com/marketing-static/favicon.svg`) |
 | Codex CLI | [Repository](https://github.com/openai/codex) | Simple Icons 15.0.0 OpenAI mark (CC0) on a black tile |
-| VoiceBlueprint API | [Repository](https://github.com/DevTunaSoft/VoiceBlueprint-Pro) | VoiceBlueprint app icon (`voiceblueprint.svg`, a copy of `electron/public/favicon.svg`) |
+| VoiceBlueprint API | [Repository](https://github.com/DevTunaSoft/VoiceBlueprintPro) | VoiceBlueprint app icon (`voiceblueprint.svg`, a copy of `electron/public/favicon.svg`) |
 
 ## Connect coding agents
 
@@ -62,8 +62,8 @@ URL with copyable `curl` and OpenAI Python SDK snippets for
 key; remote ones need the backend's API key (see [API authentication](api-auth.md)).
 
 The **Docker** and **GitHub Container Registry** pages give a `docker run` (POSIX shell and Windows PowerShell) and a
-Compose snippet for `devtunasoft/voiceblueprint-pro:stable` and
-`ghcr.io/devtunasoft/voiceblueprint-pro:stable`. `:stable` is the latest tagged
+Compose snippet for `devtunasoft/voiceblueprintpro:stable` and
+`ghcr.io/devtunasoft/voiceblueprintpro:stable`. `:stable` is the latest tagged
 release; `:latest` is the rolling preview built from `main`. See the
 [Docker install guide](install/docker.md) for GPU flags and the ROCm tags.
 

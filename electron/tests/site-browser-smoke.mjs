@@ -195,7 +195,7 @@ try {
   assert.equal((await state()).url, origin + '/typed');
   // Optional owner-triggered live-site check; normal CI remains local-only.
   if (process.env.VOICEBLUEPRINT_BROWSER_LIVE_CHECK === '1') {
-    await toolbar.evaluate(() => window.voiceblueprint.browser.navigate('https://github.com/DevTunaSoft/VoiceBlueprint-Pro'));
+    await toolbar.evaluate(() => window.voiceblueprint.browser.navigate('https://github.com/DevTunaSoft/VoiceBlueprintPro'));
     let live = await state();
     for (let attempt = 0; attempt < 120; attempt++) {
       if (live.error || (!live.loading && live.title.includes('VoiceBlueprint'))) break;

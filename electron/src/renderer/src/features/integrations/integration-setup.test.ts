@@ -167,10 +167,10 @@ it('gives the API and container cards runnable snippets for the right endpoints 
     .blocks('')!
     .map((block) => block.text)
     .join('\n');
-  expect(docker).toContain('devtunasoft/voiceblueprint-pro:stable');
+  expect(docker).toContain('devtunasoft/voiceblueprintpro:stable');
   const ghcr = INTEGRATION_SETUPS['github-container-registry'].blocks('')!;
   expect(ghcr.map((block) => block.text).join('\n')).toContain(
-    'ghcr.io/devtunasoft/voiceblueprint-pro:stable',
+    'ghcr.io/devtunasoft/voiceblueprintpro:stable',
   );
   const mcp = INTEGRATION_SETUPS['model-context-protocol'].blocks('http://127.0.0.1:3912')!;
   expect(mcp[0].text).toContain('URL: http://127.0.0.1:3912/mcp/\n');
@@ -277,7 +277,7 @@ it('gives Windows a PowerShell docker run with a CSPRNG key and backtick continu
     expect(ps.text).not.toMatch(/^export |\\$/m);
     expect(ps.text).toContain('RandomNumberGenerator');
     expect(ps.text).toContain('-e VOICEBLUEPRINT_API_KEY="$env:VOICEBLUEPRINT_API_KEY" `');
-    expect(ps.text.trimEnd()).toMatch(/(?:voiceblueprint|voiceblueprint-pro):stable$/);
+    expect(ps.text.trimEnd()).toMatch(/voiceblueprintpro:stable$/);
   }
 });
 it('mounts the host model cache at the image HF_HOME and adds no dead bind knob', () => {

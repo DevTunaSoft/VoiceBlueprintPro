@@ -4,15 +4,15 @@
 cloning, and cinematic video dubbing — fully local, with no cloud API keys or accounts.
 **646 languages.**
 
-[![Docker Pulls](https://img.shields.io/docker/pulls/devtunasoft/voiceblueprint-pro?logo=docker&color=2496ED)](https://hub.docker.com/r/devtunasoft/voiceblueprint-pro)
-[![Image Size](https://img.shields.io/docker/image-size/devtunasoft/voiceblueprint-pro/latest?logo=docker&label=image%20size)](https://hub.docker.com/r/devtunasoft/voiceblueprint-pro/tags)
-[![GitHub Stars](https://img.shields.io/github/stars/DevTunaSoft/VoiceBlueprint-Pro?logo=github&color=f59e0b)](https://github.com/DevTunaSoft/VoiceBlueprint-Pro)
-[![License](https://img.shields.io/badge/license-AGPL--3.0-blue)](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/main/LICENSE)
+[![Docker Pulls](https://img.shields.io/docker/pulls/devtunasoft/voiceblueprintpro?logo=docker&color=2496ED)](https://hub.docker.com/r/devtunasoft/voiceblueprintpro)
+[![Image Size](https://img.shields.io/docker/image-size/devtunasoft/voiceblueprintpro/latest?logo=docker&label=image%20size)](https://hub.docker.com/r/devtunasoft/voiceblueprintpro/tags)
+[![GitHub Stars](https://img.shields.io/github/stars/DevTunaSoft/VoiceBlueprintPro?logo=github&color=f59e0b)](https://github.com/DevTunaSoft/VoiceBlueprintPro)
+[![License](https://img.shields.io/badge/license-AGPL--3.0-blue)](https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/main/LICENSE)
 [![Discord](https://img.shields.io/badge/Discord-Join-5865F2?logo=discord&logoColor=white)](https://discord.gg/bzQavDfVV9)
 
-[![DevTunaSoft/VoiceBlueprint-Pro on Trendshift](https://trendshift.io/api/badge/trendshift/repositories/28176/daily?language=Python)](https://trendshift.io/repositories/28176?utm_source=trendshift-badge&utm_medium=badge&utm_campaign=badge-trendshift-28176)
+[![DevTunaSoft/VoiceBlueprintPro on Trendshift](https://trendshift.io/api/badge/trendshift/repositories/28176/daily?language=Python)](https://trendshift.io/repositories/28176?utm_source=trendshift-badge&utm_medium=badge&utm_campaign=badge-trendshift-28176)
 
-![VoiceBlueprint — the open-source ElevenLabs alternative](https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprint-Pro/main/.github/assets/social-preview.png)
+![VoiceBlueprint — the open-source ElevenLabs alternative](https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprintPro/main/.github/assets/social-preview.png)
 
 VoiceBlueprint processes media on your own hardware and automatically chooses CUDA,
 ROCm, or CPU. Data leaves the machine only after you explicitly agree. PostHog
@@ -23,7 +23,7 @@ server image runs FastAPI with the pre-built React interface over HTTP, making
 it suitable for an AMD64 homelab or GPU server that you control from a browser.
 
 **Upgrading an existing container?** Use the
-[backup and path-preserving migration procedure](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/main/docs/install/docker-data-recovery.md)
+[backup and path-preserving migration procedure](https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/main/docs/install/docker-data-recovery.md)
 before recreating or removing it. Older commands could keep the database,
 voices and projects inside the container, outside the mounted model-cache
 volume. The quick starts below are for fresh installations.
@@ -33,10 +33,10 @@ exist for `linux/amd64` only. For NVIDIA hardware built on ARM, such as a DGX
 Spark (GB10) or a GH200 / GB200 server, pull `:stable-cuda-arm64`, which is a
 native `linux/arm64` build. On an Apple Silicon Mac, a Linux container cannot
 reach the GPU through either MPS or MLX, so for accelerated inference install
-the [native macOS app](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/main/docs/install/macos.md)
+the [native macOS app](https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/main/docs/install/macos.md)
 instead. Any other ARM64 machine has no native image: run the container on an
 AMD64 host, or expect emulation to make it dramatically slower. Check the
-[architecture notes](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/main/docs/install/docker.md#architecture)
+[architecture notes](https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/main/docs/install/docker.md#architecture)
 before you pick a tag.
 
 > The desktop app's auto-updater is **desktop-only** and does not apply to this
@@ -50,11 +50,11 @@ the entire pipeline runs on CPU, just slower. Pull size: ~5 GB compressed
 
 ## See it in action
 
-![Switching TTS engines from the VoiceBlueprint status bar](https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprint-Pro/main/docs/media/0.5.0/quick-switch.gif)
+![Switching TTS engines from the VoiceBlueprint status bar](https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprintPro/main/docs/media/0.5.0/quick-switch.gif)
 
 | Model catalogue | Save a gallery voice |
 |---|---|
-| ![VoiceBlueprint Model Catalogue](https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprint-Pro/main/docs/media/0.5.0/catalogue.png) | ![Saving a gallery voice as a local profile](https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprint-Pro/main/docs/media/0.5.0/gallery-save.png) |
+| ![VoiceBlueprint Model Catalogue](https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprintPro/main/docs/media/0.5.0/catalogue.png) | ![Saving a gallery voice as a local profile](https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprintPro/main/docs/media/0.5.0/gallery-save.png) |
 
 ---
 
@@ -68,7 +68,7 @@ docker run -d --name omnivoice \
   -e VOICEBLUEPRINT_API_KEY="$VOICEBLUEPRINT_API_KEY" \
   -e VOICEBLUEPRINT_DATA_DIR=/app/voiceblueprint_data \
   -v voiceblueprint-data:/app/voiceblueprint_data \
-  devtunasoft/voiceblueprint-pro:stable
+  devtunasoft/voiceblueprintpro:stable
 ```
 
 Open <http://localhost:3900>. The first run downloads a few GB of model weights —
@@ -87,7 +87,7 @@ docker run -d --name omnivoice --gpus all \
   -e VOICEBLUEPRINT_API_KEY="$VOICEBLUEPRINT_API_KEY" \
   -e VOICEBLUEPRINT_DATA_DIR=/app/voiceblueprint_data \
   -v voiceblueprint-data:/app/voiceblueprint_data \
-  devtunasoft/voiceblueprint-pro:stable
+  devtunasoft/voiceblueprintpro:stable
 ```
 
 GPU mode needs the
@@ -109,17 +109,17 @@ docker run -d --name omnivoice \
   -e VOICEBLUEPRINT_API_KEY="$VOICEBLUEPRINT_API_KEY" \
   -e VOICEBLUEPRINT_DATA_DIR=/app/voiceblueprint_data \
   -v voiceblueprint-data:/app/voiceblueprint_data \
-  devtunasoft/voiceblueprint-pro:stable-rocm
+  devtunasoft/voiceblueprintpro:stable-rocm
 ```
 
 Podman users: same two `--device` flags (Quadlet: `AddDevice=/dev/kfd` +
 `AddDevice=/dev/dri`). On RDNA3 consumer cards (RX 7900 XTX/XT), add
 `-e HSA_OVERRIDE_GFX_VERSION=11.0.0` if the GPU isn't detected; never set it
 on RX 9000 (RDNA4) cards, which the image supports natively — details in
-the [Docker install guide](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/main/docs/install/docker.md).
+the [Docker install guide](https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/main/docs/install/docker.md).
 
 There's also a Compose file in the repo with `cpu` / `gpu` / `rocm` profiles;
-see the [Docker install guide](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/main/docs/install/docker.md).
+see the [Docker install guide](https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/main/docs/install/docker.md).
 
 ---
 
@@ -143,8 +143,8 @@ Release tags are published only when the GitHub Release is published.
 Preview builds always come from `main` and never version-sort below `:stable`,
 so upgrades flow naturally. The same images and tags
 are mirrored on GHCR at
-[`ghcr.io/devtunasoft/voiceblueprint-pro`](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/pkgs/container/voiceblueprint).
-The former `ghcr.io/devtunasoft/voiceblueprint-pro` path remains a compatible alias.
+[`ghcr.io/devtunasoft/voiceblueprintpro`](https://github.com/DevTunaSoft/VoiceBlueprintPro/pkgs/container/voiceblueprint).
+The former `ghcr.io/devtunasoft/voiceblueprintpro` path remains a compatible alias.
 
 ---
 
@@ -201,12 +201,12 @@ adds there are root-owned).
   `VOICEBLUEPRINT_API_KEY` and pass the same key through the browser's login prompt.
   A six-digit share PIN is also available for casual LAN access, but it does
   not authorize administration or dictation; see the
-  [API authentication guide](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/main/docs/api-auth.md).
+  [API authentication guide](https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/main/docs/api-auth.md).
 - The share PIN also applies to the host's own browser, which reaches the
   container from Docker's gateway address. On a host only you use, with the
   port published on `127.0.0.1`, `-e VOICEBLUEPRINT_TRUST_HOST_LOOPBACK=1` lets that
   browser skip the PIN; other machines still need it. Read the
-  [risks](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/main/docs/install/docker.md#trust-host-loopback)
+  [risks](https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/main/docs/install/docker.md#trust-host-loopback)
   first.
 
 > **Security:** Loopback-only publishing is the safe default. Before exposing
@@ -219,9 +219,9 @@ adds there are root-owned).
 
 ## Links
 
-- **Source & full install docs:** <https://github.com/DevTunaSoft/VoiceBlueprint-Pro>
-- **Docker guide:** <https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/main/docs/install/docker.md>
-- **Troubleshooting:** <https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/main/docs/install/troubleshooting.md>
+- **Source & full install docs:** <https://github.com/DevTunaSoft/VoiceBlueprintPro>
+- **Docker guide:** <https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/main/docs/install/docker.md>
+- **Troubleshooting:** <https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/main/docs/install/troubleshooting.md>
 - **Community / support:** [Discord](https://discord.gg/bzQavDfVV9)
 
 VoiceBlueprint is in active beta and licensed under AGPL-3.0.

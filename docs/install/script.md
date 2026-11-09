@@ -3,16 +3,16 @@
 The shell installer supports macOS (Apple Silicon and Intel) and Linux x64.
 On Windows, download the `VoiceBlueprint-…-win-x64.exe` installer (or
 `…-win-arm64.exe` on a Snapdragon/ARM PC) from
-[Releases](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases).
+[Releases](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases).
 
 Or use PowerShell. Use the `.ps1` URL: the bare `/install` URL is not guaranteed to detect PowerShell and can return the shell script (#2973):
 
 ```powershell
-irm https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprint-Pro/main/scripts/install.ps1 | iex
-$env:VOICEBLUEPRINT_VERSION='X.Y.Z'; irm https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprint-Pro/main/scripts/install.ps1 | iex
+irm https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprintPro/main/scripts/install.ps1 | iex
+$env:VOICEBLUEPRINT_VERSION='X.Y.Z'; irm https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprintPro/main/scripts/install.ps1 | iex
 # Clear a previous version override before selecting main:
 Remove-Item Env:VOICEBLUEPRINT_VERSION -ErrorAction SilentlyContinue
-$env:VOICEBLUEPRINT_INSTALL_MODE='main'; irm https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprint-Pro/main/scripts/install.ps1 | iex
+$env:VOICEBLUEPRINT_INSTALL_MODE='main'; irm https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprintPro/main/scripts/install.ps1 | iex
 ```
 
 On ARM64 Windows the script installs the native ARM64 build and falls back to the x64 build when a release has none. Windows main builds also need Visual Studio C++ build tools (plus the ARM64 build tools on ARM). The script builds
@@ -21,13 +21,13 @@ overrides persist in the terminal; remove them to return to latest-release mode.
 
 ```sh
 # Latest stable Electron release
-curl -fsSL https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprint-Pro/main/scripts/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprintPro/main/scripts/install.sh | sh
 
 # A published Electron version, with or without a v prefix
-curl -fsSL https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprint-Pro/main/scripts/install.sh | sh -s -- --version X.Y.Z
+curl -fsSL https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprintPro/main/scripts/install.sh | sh -s -- --version X.Y.Z
 
 # Clone main, build a desktop package, then install it
-curl -fsSL https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprint-Pro/main/scripts/install.sh | sh -s -- --main
+curl -fsSL https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprintPro/main/scripts/install.sh | sh -s -- --main
 ```
 
 `--source` is an alias for `--main`. It cannot be combined with `--version`.
@@ -43,7 +43,7 @@ If `voiceblueprint.sh/install` is unreachable or returns 404, run the same scrip
 straight from the repository, or clone it and run `scripts/install.sh`:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprint-Pro/main/scripts/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprintPro/main/scripts/install.sh | sh
 ```
 
 Requires curl and `shasum` (included on macOS) or `sha256sum`. The installer
@@ -81,7 +81,7 @@ installation directory; it must be an absolute, existing, writable directory. In
 Quit VoiceBlueprint, then run:
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprint-Pro/main/scripts/install.sh | sh -s -- --uninstall
+curl -fsSL https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprintPro/main/scripts/install.sh | sh -s -- --uninstall
 ```
 
 On macOS this removes the Electron app from `/Applications` and `~/Applications`;
@@ -96,7 +96,7 @@ package manager. Archived Tauri apps are not removed.
 
 ```powershell
 Remove-Item Env:VOICEBLUEPRINT_VERSION -ErrorAction SilentlyContinue
-$env:VOICEBLUEPRINT_INSTALL_MODE='uninstall'; irm https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprint-Pro/main/scripts/install.ps1 | iex
+$env:VOICEBLUEPRINT_INSTALL_MODE='uninstall'; irm https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprintPro/main/scripts/install.ps1 | iex
 ```
 
 Windows skips archived Tauri registry entries and opens one verified Electron uninstall wizard.

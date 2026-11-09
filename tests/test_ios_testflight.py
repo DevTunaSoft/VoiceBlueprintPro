@@ -191,20 +191,20 @@ def test_upload_checks_every_embedded_framework_version():
 
 def test_content_reports_go_to_production_unless_overridden(tmp_path):
     dotenv = tmp_path / ".env"
-    assert prepare_resources.content_reports_url({}, dotenv) == "https://github.com/DevTunaSoft/VoiceBlueprint-Pro"
-    dotenv.write_text("# local\nexport VOICEBLUEPRINT_CONTENT_REPORTS_URL='https://github.com/DevTunaSoft/VoiceBlueprint-Pro'\n", encoding="utf-8")
-    assert prepare_resources.content_reports_url({}, dotenv) == "https://github.com/DevTunaSoft/VoiceBlueprint-Pro"
+    assert prepare_resources.content_reports_url({}, dotenv) == "https://github.com/DevTunaSoft/VoiceBlueprintPro"
+    dotenv.write_text("# local\nexport VOICEBLUEPRINT_CONTENT_REPORTS_URL='https://github.com/DevTunaSoft/VoiceBlueprintPro'\n", encoding="utf-8")
+    assert prepare_resources.content_reports_url({}, dotenv) == "https://github.com/DevTunaSoft/VoiceBlueprintPro"
     env = {"VOICEBLUEPRINT_CONTENT_REPORTS_URL": "https://staging.example:8443"}
     assert prepare_resources.content_reports_url(env, dotenv) == "https://staging.example:8443"
     with pytest.raises(ValueError):
-        prepare_resources.content_reports_url({"VOICEBLUEPRINT_CONTENT_REPORTS_URL": "https://github.com/DevTunaSoft/VoiceBlueprint-Pro"}, dotenv)
+        prepare_resources.content_reports_url({"VOICEBLUEPRINT_CONTENT_REPORTS_URL": "https://github.com/DevTunaSoft/VoiceBlueprintPro"}, dotenv)
 
 
 def test_info_plist_carries_the_content_reports_url(tmp_path, monkeypatch):
-    monkeypatch.setenv("VOICEBLUEPRINT_CONTENT_REPORTS_URL", "https://github.com/DevTunaSoft/VoiceBlueprint-Pro")
+    monkeypatch.setenv("VOICEBLUEPRINT_CONTENT_REPORTS_URL", "https://github.com/DevTunaSoft/VoiceBlueprintPro")
     prepare_resources.prepare(tmp_path / "bundle", tmp_path / "Info.plist")
     info = plistlib.loads((tmp_path / "Info.plist").read_bytes())
-    assert info["VoiceBlueprintContentReportsURL"] == "https://github.com/DevTunaSoft/VoiceBlueprint-Pro"
+    assert info["VoiceBlueprintContentReportsURL"] == "https://github.com/DevTunaSoft/VoiceBlueprintPro"
 
 
 def test_host_inference_prepares_all_runtime_headers_before_compiling_swift():

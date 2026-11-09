@@ -34,5 +34,5 @@ def test_no_powershell_command_uses_the_bare_install_url():
             if _BARE.search(line):
                 offenders.append(f"{path.relative_to(_ROOT)}:{number}")
     assert not offenders, (
-        "use `irm https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprint-Pro/main/scripts/install.ps1 | iex` (#2973): " + ", ".join(offenders)
+        "use `irm https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprintPro/main/scripts/install.ps1 | iex` (#2973): " + ", ".join(offenders)
     )

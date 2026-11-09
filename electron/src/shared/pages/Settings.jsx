@@ -241,7 +241,7 @@ export default function Settings() {
       `- **Outputs directory:** ${info?.outputs_dir || '—'}`,
       `- **Crash log:** ${info?.crash_log_path || '—'}`,
       `- **Update channel:** ${updateChannel}`,
-      `- **Update endpoint:** https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/latest/download/latest.json`,
+      `- **Update endpoint:** https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/latest/download/latest.json`,
       `- **User agent:** ${ua}`,
     ];
     try {

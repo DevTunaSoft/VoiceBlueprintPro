@@ -22,8 +22,8 @@ download, and never run executables bundled with model archives.
 
 Instead, report them privately via one of these channels:
 
-1. **GitHub Security Advisories** (preferred) — [Report a vulnerability](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/security/advisories/new)
-2. **Email** — Send details to **https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues**
+1. **GitHub Security Advisories** (preferred) — [Report a vulnerability](https://github.com/DevTunaSoft/VoiceBlueprintPro/security/advisories/new)
+2. **Email** — Send details to **https://github.com/DevTunaSoft/VoiceBlueprintPro/issues**
 
 ### What to include
 
@@ -94,7 +94,7 @@ For a remote scan, set the repository Actions secret `VIRUSTOTAL_API_KEY` and
 manually dispatch [the VirusTotal workflow](workflows/virustotal.yml):
 
 ```bash
-gh workflow run virustotal.yml --repo DevTunaSoft/VoiceBlueprint-Pro --ref main
+gh workflow run virustotal.yml --repo DevTunaSoft/VoiceBlueprintPro --ref main
 ```
 
 The workflow must first be merged into the default branch. It scans the

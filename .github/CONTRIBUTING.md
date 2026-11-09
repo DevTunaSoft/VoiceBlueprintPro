@@ -7,8 +7,8 @@ Thanks for your interest in improving VoiceBlueprint! This guide covers everythi
 | | |
 |---|---|
 | 💬 **Chat** | [Discord](https://discord.gg/bzQavDfVV9) |
-| 🐛 **Bugs** | [GitHub Issues](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues) |
-| 🏷️ **Good First Issues** | [Filtered list](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/labels/good%20first%20issue) |
+| 🐛 **Bugs** | [GitHub Issues](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues) |
+| 🏷️ **Good First Issues** | [Filtered list](https://github.com/DevTunaSoft/VoiceBlueprintPro/labels/good%20first%20issue) |
 | 📋 **Roadmap** | [docs/ROADMAP.md](../docs/ROADMAP.md) |
 
 ---
@@ -18,7 +18,7 @@ Thanks for your interest in improving VoiceBlueprint! This guide covers everythi
 > [Contributor License Agreement](CLA-1.0.md) once. GitHub cannot stop you opening a pull request first, so it is checked at
 > merge instead: an unsigned pull request cannot merge unless a maintainer applies
 > the `cla-override` label after manual review. You can sign now on the
-> [signing issue (#2586)](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/2586) and
+> [signing issue (#2586)](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/2586) and
 > your signature covers your future contributions. Every other non-exempt human commit
 > author and co-author must also sign before the check passes. Details are in
 > [Contribution licensing](#contribution-licensing).
@@ -60,7 +60,7 @@ for Fedora and Arch packages.
 ### Clone & Run
 
 ```bash
-git clone https://github.com/DevTunaSoft/VoiceBlueprint-Pro.git
+git clone https://github.com/DevTunaSoft/VoiceBlueprintPro.git
 cd VoiceBlueprint
 bun run dev
 ```
@@ -162,7 +162,7 @@ VoiceBlueprint/
 
 ### Bug Reports
 
-Open an [issue](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/new) with:
+Open an [issue](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/new) with:
 
 1. **What happened** vs **what you expected**
 2. **Steps to reproduce**
@@ -424,7 +424,7 @@ that — the agent recalls the architecture, conventions, and your past findings
 instead of re-reading the tree each time. [**memxt**](https://github.com/contributor-a/memxt)
 (100% local, MCP-based, built by this project's maintainer) exists for exactly
 this; any MCP memory server works. Pair it with the repo's agent skill —
-`npx skills add DevTunaSoft/VoiceBlueprint-Pro` — so your agent knows the project's
+`npx skills add DevTunaSoft/VoiceBlueprintPro` — so your agent knows the project's
 hard rules from the first prompt.
 
 ## Quality gates your PR must pass
@@ -586,13 +586,13 @@ I have read the VoiceBlueprint CLA 1.0 and I hereby sign it.
 The signature covers your earlier and future contributions. The CLA check
 identifies other required signers or cases needing manual review.
 New contributors can sign first: post the same line on the
-[signing issue (#2586)](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/2586)
+[signing issue (#2586)](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/2586)
 before opening a pull request, or on the pull request itself if you prefer. The
 same signature applies if a maintainer folds your pull request into another one.
 If a pull request contains `Supersedes #N`, its CLA check also covers the
 non-exempt human opener, commit authors and co-authors of pull request #N.
 Contributed before and have no open pull request? Post
-the same line on the [issue labelled `cla`](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues?q=label%3Acla). If it lists a commit it cannot link to a GitHub
+the same line on the [issue labelled `cla`](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues?q=label%3Acla). If it lists a commit it cannot link to a GitHub
 account, either add that commit email to your account (Settings → Emails), or
 rewrite the commits with an email that is on it (`git commit --amend
 --reset-author`, or an interactive rebase) and push again. Comment `recheck` to
@@ -606,7 +606,7 @@ replace the CLA.
 ## Need Help?
 
 - **Stuck on setup?** Ask in [Discord #help](https://discord.gg/bzQavDfVV9)
-- **Not sure where to start?** Check [good first issues](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/labels/good%20first%20issue)
-- **Want to discuss a big change?** Open a [discussion](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/discussions) or Discord thread before coding
+- **Not sure where to start?** Check [good first issues](https://github.com/DevTunaSoft/VoiceBlueprintPro/labels/good%20first%20issue)
+- **Want to discuss a big change?** Open a [discussion](https://github.com/DevTunaSoft/VoiceBlueprintPro/discussions) or Discord thread before coding
 
 Thank you for contributing! 🎙️

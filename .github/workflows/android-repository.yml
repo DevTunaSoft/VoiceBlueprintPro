@@ -34,7 +34,7 @@ jobs:
     # Human-published releases run from a tag. Dispatch trusted main instead of
     # making the persistent index key available to tag workflows.
     if: >-
-      github.repository == 'DevTunaSoft/VoiceBlueprint-Pro' &&
+      github.repository == 'DevTunaSoft/VoiceBlueprintPro' &&
       github.event_name == 'release' && !github.event.release.prerelease && !github.event.release.draft
     runs-on: ubuntu-24.04
     permissions:
@@ -70,7 +70,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           "$RUNNER_TEMP/fdroid-tools/bin/python" tests/test_android_repository.py
-          gh api repos/DevTunaSoft/VoiceBlueprint-Pro/releases/latest > "$RUNNER_TEMP/release.json"
+          gh api repos/DevTunaSoft/VoiceBlueprintPro/releases/latest > "$RUNNER_TEMP/release.json"
           export FDROID_KEYSTORE_PASSWORD="$(python -c 'import secrets; print(secrets.token_urlsafe(36))')"
           echo "::add-mask::$FDROID_KEYSTORE_PASSWORD"
           keytool -genkeypair -keystore "$RUNNER_TEMP/preview.p12" -storetype PKCS12 -alias voiceblueprint -keyalg RSA -keysize 4096 -validity 2 -dname 'CN=Repository Preview' -storepass:env FDROID_KEYSTORE_PASSWORD -keypass:env FDROID_KEYSTORE_PASSWORD
@@ -87,7 +87,7 @@ jobs:
   publish:
     needs: prepare
     if: >-
-      github.repository == 'DevTunaSoft/VoiceBlueprint-Pro' &&
+      github.repository == 'DevTunaSoft/VoiceBlueprintPro' &&
       github.ref == 'refs/heads/main' &&
       (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
     runs-on: ubuntu-24.04
@@ -122,7 +122,7 @@ jobs:
           umask 077
           printf '%s' "$FDROID_REPO_KEYSTORE_B64" | base64 --decode > "$RUNNER_TEMP/repository.p12"
           trap 'rm -f "$RUNNER_TEMP/repository.p12"' EXIT
-          gh api repos/DevTunaSoft/VoiceBlueprint-Pro/releases/latest > "$RUNNER_TEMP/release.json"
+          gh api repos/DevTunaSoft/VoiceBlueprintPro/releases/latest > "$RUNNER_TEMP/release.json"
           "$RUNNER_TEMP/fdroid-tools/bin/python" scripts/prepare_android_repository.py \
             --release-json "$RUNNER_TEMP/release.json" --download-directory "$RUNNER_TEMP/incoming" \
             --keystore "$RUNNER_TEMP/repository.p12" --apksigner "$ANDROID_HOME/build-tools/36.0.0/apksigner" \

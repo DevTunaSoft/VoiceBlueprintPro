@@ -4,7 +4,7 @@ eSpeak NG is GPL-3.0. Its complete pinned upstream source archive,
 including its build scripts, is listed below. The pinned sherpa-onnx
 source and VoiceBlueprint mobile/native/ios/build.py and build.sh contain
 the build configuration used to combine these dependencies.
-VoiceBlueprint source: https://github.com/DevTunaSoft/VoiceBlueprint-Pro
+VoiceBlueprint source: https://github.com/DevTunaSoft/VoiceBlueprintPro
 Runtime pins: mobile/native/pins.json
 
 sherpa-onnx: https://github.com/k2-fsa/sherpa-onnx/tree/11afbd009a7f8c08f4bcf2fc1b265d0df4670fbf

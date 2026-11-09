@@ -14,9 +14,9 @@ description: |
   your own machine, with no account or API key; model downloads and other
   network features run when you start them.
 license: AGPL-3.0-only
-website: https://github.com/DevTunaSoft/VoiceBlueprint-Pro
-source-code: https://github.com/DevTunaSoft/VoiceBlueprint-Pro
-issues: https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues
+website: https://github.com/DevTunaSoft/VoiceBlueprintPro
+source-code: https://github.com/DevTunaSoft/VoiceBlueprintPro
+issues: https://github.com/DevTunaSoft/VoiceBlueprintPro/issues
 icon: snap/gui/voiceblueprint.png
 base: core22
 grade: stable
@@ -61,13 +61,13 @@ parts:
     plugin: nil
     build-packages: [curl, jq, dpkg]
     override-pull: |
-      tag=$(curl -fsSL https://api.github.com/repos/DevTunaSoft/VoiceBlueprint-Pro/releases/latest | jq -r .tag_name)
+      tag=$(curl -fsSL https://api.github.com/repos/DevTunaSoft/VoiceBlueprintPro/releases/latest | jq -r .tag_name)
       version="${tag#v}"
       craftctl set version="$version"
       curl -fsSL -o voiceblueprint.deb \
-        "https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/download/${tag}/VoiceBlueprint-${version}-linux-x64.deb"
+        "https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/download/${tag}/VoiceBlueprint-${version}-linux-x64.deb"
       curl -fsSL -o SHA256SUMS.txt \
-        "https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/download/${tag}/SHA256SUMS.txt"
+        "https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/download/${tag}/SHA256SUMS.txt"
       expected=$(grep " VoiceBlueprint-${version}-linux-x64.deb\$" SHA256SUMS.txt | cut -d' ' -f1)
       echo "${expected}  voiceblueprint.deb" | sha256sum -c -
     override-build: |

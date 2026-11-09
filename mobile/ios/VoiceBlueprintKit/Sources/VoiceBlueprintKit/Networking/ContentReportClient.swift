@@ -11,7 +11,7 @@ public enum AppVersion {
 /// `POST /v1/content-reports` on VoiceBlueprint's app API. Deliberately separate from
 /// `APIClient`: it never carries the paired host's PIN, session or any `Authorization`.
 public struct ContentReportClient: Sendable {
-    public static let productionBaseURL = URL(string: "https://github.com/DevTunaSoft/VoiceBlueprint-Pro")!
+    public static let productionBaseURL = URL(string: "https://github.com/DevTunaSoft/VoiceBlueprintPro")!
     /// Info.plist key holding the root `package.json` version (written by prepare_resources.py).
     public static let appVersionInfoKey = "VoiceBlueprintAppVersion"
     /// Info.plist key holding a build's `VOICEBLUEPRINT_CONTENT_REPORTS_URL` override (written by prepare_resources.py).

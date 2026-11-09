@@ -130,7 +130,7 @@
     "transcribe": "Converte as gravacións en texto.",
     "creatorCoreTeam": "Creador e equipo principal",
     "coreTeam": "Equipo básico",
-    "maintainerPalash": "Palash Debnath",
+    "maintainerPalash": "DevTunaSoft",
     "maintainerShimul": "Shimul Debnath",
     "follow": "Segue",
     "website": "Sitio web"
@@ -4574,7 +4574,7 @@
     "title": "A instalación parece bloqueada",
     "stalled_hint": "A descarga non avanzou en cinco minutos. Sigue agardando, cancela e reintenta ou pide axuda. Descarga o rexistro de instalación para compartilo.",
     "download_log": "Descargar o rexistro de instalación",
-    "discord": "Obter axuda en Discord",
+    "discord": "Obter axuda en GitHub",
     "check_connection": "Comprobar a conexión de descarga",
     "checking": "Comprobando a conexión…",
     "use_cpu": "Instalar a versión para CPU",

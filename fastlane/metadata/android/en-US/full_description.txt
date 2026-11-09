@@ -4,5 +4,5 @@ You can also pair with your own VoiceBlueprint computer and choose where each ta
 
 Model weights are separate downloads with their own licences, including non-commercial and unassessed terms. Review the model terms before downloading or using its output commercially. Only clone voices you have permission to use.
 
-Source code: https://github.com/DevTunaSoft/VoiceBlueprint-Pro
-Privacy: https://github.com/DevTunaSoft/VoiceBlueprint-Pro
+Source code: https://github.com/DevTunaSoft/VoiceBlueprintPro
+Privacy: https://github.com/DevTunaSoft/VoiceBlueprintPro

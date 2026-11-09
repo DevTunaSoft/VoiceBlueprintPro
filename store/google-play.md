@@ -38,7 +38,7 @@ every permission in the Android manifest has a declaration here.
 - **Report endpoint live:** the in-app Report action posts to
   `appapi.voiceblueprint.sh/v1/content-reports`; it must be deployed before the
   first Play review, or reviewers' test reports fail.
-- **Privacy policy:** `https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues` should describe the phone
+- **Privacy policy:** `https://github.com/DevTunaSoft/VoiceBlueprintPro/issues` should describe the phone
   apps: what leaves the phone (model downloads, reports the user sends and
   requests to the paired computer) and that reports are kept 180 days.
 - **Screenshots:** the `android-screenshots` job in the `mobile` workflow

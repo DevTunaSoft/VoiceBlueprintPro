@@ -49,7 +49,7 @@ if (
 ) {
   throw new Error(`Unsupported Electron update channel: ${updateChannel}`);
 }
-const updateUrl = 'https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/latest/download';
+const updateUrl = 'https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/latest/download';
 
 export function distributionPackaging(target = DISTRIBUTION_TARGET) {
   if (target === 'snap-store') {
@@ -151,7 +151,7 @@ export default {
     voiceblueprintDistribution: DISTRIBUTION_TARGET,
     voiceblueprintUpdateOwner: DISTRIBUTION_PROFILE.applicationUpdates,
     ...(DISTRIBUTION_TARGET === 'microsoft-store'
-      ? { author: { name: storeIdentity.publisherLegalName, email: 'https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues' } }
+      ? { author: { name: storeIdentity.publisherLegalName, email: 'https://github.com/DevTunaSoft/VoiceBlueprintPro/issues' } }
       : {}),
   },
   directories: { output: 'release', buildResources: 'build' },

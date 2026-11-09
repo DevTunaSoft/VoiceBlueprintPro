@@ -14,7 +14,7 @@ export function n8nSetup(slug: string, baseUrl: string) {
   request.parameters.url = url;
   return {
     file: 'voiceblueprint-n8n.json',
-    docs: 'https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/main/docs/integrations/n8n.md',
+    docs: 'https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/main/docs/integrations/n8n.md',
     text: JSON.stringify(workflow, null, 2),
   };
 }

@@ -109,7 +109,7 @@ None of them are required — the defaults are chosen for the common case.
 
 `torch.compile` is controlled by capability probes, not an operating-system allowlist. It is attempted only for CUDA when Triton can be imported and the GPU architecture is supported; CPU, MPS, and ordinary Windows installations without a Triton wheel use eager execution. **Settings → Performance → Disable torch.compile** is available on every host for partial Triton installs or GPUs whose compiled kernels fail. The environment alternatives `TORCH_COMPILE_DISABLE=1`, `TORCHDYNAMO_DISABLE=1`, and `TORCHINDUCTOR_DISABLE=1` apply to both the in-process model and subprocess engines. See the [Windows troubleshooting guide](install/windows.md#torch-compile-oom).
 
-On Ampere (sm_80) and newer CUDA devices, the compile mode is `reduce-overhead`, which uses CUDA graphs. Turing and Volta devices such as the Tesla T4 use `default`: Inductor kernels remain compiled, but graph capture is omitted because it could terminate the backend ([#2135](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/2135)). `VOICEBLUEPRINT_FORCE_CUDAGRAPH=1` restores the graph mode for controlled benchmarking.
+On Ampere (sm_80) and newer CUDA devices, the compile mode is `reduce-overhead`, which uses CUDA graphs. Turing and Volta devices such as the Tesla T4 use `default`: Inductor kernels remain compiled, but graph capture is omitted because it could terminate the backend ([#2135](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/2135)). `VOICEBLUEPRINT_FORCE_CUDAGRAPH=1` restores the graph mode for controlled benchmarking.
 
 ## Warnings before a slow generation
 

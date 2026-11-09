@@ -29,7 +29,7 @@ python3 mobile/native/mp3/verify_source.py --archive /path/to/lame-3.100.tar.gz
 ```
 
 The VoiceBlueprint application source and build scripts in the same checkout are
-also available at <https://github.com/DevTunaSoft/VoiceBlueprint-Pro>. Use the source
+also available at <https://github.com/DevTunaSoft/VoiceBlueprintPro>. Use the source
 revision corresponding to the app release. You may modify the encoder and
 rebuild/relink the application; no secret application signing key is needed to
 build your own development installation. Deliberate source modifications require

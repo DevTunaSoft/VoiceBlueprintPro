@@ -34,8 +34,8 @@ TRUSTED_ASSOCIATIONS = {"OWNER", "MEMBER", "COLLABORATOR"}
 
 # (host, path prefix) pairs that README/docs tell people to pipe into a shell.
 ALLOWED_SOURCES = [
-    ("raw.githubusercontent.com", "/DevTunaSoft/VoiceBlueprint-Pro/"),
-    ("github.com", "/DevTunaSoft/VoiceBlueprint-Pro/"),
+    ("raw.githubusercontent.com", "/DevTunaSoft/VoiceBlueprintPro/"),
+    ("github.com", "/DevTunaSoft/VoiceBlueprintPro/"),
     ("bun.sh", "/"),
     ("astral.sh", "/"),
     ("sh.rustup.rs", "/"),
@@ -46,7 +46,7 @@ ISSUE_BODY = f"""{WARNING_MARKER}
 > [!CAUTION]
 > This issue told people to run a command that downloads and runs a program from an unknown website. That is how malware gets installed, so the instructions were removed.
 >
-> **VoiceBlueprint maintainers never ask you to paste commands from an issue or comment.** Install and update VoiceBlueprint only from the [Releases page](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases) or the commands in the README.
+> **VoiceBlueprint maintainers never ask you to paste commands from an issue or comment.** Install and update VoiceBlueprint only from the [Releases page](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases) or the commands in the README.
 >
 > If you already ran it: disconnect from the internet, run a full antivirus scan, and change passwords you use on that computer from a different device.
 """
@@ -54,7 +54,7 @@ COMMENT_WARNING = f"""{WARNING_MARKER}
 > [!CAUTION]
 > A comment on this thread told people to run a command that downloads and runs a program from an unknown website. It was removed because that is how malware gets installed.
 >
-> **VoiceBlueprint maintainers never ask you to paste commands from an issue or comment.** Install and update VoiceBlueprint only from the [Releases page](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases) or the commands in the README.
+> **VoiceBlueprint maintainers never ask you to paste commands from an issue or comment.** Install and update VoiceBlueprint only from the [Releases page](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases) or the commands in the README.
 """
 
 
@@ -75,7 +75,7 @@ _EXECUTE = re.compile(
     re.I,
 )
 # A host ends in an alphabetic TLD, so flags like --tlsv1.2 are not hosts.
-# Group 1 is any userinfo: in https://github.com/DevTunaSoft/VoiceBlueprint-Pro@evil.example the host is evil.example.
+# Group 1 is any userinfo: in https://github.com/DevTunaSoft/VoiceBlueprintPro@evil.example the host is evil.example.
 _HOST = re.compile(r"(?:https?://)?([^\s/@'\"|;`]+@)?((?:[a-z0-9-]+\.)+[a-z]{2,})(/[^\s'\"|;)`]*)?", re.I)
 # The download target comes before the pipe (or `;`) that hands it to the shell.
 _TARGET_END = re.compile(r"[|;]")

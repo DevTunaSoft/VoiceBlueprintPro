@@ -100,7 +100,7 @@
         },
         "sources": [
           {
-            "url": "https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/06c6e077f0fc35149efefc3561e9be5ae835d916/backend/config/models.yaml",
+            "url": "https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/06c6e077f0fc35149efefc3561e9be5ae835d916/backend/config/models.yaml",
             "checked_at": "2026-10-09",
             "method": "read_pinned_source"
           }
@@ -2171,7 +2171,7 @@
             "method": "read_primary_source"
           },
           {
-            "url": "https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/06c6e077f0fc35149efefc3561e9be5ae835d916/backend/engines/supertonic3/constants.py",
+            "url": "https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/06c6e077f0fc35149efefc3561e9be5ae835d916/backend/engines/supertonic3/constants.py",
             "checked_at": "2026-10-09",
             "method": "read_primary_source"
           }
@@ -3727,8 +3727,8 @@
       "commercial_use": false,
       "review_status": "unreviewed",
       "credit": "Unresolved: record the author and required notice for each selected asset.",
-      "source_url": "https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/main/docs/engine-acceptance.md",
-      "evidence_url": "https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/main/docs/engine-acceptance.md",
+      "source_url": "https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/main/docs/engine-acceptance.md",
+      "evidence_url": "https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/main/docs/engine-acceptance.md",
       "configured_at": "backend/services/tts_backend.py; backend/services/rvc.py; backend/services/asr_backend.py",
       "notes": "Cannot enumerate every user asset from repository; represent unknown/unreviewed state explicitly, with user provenance inputs."
     }

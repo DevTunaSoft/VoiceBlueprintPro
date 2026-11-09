@@ -107,7 +107,7 @@ describe('DesktopUpdater', () => {
     expect(mocks.autoUpdater.channel).toBe(`electron-stable-${process.platform}-${process.arch}`);
     expect(mocks.autoUpdater.setFeedURL).toHaveBeenLastCalledWith({
       provider: 'generic',
-      url: 'https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/latest/download',
+      url: 'https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/latest/download',
       channel: `electron-stable-${process.platform}-${process.arch}`,
     });
 
@@ -150,7 +150,7 @@ describe('DesktopUpdater', () => {
     expect(mocks.autoUpdater.channel).toBe(channel);
     expect(mocks.autoUpdater.setFeedURL).toHaveBeenLastCalledWith({
       provider: 'generic',
-      url: 'https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/download/v0.5.7',
+      url: 'https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/download/v0.5.7',
       channel,
     });
   });
@@ -264,7 +264,7 @@ describe('DesktopUpdater', () => {
     expect(mocks.autoUpdater.channel).toBe(`electron-beta-${platform}-${arch}`);
     expect(mocks.autoUpdater.setFeedURL).toHaveBeenLastCalledWith({
       provider: 'generic',
-      url: 'https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/download/v0.5.9-beta.10',
+      url: 'https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/download/v0.5.9-beta.10',
       channel: `electron-beta-${platform}-${arch}`,
     });
   });
@@ -287,7 +287,7 @@ describe('DesktopUpdater', () => {
       ),
     );
     expect(feed).toEqual({
-      url: 'https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/download/v0.5.9',
+      url: 'https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/download/v0.5.9',
       channel: `electron-stable-${process.platform}-${process.arch}`,
     });
   });
@@ -495,7 +495,7 @@ describe('DesktopUpdater', () => {
       },
     ]);
     expect(fetcher).toHaveBeenCalledWith(
-      expect.stringContaining('/DevTunaSoft/VoiceBlueprint-Pro/releases?per_page=30'),
+      expect.stringContaining('/DevTunaSoft/VoiceBlueprintPro/releases?per_page=30'),
       expect.objectContaining({
         headers: expect.objectContaining({ 'User-Agent': 'VoiceBlueprint' }),
         signal: expect.any(AbortSignal),

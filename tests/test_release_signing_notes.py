@@ -108,7 +108,7 @@ def test_release_notes_helper_comes_from_the_workflow_commit(tmp_path):
     (work / "release-assets/RELEASE_NOTES.md").write_text("**Highlights**\n")
     write(work / "release-signing", "linux", "x64", "not-applicable")
     env = dict(os.environ, PATH=f"{fake}{os.pathsep}{os.environ['PATH']}", GITHUB_SHA="workflow-sha",
-               GITHUB_REPOSITORY="DevTunaSoft/VoiceBlueprint-Pro", RUNNER_TEMP=str(tmp_path))
+               GITHUB_REPOSITORY="DevTunaSoft/VoiceBlueprintPro", RUNNER_TEMP=str(tmp_path))
     subprocess.run(["bash", "-e", "-c", describe["run"]], cwd=work, env=env, check=True)
     text = (work / "release-assets/RELEASE_NOTES.md").read_text()
     # The table leads the notes; the changelog follows unchanged.

@@ -8,9 +8,9 @@ usage() {
     cat <<'HELP'
 VoiceBlueprint Electron installer (macOS / Linux)
 
-  curl -fsSL https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprint-Pro/main/scripts/install.sh | sh
-  curl -fsSL https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprint-Pro/main/scripts/install.sh | sh -s -- --version X.Y.Z
-  curl -fsSL https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprint-Pro/main/scripts/install.sh | sh -s -- --main
+  curl -fsSL https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprintPro/main/scripts/install.sh | sh
+  curl -fsSL https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprintPro/main/scripts/install.sh | sh -s -- --version X.Y.Z
+  curl -fsSL https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprintPro/main/scripts/install.sh | sh -s -- --main
 
   --version VERSION  Install a published Electron version (optional v prefix)
   --main, --source   Clone main, build Electron, and install the desktop app
@@ -188,7 +188,7 @@ if [ "$MODE" = main ]; then
     node -e 'if (Number(process.versions.node.split(".")[0]) < 22) process.exit(1)' || die 'Node.js 22 or newer is required.'
     printf 'Building and installing Electron from main (this may take several minutes).\n'
     # Never pull into, reset, or build from an existing user checkout.
-    git clone --depth 1 --branch main --single-branch https://github.com/DevTunaSoft/VoiceBlueprint-Pro.git "$WORK/source"
+    git clone --depth 1 --branch main --single-branch https://github.com/DevTunaSoft/VoiceBlueprintPro.git "$WORK/source"
     (
         cd "$WORK/source"
         printf 'Source commit: '; git rev-parse HEAD
@@ -210,7 +210,7 @@ if [ "$MODE" = main ]; then
     valid_version "$VS_VERSION" || die 'Invalid version in source checkout.'
     PACKAGE_DIR="$WORK/source/electron/release"
 else
-    RELEASES=https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases
+    RELEASES=https://github.com/DevTunaSoft/VoiceBlueprintPro/releases
     if [ -z "$VS_VERSION" ]; then
         # latest.json is the frozen Tauri feed. Resolve the release tag instead.
         URL=$(curl --proto '=https' --proto-redir '=https' --connect-timeout 30 --max-time 60 -fLsS --retry 3 -o /dev/null -w '%{url_effective}' "$RELEASES/latest")

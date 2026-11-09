@@ -45,8 +45,8 @@ import { AgentDockFrame } from './agent-dock-frame';
 import './voice-blueprint-agent.css';
 
 const REPAIR_DOCS_URL =
-  'https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/main/docs/electron-repair.md#source-checkout';
-const CLONE_COMMAND = 'git clone https://github.com/DevTunaSoft/VoiceBlueprint-Pro.git';
+  'https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/main/docs/electron-repair.md#source-checkout';
+const CLONE_COMMAND = 'git clone https://github.com/DevTunaSoft/VoiceBlueprintPro.git';
 type WorkspaceProblem = NonNullable<RepairAgentState['workspaceError']>;
 const icons = { codex: codexIcon, claude: claudeIcon, opencode: openCodeIcon, pi: piIcon };
 const labels: Record<AgentFeature, string> = {

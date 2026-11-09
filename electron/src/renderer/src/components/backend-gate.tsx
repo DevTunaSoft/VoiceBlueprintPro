@@ -56,7 +56,7 @@ interface BackendGateProps {
   repairDock?: ReactNode;
 }
 
-const RELEASES_URL = 'https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/latest';
+const RELEASES_URL = 'https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/latest';
 const RETRYABLE = new Set(['crashed', 'failed', 'port_in_use']);
 
 function useElapsedSeconds(elapsedMs: number, running: boolean): number {

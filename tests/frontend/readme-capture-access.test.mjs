@@ -32,12 +32,12 @@ test("the stateless voice-description parser is the sole permitted POST", () => 
 });
 
 test("remote access is limited to the existing public GitHub star lookup", () => {
-  const stars = "https://api.github.com/repos/DevTunaSoft/VoiceBlueprint-Pro";
+  const stars = "https://api.github.com/repos/DevTunaSoft/VoiceBlueprintPro";
   assert.equal(captureAccess(stars, "GET", origin), "read");
   for (const url of [
     stars + "/issues",
     stars + "?content=private",
-    "https://api.github.com.example.com/repos/DevTunaSoft/VoiceBlueprint-Pro",
+    "https://api.github.com.example.com/repos/DevTunaSoft/VoiceBlueprintPro",
     "https://example.com",
   ]) {
     assert.equal(captureAccess(url, "GET", origin), "deny");

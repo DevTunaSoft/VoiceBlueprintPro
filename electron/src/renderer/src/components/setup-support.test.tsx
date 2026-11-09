@@ -60,7 +60,7 @@ it('escalates at five minutes without progress and clears help when bytes resume
   expect(screen.getByText('Setup GitHub report')).toBeVisible();
   expect(screen.getByRole('link', { name: i18n.t('setupHelp.discord') })).toHaveAttribute(
     'href',
-    'https://discord.gg/bzQavDfVV9',
+    'https://github.com/DevTunaSoft/VoiceBlueprintPro/issues',
   );
   const moving = status(0);
   moving.setupProgress!.stalled = false;

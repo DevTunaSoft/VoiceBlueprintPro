@@ -172,7 +172,7 @@ def build(apk: Path, release: dict, output: Path, keystore: Path, alias: str,
         shutil.copyfile(ROOT / 'store/google-play/icon-512.png', repo / 'icons/icon.png')
         app_metadata = {
             'Name': 'VoiceBlueprint', 'Categories': ['Multimedia'], 'License': 'AGPL-3.0-only',
-            'WebSite': 'https://github.com/DevTunaSoft/VoiceBlueprint-Pro', 'SourceCode': f'https://github.com/{settings["sourceRepository"]}',
+            'WebSite': 'https://github.com/DevTunaSoft/VoiceBlueprintPro', 'SourceCode': f'https://github.com/{settings["sourceRepository"]}',
             'IssueTracker': f'https://github.com/{settings["sourceRepository"]}/issues',
             'Summary': 'Offline speech, voice cloning, dubbing and transcription',
             'Description': ('Run voice models on your phone after downloading their weights, or pair with your own computer. '

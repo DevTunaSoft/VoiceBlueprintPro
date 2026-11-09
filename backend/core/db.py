@@ -679,7 +679,7 @@ def _run_alembic_upgrade() -> None:
             f"exactly as the failed migration left it). "
             f"{backup_note}. "
             "What to do: relaunch to retry; if it keeps failing, report it at "
-            "https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues (keep the backup file). "
+            "https://github.com/DevTunaSoft/VoiceBlueprintPro/issues (keep the backup file). "
             "To roll back manually: quit the app, replace voiceblueprint.db with the backup "
             "file, and reinstall the previous version."
         )

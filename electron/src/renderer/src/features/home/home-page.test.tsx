@@ -36,11 +36,11 @@ it('previews the official website only when the title is clicked', () => {
   render(<HomePage />);
   const title = screen.getByRole('link', { name: 'homeUi.title' });
   expect(en.homeUi.title).toBe('VoiceBlueprint.sh Open Source');
-  expect(title).toHaveAttribute('href', 'https://github.com/DevTunaSoft/VoiceBlueprint-Pro');
+  expect(title).toHaveAttribute('href', 'https://github.com/DevTunaSoft/VoiceBlueprintPro');
   fireEvent.mouseEnter(title);
   expect(browser.open).not.toHaveBeenCalled();
   fireEvent.click(title);
-  expect(browser.open).toHaveBeenCalledWith('https://github.com/DevTunaSoft/VoiceBlueprint-Pro');
+  expect(browser.open).toHaveBeenCalledWith('https://github.com/DevTunaSoft/VoiceBlueprintPro');
 });
 
 it('names the feature Dubbing consistently while preserving the existing route', () => {

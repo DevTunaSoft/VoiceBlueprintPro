@@ -96,7 +96,7 @@ def prepare():
         'including its build scripts, is listed below. The pinned sherpa-onnx\n'
         'source and VoiceBlueprint mobile/native/ios/build.py and build.sh contain\n'
         'the build configuration used to combine these dependencies.\n'
-        'VoiceBlueprint source: https://github.com/DevTunaSoft/VoiceBlueprint-Pro\n'
+        'VoiceBlueprint source: https://github.com/DevTunaSoft/VoiceBlueprintPro\n'
         'Runtime pins: mobile/native/pins.json\n\n' +
         '\n'.join(m['name'] + ': ' + m['source'] for m in manifest) + '\n')
     print('Prepared', len(manifest), 'native dependency notices in', OUTPUT)

@@ -23,7 +23,7 @@ import { askConfirm } from './native';
 import { SettingsSection, SettingRow, SettingsInput, InfoHint } from './primitives';
 import { Button, Badge, Select } from '../../ui';
 
-const MCP_DOCS_URL = 'https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/main/docs/mcp.md';
+const MCP_DOCS_URL = 'https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/main/docs/mcp.md';
 
 export default function MCPBindingsPanel() {
   const { t } = useTranslation();

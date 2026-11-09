@@ -26,7 +26,7 @@ Auto-detect only picks it when [whisperx](whisperx.md) is unavailable.
 - **CPU** — int8 on macOS, Windows, and Linux.
 - **Apple Silicon GPU / ROCm** — not supported: CTranslate2 has no Metal or
   HIP build, so those hosts run on CPU
-  ([#1529](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/1529)); auto-detect
+  ([#1529](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/1529)); auto-detect
   routes them to mlx-whisper / pytorch-whisper instead.
 
 ## Model selection
@@ -44,16 +44,16 @@ transcription.
 - GPUs without efficient fp16 (older Maxwell/Pascal, GTX 16xx, or a
   CTranslate2/cuDNN mismatch) fail at model construction with a compute-type
   error; the engine walks float16 → int8_float16 → int8 instead of failing
-  every chunk ([#551](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/551)).
+  every chunk ([#551](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/551)).
 - A CUDA out-of-memory falls back to CPU (slower, same model and accuracy) —
   flushing the resident TTS model frees VRAM for GPU-speed ASR
-  ([#255](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/255)).
+  ([#255](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/255)).
 
 ## Quirks
 
 - **cuDNN 8 required on CUDA** — a missing cuDNN 8 would fast-fail the whole
   process, so the engine checks up front and reports itself unavailable
-  instead ([#1371](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/1371)).
+  instead ([#1371](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/1371)).
   pytorch-whisper covers that case on torch's bundled cuDNN 9.
 - **Kernel refuses executable stacks.** CTranslate2 4.4.0 and older ship
   libraries that request an executable stack, which some Linux kernels reject
@@ -61,11 +61,11 @@ transcription.
   clears that flag in the library file automatically the first time it probes
   the engine. If the file is read-only, the engine is reported unavailable
   along with the `patchelf --clear-execstack <library>` command to run once
-  ([#692](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/692)).
+  ([#692](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/692)).
 - CTranslate2's GPU teardown can rarely segfault the process at unload. If
   you hit that, switch to the crash-isolated variant —
   [faster-whisper-isolated](faster-whisper-isolated.md)
-  ([#730](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/730)).
+  ([#730](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/730)).
 - Transcribes are time-bounded: `VOICEBLUEPRINT_TRANSCRIBE_CHUNK_TIMEOUT_S`
   (default 120 s per dub chunk) and `VOICEBLUEPRINT_ASR_TRANSCRIBE_TIMEOUT_S`
   (default 300 s whole-file).

@@ -22,8 +22,8 @@ def _env():
 
 def test_the_ghcr_paths_are_explicit_and_keep_the_legacy_alias(tmp_path):
     env = resolved_env(tmp_path, "contributor-a")
-    assert env["IMAGE_NAME"] == "devtunasoft/voiceblueprint-pro"
-    assert env["LEGACY_IMAGE_NAME"] == "devtunasoft/voiceblueprint-pro"
+    assert env["IMAGE_NAME"] == "devtunasoft/voiceblueprintpro"
+    assert env["LEGACY_IMAGE_NAME"] == "devtunasoft/voiceblueprintpro"
 
 
 def test_a_repository_rename_cannot_move_the_published_images():
@@ -71,11 +71,11 @@ def test_sha_tags_follow_the_checked_out_source_commit():
 
 
 def test_docker_hub_keeps_its_existing_coordinate():
-    assert _env()["DOCKERHUB_IMAGE"] == "devtunasoft/voiceblueprint-pro"
+    assert _env()["DOCKERHUB_IMAGE"] == "devtunasoft/voiceblueprintpro"
 
 
 def test_active_templates_use_the_canonical_public_path():
-    canonical = "ghcr.io/devtunasoft/voiceblueprint-pro"
+    canonical = "ghcr.io/devtunasoft/voiceblueprintpro"
     for rel in (
         "deploy/docker-compose.yml",
         "docs/integration-directory.md",

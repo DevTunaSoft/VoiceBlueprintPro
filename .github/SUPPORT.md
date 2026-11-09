@@ -5,8 +5,8 @@
 | Channel | Best for |
 |---|---|
 | [Discord](https://discord.gg/bzQavDfVV9) — `#help` | Setup problems, quick questions, sharing results |
-| [GitHub Issues](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues) | Bugs and feature requests — use the templates; attach the diagnostic bundle (Settings → About → "Save diagnostic bundle") |
-| [GitHub Discussions](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/discussions) | Design questions, ideas, show & tell |
+| [GitHub Issues](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues) | Bugs and feature requests — use the templates; attach the diagnostic bundle (Settings → About → "Save diagnostic bundle") |
+| [GitHub Discussions](https://github.com/DevTunaSoft/VoiceBlueprintPro/discussions) | Design questions, ideas, show & tell |
 | Security issues | **Never a public issue** — see [SECURITY.md](SECURITY.md) for private reporting |
 
 ## Uninstalling / removing all data

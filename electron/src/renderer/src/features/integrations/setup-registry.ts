@@ -68,9 +68,9 @@ export interface IntegrationSetup {
   panel?: ComponentType<IntegrationPanelProps>;
 }
 
-const REPO_DOCS = 'https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/main/docs';
-const DOCKER_HUB_IMAGE = 'devtunasoft/voiceblueprint-pro';
-const GHCR_IMAGE = 'ghcr.io/devtunasoft/voiceblueprint-pro';
+const REPO_DOCS = 'https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/main/docs';
+const DOCKER_HUB_IMAGE = 'devtunasoft/voiceblueprintpro';
+const GHCR_IMAGE = 'ghcr.io/devtunasoft/voiceblueprintpro';
 // Published images keep this stable even when a desktop build chooses another local default.
 const PUBLISHED_CONTAINER_PORT = 3900;
 

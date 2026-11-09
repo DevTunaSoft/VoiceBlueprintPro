@@ -61,7 +61,7 @@ def test_home_keeps_creation_actions_with_open_source_heading():
     assert "t('homeUi.subtitle')" in home
     assert "<HomeContributors />" in home
     assert "group.map(" in home
-    assert "browser.open('https://github.com/DevTunaSoft/VoiceBlueprint-Pro')" in home
+    assert "browser.open('https://github.com/DevTunaSoft/VoiceBlueprintPro')" in home
     assert "PanelLeftOpenIcon" not in home
 
 

@@ -1,8 +1,8 @@
 # VoiceBlueprint roadmap
 
-The live roadmap is [issue #3425](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/3425).
-Use the [open issues](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues) and
-[open pull requests](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/pulls) for current
+The live roadmap is [issue #3425](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/3425).
+Use the [open issues](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues) and
+[open pull requests](https://github.com/DevTunaSoft/VoiceBlueprintPro/pulls) for current
 scope, decisions, dependencies and implementation status.
 
 For what the app supports today, see the [feature catalog](feature-catalog.md),

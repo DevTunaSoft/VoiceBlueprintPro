@@ -18,7 +18,7 @@ points here. Complete the setup, not just a plan.
    [Windows](windows.md) · [Linux](linux.md); [Docker](docker.md) is a headless backend, not the desktop app),
    [performance](../performance.md) and
    [`skills/voiceblueprint/SKILL.md`](../../skills/voiceblueprint/SKILL.md). If your agent
-   supports skills, install it with `npx skills add DevTunaSoft/VoiceBlueprint-Pro`.
+   supports skills, install it with `npx skills add DevTunaSoft/VoiceBlueprintPro`.
 2. **Inspect the device.** OS, CPU architecture, GPU, RAM/VRAM, free disk, and any
    existing VoiceBlueprint install, backend or downloaded models.
 3. **Install.**

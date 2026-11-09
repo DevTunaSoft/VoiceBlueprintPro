@@ -8,7 +8,7 @@ body:
     attributes:
       label: Before filing
       options:
-        - label: I searched [existing issues](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues?q=is%3Aissue) and [discussions](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/discussions) for this idea.
+        - label: I searched [existing issues](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues?q=is%3Aissue) and [discussions](https://github.com/DevTunaSoft/VoiceBlueprintPro/discussions) for this idea.
           required: true
   - type: textarea
     id: problem

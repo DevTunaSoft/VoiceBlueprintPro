@@ -46,7 +46,7 @@ test('creates a Partner Center handoff only from validated signed packages', () 
   assert.equal(handoff.packages[0].updateManifest, updateManifest);
   assert.equal(
     handoff.packages[0].url,
-    'https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/download/v0.5.7/' + file,
+    'https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/download/v0.5.7/' + file,
   );
   assert.deepEqual(JSON.parse(readFileSync(output, 'utf8')), handoff);
 });

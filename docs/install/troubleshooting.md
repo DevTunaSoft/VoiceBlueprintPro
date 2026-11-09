@@ -278,8 +278,8 @@ backend **`.venv`** folder to its exclusions (Windows Security → Virus & threa
 protection → Exclusions). The app's auto-repair now uses `--reinstall` too, so a
 fresh install heals itself.
 
-**Linked issues:** [#58](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/58),
-[#248](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/248)
+**Linked issues:** [#58](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/58),
+[#248](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/248)
 
 ### 1a. Model load fails: `[Errno 2] No such file or directory: '…/transformers/…/modeling_*.py'`
 
@@ -318,7 +318,7 @@ and transformers itself is fine.
 
 **Fix:** reinstall the trio **together, at the pinned versions** — a plain
 unpinned reinstall can itself resolve a drifted pair
-([#1357](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/1357)):
+([#1357](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/1357)):
 
 ```
 uv pip install --python .venv --reinstall torch==2.8.0 torchaudio==2.8.0 torchvision==0.23.0 transformers
@@ -330,8 +330,8 @@ desktop installs don't ship that file, which is why the literal pins are shown).
 They carry no `+cu128`/`+rocm` suffix on purpose — vendor GPU builds match the
 pins rather than being replaced.
 
-**Linked issues:** [#1357](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/1357),
-[#1376](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/1376)
+**Linked issues:** [#1357](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/1357),
+[#1376](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/1376)
 
 ### 1b. Dubbing: `ASR backend initialization failed: No module named 'lightning_fabric'`
 
@@ -356,7 +356,7 @@ marked unavailable (Model Catalogue shows why, with this repair command)
 and dubbing automatically falls through to **faster-whisper** instead of
 failing outright.
 
-**Linked issue:** [#1185](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/1185)
+**Linked issue:** [#1185](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/1185)
 
 ## 1c. Setup blocked: "System RAM … The app will OOM on first dub"
 
@@ -366,7 +366,7 @@ reports ~7.8 GB usable (firmware and integrated graphics reserve a slice of
 installed RAM).
 
 **Cause:** the preflight compares OS-reported RAM against the 8 GB minimum.
-Since [#1618](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/1618) the check
+Since [#1618](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/1618) the check
 tolerates that reserved-memory gap, so 8 GB-installed machines pass.
 
 **Fix:** update to the latest release. If your machine is genuinely below the
@@ -378,7 +378,7 @@ and relaunch; on macOS/Linux export it in the shell that starts the app. (The
 in-app Settings panel can't help here — this blocker appears before setup
 completes.)
 
-**Linked issues:** [#1618](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/1618)
+**Linked issues:** [#1618](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/1618)
 
 ## 2. HF 401 / pyannote license not accepted
 
@@ -404,8 +404,8 @@ If the token and license are already valid but an older build still reports
 reach both the fast download path and engine-weight installers; no token
 rotation is needed for that fixed client bug.
 
-**Linked issues:** [#35](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/35),
-[#2163](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/2163)
+**Linked issues:** [#35](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/35),
+[#2163](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/2163)
 
 ### PocketTTS gated weights
 
@@ -461,7 +461,7 @@ peak memory footprint that exceeds free VRAM. Windows-only quirk.
 
 **Fix:** see [windows.md#torch-compile-oom](windows.md#torch-compile-oom).
 
-**Linked issue:** [#65](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/65)
+**Linked issue:** [#65](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/65)
 
 ## GPU self-test failed
 
@@ -485,7 +485,7 @@ Sidecar engines, which run in their own environments, don't use this result.
 
 **Fix:** update VoiceBlueprint. Compile mode is selected from the detected GPU, and devices below sm_80 keep compiled kernels without graph capture. If the crash remains, enable **Settings → Performance → Disable torch.compile**, or set `TORCH_COMPILE_DISABLE=1` before a CLI/source launch. Both in-process and sidecar engines honour this on every platform.
 
-For diagnosis, the backend arms Python's fatal-signal handler early and writes the dying thread stack to `backend_err.log`; attach that file to a report. Set `VOICEBLUEPRINT_DISABLE_FAULTHANDLER=1` to turn this diagnostic off. For additional containment, select **OmniVoice (subprocess-isolated)** under **Settings → Engines**, or launch with `VOICEBLUEPRINT_TTS_BACKEND=omnivoice-subprocess`. A native engine failure then becomes an HTTP error and the parent respawns the sidecar. See [#2135](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/2135).
+For diagnosis, the backend arms Python's fatal-signal handler early and writes the dying thread stack to `backend_err.log`; attach that file to a report. Set `VOICEBLUEPRINT_DISABLE_FAULTHANDLER=1` to turn this diagnostic off. For additional containment, select **OmniVoice (subprocess-isolated)** under **Settings → Engines**, or launch with `VOICEBLUEPRINT_TTS_BACKEND=omnivoice-subprocess`. A native engine failure then becomes an HTTP error and the parent respawns the sidecar. See [#2135](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/2135).
 
 ## 5b. RTX 50-series (Blackwell, sm_120): backend crashes during `ml_imports`
 
@@ -559,7 +559,7 @@ differs per release and CUDA variant: the pinned 2.8.0+cu128 starts its list at
 `sm_70`, while the cu128 list captured in #1285 still included `sm_61`. The
 default only changes once newer torch is verified on those older cards.
 
-**Linked issue:** [#1931](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/1931)
+**Linked issue:** [#1931](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/1931)
 — thanks to the reporter for the full diagnosis, including the verification
 commands above.
 
@@ -582,8 +582,8 @@ Russia, sometimes on corporate proxies.
 `UV_HTTP_TIMEOUT=900`, `UV_HTTP_RETRIES=5`, `UV_PYTHON_PREFERENCE=only-system`).
 
 **Linked issues:**
-[#57](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/57),
-[#60](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/60).
+[#57](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/57),
+[#60](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/60).
 
 ## 7. `.deb` ffprobe path conflict on upgrade
 
@@ -673,7 +673,7 @@ falling back to faster-whisper`.
 that Intel Macs can no longer run the local backend at all — PyTorch dropped
 Intel-Mac wheels, so this entry only applies to historical installs (see
 [macos.md](macos.md) and
-[#889](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/889)).
+[#889](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/889)).
 
 ## 10. Windows: `Could not locate cudnn_ops_infer64_8.dll` during transcription
 
@@ -685,7 +685,7 @@ On builds before this was fixed, the failure looked much worse than a failed
 transcribe: CTranslate2 aborts the **process** rather than raising, so the whole
 backend died with `exit code -1073740791` (`0xC0000409`) and no error, the app
 restarted it, and the next attempt killed it again
-([#1371](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/1371)). VoiceBlueprint now
+([#1371](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/1371)). VoiceBlueprint now
 checks whether cuDNN 8 will load *before* selecting a CTranslate2 engine and
 falls back to PyTorch Whisper instead, so a missing library costs you WhisperX's
 word-level alignment — not the backend. Direct or already-selected CTranslate2
@@ -698,11 +698,11 @@ The repair below is still worth doing to get WhisperX back.
 from `.venv\Lib\site-packages\cudnn8_compat\` — but the step that installs that
 folder only ever lived in the dev-loop setup script, which isn't bundled into
 the packaged app. **Packaged installs never had these libraries at all**, so
-reinstalling never fixed it ([#827](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/827)).
+reinstalling never fixed it ([#827](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/827)).
 
 **Fix:** update to the latest build and relaunch — the app's bootstrap now
 detects a CUDA machine and installs the cuDNN-8 libraries into the backend venv
-automatically at launch ([#869](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/pull/869)).
+automatically at launch ([#869](https://github.com/DevTunaSoft/VoiceBlueprintPro/pull/869)).
 (The check is skipped — and its negative result cached — on CPU/AMD/Apple
 machines, so non-NVIDIA launches stay instant.)
 
@@ -733,7 +733,7 @@ its own venv). For v0.3, workaround: install only one of the conflicting
 engines per VoiceBlueprint copy. See [docs/engines/cosyvoice.md](../engines/cosyvoice.md)
 for the dedicated CosyVoice path.
 
-**Linked issue:** [#55](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/55)
+**Linked issue:** [#55](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/55)
 
 **Same class, ASR side:** the `nemo-parakeet` ASR engine has the identical
 problem and currently has **no safe install path** at all — `nemo_toolkit[asr]`
@@ -742,7 +742,7 @@ VoiceBlueprint's own `transformers>=5.3` requirement. Installing it into the
 shared venv breaks the backend outright. Do not `pip install nemo_toolkit`
 into VoiceBlueprint's environment; if you want to try it, use a separate Python
 environment. Isolated-venv support for this engine (matching CosyVoice/
-dots-tts) is tracked in [#974](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/974).
+dots-tts) is tracked in [#974](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/974).
 
 ## 12. CUDA PyTorch wheel download fails on first run
 
@@ -783,7 +783,7 @@ action to choose them explicitly; see [CPU setup](../../electron/README.md#runni
 An unusable NVIDIA driver is a setup warning for CPU-capable engines;
 GPU-only engines still require supported hardware.
 
-**Linked issue:** [#569](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/569)
+**Linked issue:** [#569](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/569)
 
 ## 12b. My AMD Radeon GPU is not used (CPU is busy, GPU is idle)
 
@@ -814,7 +814,7 @@ PyTorch build and, for every engine, whether it uses the GPU.
   driver is loaded and your user can open `/dev/kfd` (`render` and `video`
   groups).
 
-**Linked issue:** [#2468](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/2468)
+**Linked issue:** [#2468](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/2468)
 
 ## 12c. Intel Arc (XPU): model load fails, or every generation fails after one out-of-memory error
 
@@ -920,7 +920,7 @@ files land where the app looks.)
 > Newer builds detect an incomplete cache and re-offer the download instead of
 > stranding you on this page — update once the fix is in your channel.
 
-**Linked issue:** [#622](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/622)
+**Linked issue:** [#622](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/622)
 
 ## 14. "Can't reach the local backend" *during* generation / transcription / dubbing
 
@@ -1011,7 +1011,7 @@ dropped` line. Set `VOICEBLUEPRINT_BLOCKING_STDIO=1` to restore plain blocking
 writes. When the loop does stall, the backend log names the blocking call
 (`VOICEBLUEPRINT_LOOP_STALL_S`, default 4 s, `0` disables).
 
-**Two things changed here** ([#1190](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/1190)):
+**Two things changed here** ([#1190](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/1190)):
 
 - **Waiting in line is no longer counted as compute.** The generate budget used
   to start the moment a job was *queued*, so on a 1-worker machine a request
@@ -1238,7 +1238,7 @@ the System Settings list. (Diagnosed in the archived Tauri app by
 [@MahdiHedhli](https://github.com/MahdiHedhli).)
 
 **Fix:** fixed since the release after v0.3.12
-([#1016](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/pull/1016)); the Electron app
+([#1016](https://github.com/DevTunaSoft/VoiceBlueprintPro/pull/1016)); the Electron app
 signs with the same entitlement (`electron/build/entitlements.mac.plist`).
 Update and live recording works, with a normal macOS permission prompt on
 first use.
@@ -1248,7 +1248,7 @@ other app (Voice Memos, QuickTime, etc.) and upload the resulting file in
 VoiceBlueprint instead of using live recording — upload-based cloning is
 unaffected and works normally.
 
-**Linked issue:** [#1013](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/1013)
+**Linked issue:** [#1013](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/1013)
 
 > **Tip:** current builds surface the live OS grant state in-app — **Settings →
 > Permissions** shows whether the microphone (and, on macOS, Accessibility) is
@@ -1292,7 +1292,7 @@ Re-enabling 8.3 short filenames (`fsutil 8dot3name`) is deliberately **not**
 recommended: the setting is per-volume and only affects directories created
 *after* it's changed, so it does nothing for a folder that already exists.
 
-**Linked issue:** [#1783](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/1783) (auto-captured from [#1771](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/1771))
+**Linked issue:** [#1783](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/1783) (auto-captured from [#1771](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/1771))
 
 ## Dub: "translation engine needs the optional … package"
 
@@ -1340,7 +1340,7 @@ VoiceBlueprint now tries, in order: the default GitHub host → a gh-proxy mirro
    (`UV_HTTP_TIMEOUT=900`, `UV_HTTP_CONNECT_TIMEOUT=30`, `UV_HTTP_RETRIES=5`);
    you can raise them further in the environment if a mirror is very slow.
 
-**Linked issues:** [#130](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/130), [#60](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/60), [#57](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/57)
+**Linked issues:** [#130](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/130), [#60](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/60), [#57](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/57)
 
 ## First-run setup is slow or stalls on a download
 
@@ -1424,9 +1424,9 @@ mirror fails, setup retries once from `files.pythonhosted.org` and keeps every
 file that finished. The PyTorch wheels on `download-r2.pytorch.org` have no
 mirror and download from there in every region. PyPI mirror variables
 (`UV_DEFAULT_INDEX`, `UV_INDEX_URL`) do not redirect the locked wheels
-([#3444](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/3444)).
+([#3444](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/3444)).
 
-**Linked issue:** [#3411](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/3411)
+**Linked issue:** [#3411](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/3411)
 
 ## Workspace navigation crashes with `insertBefore` / `NotFoundError`
 
@@ -1435,7 +1435,7 @@ navigation while media renderers were cleaning up. Current builds isolate each
 workspace under its own DOM owner. Update VoiceBlueprint; no model or project data
 repair is required.
 
-**Linked issue:** [#1590](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/1590)
+**Linked issue:** [#1590](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/1590)
 
 
 ## Reading the first-run install log after setup finishes
@@ -1532,7 +1532,7 @@ in the same phase. Update VoiceBlueprint, or delete that line in
 
 **Why the pin has not moved.** Raising it for everyone changes the CUDA build
 on every platform, in Docker, and in CI, so it is a deliberate decision rather
-than a patch. Track it in [#1931](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/1931).
+than a patch. Track it in [#1931](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/1931).
 
 ## Windows Smart App Control blocks an engine DLL (`An Application Control policy has blocked this file`)
 
@@ -1581,7 +1581,7 @@ per-platform path list, env-var overrides, portable-mode note, and the steps to
 remove the app binary itself are in
 [docs/install/uninstall.md](uninstall.md).
 
-**Linked issue:** [#1089](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/1089)
+**Linked issue:** [#1089](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/1089)
 
 ### Pedalboard illegal-instruction crashes
 

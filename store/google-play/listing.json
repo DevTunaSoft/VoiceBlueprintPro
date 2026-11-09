@@ -27,7 +27,7 @@
       "On-device tasks send nothing anywhere. The only network requests are model downloads you start, reports you choose to send about a result and, if you pair, requests to your own computer. Analytics are off unless you say yes, and this version sends none.",
       "",
       "OPEN SOURCE",
-      "VoiceBlueprint is free and open source (AGPL-3.0): https://github.com/DevTunaSoft/VoiceBlueprint-Pro",
+      "VoiceBlueprint is free and open source (AGPL-3.0): https://github.com/DevTunaSoft/VoiceBlueprintPro",
       "",
       "Use voice cloning responsibly: only clone voices you have permission to use."
     ]
@@ -40,9 +40,9 @@
     "Translation"
   ],
   "contact": {
-    "website": "https://github.com/DevTunaSoft/VoiceBlueprint-Pro",
+    "website": "https://github.com/DevTunaSoft/VoiceBlueprintPro",
     "email": "Set in Play Console by the account owner",
-    "privacyPolicy": "https://github.com/DevTunaSoft/VoiceBlueprint-Pro"
+    "privacyPolicy": "https://github.com/DevTunaSoft/VoiceBlueprintPro"
   },
   "graphics": {
     "icon": "store/google-play/icon-512.png",

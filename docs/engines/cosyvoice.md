@@ -102,7 +102,7 @@ missing SoX executable, or incorrect model directory. Do not delete a model
 cache or reinstall dependencies until the log identifies which state failed.
 
 The public report that exposed the misleading installed state is
-[Discussion 1631](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/discussions/1631).
+[Discussion 1631](https://github.com/DevTunaSoft/VoiceBlueprintPro/discussions/1631).
 
 
 On hosts without CUDA, the managed sidecar normalizes the LLM, flow and vocoder

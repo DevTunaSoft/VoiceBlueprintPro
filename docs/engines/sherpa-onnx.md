@@ -43,7 +43,7 @@ Sherpa-ONNX has no bundled default model, so the engine reports unavailable — 
 reason — until `VOICEBLUEPRINT_SHERPA_MODEL` points at a valid directory. (Before
 this gate, selecting the engine unconfigured produced a failure mislabeled
 as out-of-memory —
-[#919](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/919).)
+[#919](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/919).)
 
 ## Configuration
 

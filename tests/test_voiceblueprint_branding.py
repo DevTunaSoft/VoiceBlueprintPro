@@ -123,8 +123,8 @@ def test_canonical_logo_changes_run_mobile_builds(event: str) -> None:
 
 def test_python_package_metadata_points_to_voiceblueprint() -> None:
     pyproject = (ROOT / "pyproject.toml").read_text()
-    assert 'Homepage = "https://github.com/DevTunaSoft/VoiceBlueprint-Pro"' in pyproject
-    assert 'Repository = "https://github.com/DevTunaSoft/VoiceBlueprint-Pro"' in pyproject
+    assert 'Homepage = "https://github.com/DevTunaSoft/VoiceBlueprintPro"' in pyproject
+    assert 'Repository = "https://github.com/DevTunaSoft/VoiceBlueprintPro"' in pyproject
     assert '"Upstream TTS Model" = "https://github.com/k2-fsa/OmniVoice"' in pyproject
 
 

@@ -308,7 +308,7 @@ it.each([
 
 it.each([
   { setup_snippet: 'uv sync --extra whisperx' },
-  { docs_url: 'https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/main/docs/engines/whisperx.md' },
+  { docs_url: 'https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/main/docs/engines/whisperx.md' },
   { local_install_required: true },
 ])(
   'preserves existing setup guidance instead of replacing it with an install hint: %o',

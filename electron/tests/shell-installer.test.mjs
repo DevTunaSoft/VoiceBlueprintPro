@@ -85,7 +85,7 @@ while [ "$#" -gt 0 ]; do
  shift
 done
 case "$url" in
- */latest) printf 'https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/tag/v1.2.3';;
+ */latest) printf 'https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/tag/v1.2.3';;
  */SHA256SUMS.txt)
    version=$(printf '%s' "$url" | sed 's|.*/download/v||; s|/.*||')
    : > "$out"

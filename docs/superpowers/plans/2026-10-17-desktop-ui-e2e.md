@@ -19,7 +19,7 @@
 - No new dependencies. If one becomes unavoidable, regenerate `bun.lock` and confirm `bun install --frozen-lockfile` passes.
 - No CJK text in tests. The profile path uses Latin non-ASCII: `VoiceBlueprint Tëst `.
 - Launch env (from `native-watch-ui-smoke.mjs`): `ELECTRON_RENDERER_URL=''`, `VOICEBLUEPRINT_PORT=<fake>`, `VOICEBLUEPRINT_SKIP_BACKEND=1`, `VOICEBLUEPRINT_ALLOW_MULTIPLE_INSTANCES=1`, `VOICEBLUEPRINT_DISABLE_UPDATER=1`, `VOICEBLUEPRINT_ELECTRON_PROXY_PORT=<free port>`.
-- Allowed request targets: `app:`, `file:`, `data:`, `blob:`, `devtools:`, and http(s) to `127.0.0.1` / `localhost` / `[::1]` on any port. `STAR_COUNT_URL = 'https://api.github.com/repos/DevTunaSoft/VoiceBlueprint-Pro'` is answered by a stub and never reaches the network.
+- Allowed request targets: `app:`, `file:`, `data:`, `blob:`, `devtools:`, and http(s) to `127.0.0.1` / `localhost` / `[::1]` on any port. `STAR_COUNT_URL = 'https://api.github.com/repos/DevTunaSoft/VoiceBlueprintPro'` is answered by a stub and never reaches the network.
 - Commits use the configured git identity only. No agent trailers or "Generated with" lines (CLAUDE.md, checked by `commit-identity`).
 - Docs and changelog land in the same PR (CONTRIBUTING → Testing; `CHANGELOG.md` `## [Unreleased]` → `### CI`, one-liners).
 
@@ -67,7 +67,7 @@
 
 - [ ] **Step 1: Write failing table test.**
   - Allowed: `app://-/index.html`, `file:///x`, `data:,x`, `blob:app://-/u`, `devtools://devtools/x`, `http://127.0.0.1:3900/health`, `http://localhost:49306/api`, `http://[::1]:1/`
-  - Rejected: `https://api.github.com/repos/DevTunaSoft/VoiceBlueprint-Pro` (stubbed, not allowed), `https://us.i.posthog.com/e`, `https://huggingface.co/`, `http://127.0.0.1.evil.com/`, `http://localhost.evil.com/`, `ws://example.com`
+  - Rejected: `https://api.github.com/repos/DevTunaSoft/VoiceBlueprintPro` (stubbed, not allowed), `https://us.i.posthog.com/e`, `https://huggingface.co/`, `http://127.0.0.1.evil.com/`, `http://localhost.evil.com/`, `ws://example.com`
 - [ ] **Step 2: Run** `node --test electron/tests/local-first.test.mjs`. Expected: FAIL (module missing).
 - [ ] **Step 3: Implement** the function. Parse with `new URL`. Compare `hostname` exactly; no substring or prefix matching.
 - [ ] **Step 4: Run**; expect PASS.
@@ -175,7 +175,7 @@
   - `bun run check:electron`;
   - `node --test electron/tests/*.test.mjs`.
 - [ ] **Step 5: Commit** `ci: run desktop UI tests on macOS, Windows and Linux`
-- [ ] **Step 6: Push and open PR 1.** Wait for every check, not just `electron-ui`. Harvest CodeRabbit and Greptile comments (`gh api repos/DevTunaSoft/VoiceBlueprint-Pro/pulls/<N>/comments`) and fix real findings on the branch. If a leg fails, read the uploaded artifacts before changing anything. The PR body notes: "Add `Desktop UI (*)` to required checks after two weeks green on main (owner)."
+- [ ] **Step 6: Push and open PR 1.** Wait for every check, not just `electron-ui`. Harvest CodeRabbit and Greptile comments (`gh api repos/DevTunaSoft/VoiceBlueprintPro/pulls/<N>/comments`) and fix real findings on the branch. If a leg fails, read the uploaded artifacts before changing anything. The PR body notes: "Add `Desktop UI (*)` to required checks after two weeks green on main (owner)."
 
 ---
 

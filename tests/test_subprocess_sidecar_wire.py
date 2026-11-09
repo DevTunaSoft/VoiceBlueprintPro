@@ -6,7 +6,7 @@ parametrizes the protocol invariants across all of them, so a bug in one
 sidecar's copy is caught without a per-engine test file.
 
 Inspired by contributor-a's test_pockettts_sidecar.py (PR
-DevTunaSoft/VoiceBlueprint-Pro#1), which established the pattern for testing
+DevTunaSoft/VoiceBlueprintPro#1), which established the pattern for testing
 the wire protocol against a single sidecar. This lifts the generic protocol
 tests (send/recv roundtrip, EOF, oversized-frame cap, truncated-body) so every
 sidecar inherits the same coverage. Engine-specific tests (language mapping, PCM

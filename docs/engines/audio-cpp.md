@@ -105,7 +105,7 @@ For a user-managed runtime:
 
 `audiocpp-dots` runs dots.tts SOAR on the same runtime, so it works on Windows
 as well as macOS and Linux — unlike the Python [dots.tts engine](dots-tts.md),
-which has no Windows install path ([#2665](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/2665)).
+which has no Windows install path ([#2665](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/2665)).
 
 1. Install the runtime as above.
 2. In **Model Catalogue (TTS tab → audio.cpp · dots.tts → Weights)**, install

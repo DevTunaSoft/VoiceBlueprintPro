@@ -101,7 +101,7 @@ import kotlinx.serialization.json.Json
         Text(tr("donate.footer"),style=MaterialTheme.typography.bodyMedium,color=role("textMuted"))
         Heading("support.other_ways")
         Group {
-            listOf(Triple("star","support.star_github","https://github.com/DevTunaSoft/VoiceBlueprint-Pro"),
+            listOf(Triple("star","support.star_github","https://github.com/DevTunaSoft/VoiceBlueprintPro"),
                 Triple("discord","support.join_discord","https://discord.gg/bzQavDfVV9")).forEachIndexed {index,(id,key,url) ->
                 if(index>0) HorizontalDivider(color=role("border"))
                 TextButton(onClick={uri.openUri(url)},shape=MaterialTheme.shapes.small,

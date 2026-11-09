@@ -16,7 +16,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  DOCKERHUB_IMAGE: devtunasoft/voiceblueprint-pro
+  DOCKERHUB_IMAGE: devtunasoft/voiceblueprintpro
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:

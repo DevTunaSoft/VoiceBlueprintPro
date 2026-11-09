@@ -172,7 +172,7 @@ v0.5.5 the shell located that binary but never passed it on, and because the
 packaged `uv` sits in the app's own resources directory — on nobody's `PATH`,
 and a GUI launch inherits no shell `PATH` additions either — preflight reported
 it missing while the binary was right there
-([#2215](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/2215)).
+([#2215](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/2215)).
 
 Running from source, install `uv` from <https://docs.astral.sh/uv/>, or set
 `VOICEBLUEPRINT_BUNDLED_UV` to the absolute path of a `uv` binary to pin one

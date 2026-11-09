@@ -203,16 +203,16 @@ def validate_sunset(monkeypatch):
     spec.loader.exec_module(module)
     return module.validate_sunset
 
-def feed(url="https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/download/v1.2.3/app.tar.gz"):
+def feed(url="https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/download/v1.2.3/app.tar.gz"):
     return {"version": "1.2.3", "platforms": {"linux-x86_64": {"url": url, "signature": "signed"}}}
 
 def test_sunset_feed_stays_on_immutable_tauri_release(validate_sunset):
     validate_sunset(feed(), "v1.2.3")
 
 @pytest.mark.parametrize("url", [
-    "https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/latest/download/app.tar.gz",
-    "https://example.com/DevTunaSoft/VoiceBlueprint-Pro/releases/download/v1.2.3/app.tar.gz",
-    "https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/download/v2.0.0/app.exe",
+    "https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/latest/download/app.tar.gz",
+    "https://example.com/DevTunaSoft/VoiceBlueprintPro/releases/download/v1.2.3/app.tar.gz",
+    "https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/download/v2.0.0/app.exe",
 ])
 def test_sunset_rejects_redirecting_legacy_clients(url, validate_sunset):
     with pytest.raises(ValueError):

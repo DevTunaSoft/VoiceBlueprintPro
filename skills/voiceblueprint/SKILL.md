@@ -5,7 +5,7 @@ description: Generate local speech with saved or designed voices, transcribe aud
 
 # VoiceBlueprint
 
-Use the user's running [VoiceBlueprint](https://github.com/DevTunaSoft/VoiceBlueprint-Pro) backend. Prefer local processing; cloud translation, model downloads, remote-backend connections, and external integrations require the user's choice. Installed models can run offline; do not promise that every configured workflow is offline.
+Use the user's running [VoiceBlueprint](https://github.com/DevTunaSoft/VoiceBlueprintPro) backend. Prefer local processing; cloud translation, model downloads, remote-backend connections, and external integrations require the user's choice. Installed models can run offline; do not promise that every configured workflow is offline.
 
 ## Connect and discover
 
@@ -55,7 +55,7 @@ Use the installed OpenAPI schema to discover profile creation, reference uploads
 
 ## MCP and automation
 
-The running backend mounts an MCP endpoint at `http://localhost:3900/mcp`. Use the client's supported HTTP transport and discover its tools at runtime. Reuse an existing connection rather than spawning another service. For stdio-only clients, consult the project's [MCP guide](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/main/docs/mcp.md) for its shim.
+The running backend mounts an MCP endpoint at `http://localhost:3900/mcp`. Use the client's supported HTTP transport and discover its tools at runtime. Reuse an existing connection rather than spawning another service. For stdio-only clients, consult the project's [MCP guide](https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/main/docs/mcp.md) for its shim.
 
 For n8n, calling agents, containers, or other hosts, make the backend address reachable from that environment: container `localhost` refers to the container. Keep authentication and explicit remote-routing choices intact. An integration-directory listing does not mean the integration is connected.
 

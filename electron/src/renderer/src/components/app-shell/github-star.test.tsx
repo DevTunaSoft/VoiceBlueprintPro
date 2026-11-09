@@ -52,7 +52,7 @@ it('shows an exact live count and refreshes it every 20 minutes', async () => {
   expect(screen.getByText('43,768')).toBeVisible();
   expect(fetchCount).toHaveBeenCalledOnce();
   expect(fetchCount.mock.calls[0][0]).toBe(
-    'https://api.github.com/repos/DevTunaSoft/VoiceBlueprint-Pro',
+    'https://api.github.com/repos/DevTunaSoft/VoiceBlueprintPro',
   );
   expect(fetchCount.mock.calls[0][1]).toMatchObject({
     credentials: 'omit',
@@ -70,7 +70,7 @@ it('shows an exact live count and refreshes it every 20 minutes', async () => {
   await waitFor(() => expect(screen.getByText('43,769')).toBeVisible());
   expect(screen.getByRole('link', { name: 'support.star_github' })).toHaveAttribute(
     'href',
-    'https://github.com/DevTunaSoft/VoiceBlueprint-Pro',
+    'https://github.com/DevTunaSoft/VoiceBlueprintPro',
   );
   client.clear();
 });

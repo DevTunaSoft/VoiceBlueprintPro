@@ -22,13 +22,13 @@ This release also adds an opt-in Beta update channel, a bottom player for takes,
 
 | Platform | Installer |
 | --- | --- |
-| Windows x64 | [Installer](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/download/v0.5.7/VoiceBlueprint-0.5.7-win-x64.exe) |
-| Windows ARM64 (experimental) | [Installer](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/download/v0.5.7/VoiceBlueprint-0.5.7-win-arm64.exe) |
-| macOS Apple Silicon | [DMG](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/download/v0.5.7/VoiceBlueprint-0.5.7-mac-arm64.dmg) |
-| macOS Intel | [DMG](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/download/v0.5.7/VoiceBlueprint-0.5.7-mac-x64.dmg) |
-| Linux x64 | [AppImage](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/download/v0.5.7/VoiceBlueprint-0.5.7-linux-x64.AppImage) · [deb](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/download/v0.5.7/VoiceBlueprint-0.5.7-linux-x64.deb) |
-| Android | [APK](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/download/v0.5.7/VoiceBlueprint-0.5.7-android.apk) · [AAB](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/download/v0.5.7/VoiceBlueprint-0.5.7-android.aab) |
-| iPhone | [Unsigned IPA](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/download/v0.5.7/VoiceBlueprint-0.5.7-ios-unsigned.ipa) (sideload with your own Apple ID) |
+| Windows x64 | [Installer](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/download/v0.5.7/VoiceBlueprint-0.5.7-win-x64.exe) |
+| Windows ARM64 (experimental) | [Installer](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/download/v0.5.7/VoiceBlueprint-0.5.7-win-arm64.exe) |
+| macOS Apple Silicon | [DMG](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/download/v0.5.7/VoiceBlueprint-0.5.7-mac-arm64.dmg) |
+| macOS Intel | [DMG](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/download/v0.5.7/VoiceBlueprint-0.5.7-mac-x64.dmg) |
+| Linux x64 | [AppImage](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/download/v0.5.7/VoiceBlueprint-0.5.7-linux-x64.AppImage) · [deb](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/download/v0.5.7/VoiceBlueprint-0.5.7-linux-x64.deb) |
+| Android | [APK](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/download/v0.5.7/VoiceBlueprint-0.5.7-android.apk) · [AAB](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/download/v0.5.7/VoiceBlueprint-0.5.7-android.aab) |
+| iPhone | [Unsigned IPA](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/download/v0.5.7/VoiceBlueprint-0.5.7-ios-unsigned.ipa) (sideload with your own Apple ID) |
 
 **Upgrading:** Install over your existing Electron app; voices, projects and settings are kept. If setup asks, choose **Install local runtime** to refresh its dependencies.
 
@@ -36,11 +36,11 @@ This release also adds an opt-in Beta update channel, a bottom player for takes,
 - Models without a plainly commercial licence, including the default OmniVoice model, ask you to accept their licence once in Model Catalogue; until then, API and MCP requests that use them return a licence error (#2689)
 - Docker, LAN or reverse-proxy access by a host name, without an API key or session, needs that name in `VOICEBLUEPRINT_ALLOWED_HOSTS`; IP addresses, `localhost`, `*.ts.net` and `host.docker.internal` work as before.
 - URL imports from servers on your own network need `VOICEBLUEPRINT_ALLOW_PRIVATE_URL_IMPORTS=1`.
-- [Where to set these variables](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/v0.5.7/docs/api-auth.md#requests-from-other-websites-and-host-names): a line in `~/.config/voiceblueprint/env` (macOS, Linux) or `%USERPROFILE%\.config\omnivoice\env` (Windows) for the desktop app, `-e` for Docker.
+- [Where to set these variables](https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/v0.5.7/docs/api-auth.md#requests-from-other-websites-and-host-names): a line in `~/.config/voiceblueprint/env` (macOS, Linux) or `%USERPROFILE%\.config\omnivoice\env` (Windows) for the desktop app, `-e` for Docker.
 
-**Moving from Tauri:** Close the app, back up its data directory, install Electron, and verify your voices and projects before removing Tauri. Follow the [migration guide](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/v0.5.7/docs/electron-migration.md). Tauri v0.5.3 remains the final Tauri release; its updater cannot install Electron.
+**Moving from Tauri:** Close the app, back up its data directory, install Electron, and verify your voices and projects before removing Tauri. Follow the [migration guide](https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/v0.5.7/docs/electron-migration.md). Tauri v0.5.3 remains the final Tauri release; its updater cannot install Electron.
 
-**Installer trust:** macOS installers are signed. Windows installers are not code-signed yet, so SmartScreen may warn; the **Installer signing** table below shows each platform's result. See the [installation guide](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/v0.5.7/docs/install/troubleshooting.md).
+**Installer trust:** macOS installers are signed. Windows installers are not code-signed yet, so SmartScreen may warn; the **Installer signing** table below shows each platform's result. See the [installation guide](https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/v0.5.7/docs/install/troubleshooting.md).
 
 **Highlights**
 
@@ -128,7 +128,7 @@ This release also adds an opt-in Beta update channel, a bottom player for takes,
 - Home opens directly on project actions, and Integrations lists only connectors with completed in-app setup (#2351)
 - Multi-GPU NVIDIA hosts can choose which physical CUDA adapter VoiceBlueprint and its engine subprocesses use (#2346) — thanks @z0tedd!
 - MCP clients on another machine can connect through PIN-gated Local network sharing, which admits LAN hosts only while sharing is enabled (#2347) — thanks @z0tedd!
-- Docker, web setup, and documentation now use the canonical `ghcr.io/devtunasoft/voiceblueprint-pro` image while the old GHCR path remains compatible (#2350)
+- Docker, web setup, and documentation now use the canonical `ghcr.io/devtunasoft/voiceblueprintpro` image while the old GHCR path remains compatible (#2350)
 - GHCR publishes the VoiceBlueprint container coordinate alongside the existing path, with a release-tag backfill for a safe migration (#2348)
 - Electron is now the only desktop and web UI, with native helpers, packaging, setup, Docker and Network Sharing owned by maintained Electron paths (#2343)
 - Docker, `build:web`, and `dev:web` now build the maintained Electron renderer instead of the archived browser interface (#2341)
@@ -224,7 +224,7 @@ This release also adds an opt-in Beta update channel, a bottom player for takes,
 - Commercial License client verification and test guide (#2432) — thanks @contributor-b!
 - Hardware support table with CPU-only and Windows-on-ARM guidance (#2500)
 - Maintainer guide for repository settings that can't live in code; the licence notice scope and the contributing guide's list of network calls match the current app (#2556)
-- Contact addresses are now https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues (general and licensing), https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues (partnerships) and https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues (security reports) (#2556)
+- Contact addresses are now https://github.com/DevTunaSoft/VoiceBlueprintPro/issues (general and licensing), https://github.com/DevTunaSoft/VoiceBlueprintPro/issues (partnerships) and https://github.com/DevTunaSoft/VoiceBlueprintPro/issues (security reports) (#2556)
 - Chinese README now matches the Electron installation and migration guide (#2419) — thanks @lg114!
 - Record the supplied audio comparisons and installed-engine quality validation (#2406)
 - New call agent guide covering setup, disclosure, recording consent and safeguards (#2306)
@@ -1112,16 +1112,16 @@ This release also lets you replace a saved clone's reference sample, clones long
 
 | Platform | Installer |
 | --- | --- |
-| Windows x64 | [Installer](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/download/v0.5.6/VoiceBlueprint-Electron-0.5.6-win-x64.exe) |
-| macOS Apple Silicon | [DMG](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/download/v0.5.6/VoiceBlueprint-Electron-0.5.6-mac-arm64.dmg) |
-| macOS Intel | [DMG](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/download/v0.5.6/VoiceBlueprint-Electron-0.5.6-mac-x64.dmg) |
-| Linux x64 | [AppImage](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/download/v0.5.6/VoiceBlueprint-Electron-0.5.6-linux-x64.AppImage) · [deb](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/download/v0.5.6/VoiceBlueprint-Electron-0.5.6-linux-x64.deb) |
+| Windows x64 | [Installer](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/download/v0.5.6/VoiceBlueprint-Electron-0.5.6-win-x64.exe) |
+| macOS Apple Silicon | [DMG](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/download/v0.5.6/VoiceBlueprint-Electron-0.5.6-mac-arm64.dmg) |
+| macOS Intel | [DMG](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/download/v0.5.6/VoiceBlueprint-Electron-0.5.6-mac-x64.dmg) |
+| Linux x64 | [AppImage](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/download/v0.5.6/VoiceBlueprint-Electron-0.5.6-linux-x64.AppImage) · [deb](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/download/v0.5.6/VoiceBlueprint-Electron-0.5.6-linux-x64.deb) |
 
 **Upgrading:** Install over your existing Electron app; voices, projects and settings are kept. If setup asks, choose **Install local runtime** to refresh its dependencies. MCP clients configured with `/mcp` keep working; new exports use `/mcp/`. OpenAI-compatible `/v1` clients now get OpenAI-format errors with HTTP 400 instead of 422, and `response_format="mp3"` returns real MP3.
 
-**Moving from Tauri:** Close the app, back up its data directory, install Electron, and verify your voices and projects before removing Tauri. Follow the [migration guide](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/v0.5.6/docs/electron-migration.md). Tauri v0.5.3 remains the final Tauri release; its updater cannot install Electron.
+**Moving from Tauri:** Close the app, back up its data directory, install Electron, and verify your voices and projects before removing Tauri. Follow the [migration guide](https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/v0.5.6/docs/electron-migration.md). Tauri v0.5.3 remains the final Tauri release; its updater cannot install Electron.
 
-**Installer trust:** Electron installers are unsigned or ad-hoc signed and are not Apple-notarized. Windows/macOS may show trust warnings. macOS automatic updates are unverified; use manual installer updates. See the [installation guide](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/v0.5.6/docs/install/troubleshooting.md).
+**Installer trust:** Electron installers are unsigned or ad-hoc signed and are not Apple-notarized. Windows/macOS may show trust warnings. macOS automatic updates are unverified; use manual installer updates. See the [installation guide](https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/v0.5.6/docs/install/troubleshooting.md).
 
 **Highlights**
 
@@ -1196,16 +1196,16 @@ This release also makes Electron installation easier to recover, fixes script-ed
 
 | Platform | Installer |
 | --- | --- |
-| Windows x64 | [Installer](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/download/v0.5.5/VoiceBlueprint-Electron-0.5.5-win-x64.exe) |
-| macOS Apple Silicon | [DMG](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/download/v0.5.5/VoiceBlueprint-Electron-0.5.5-mac-arm64.dmg) |
-| macOS Intel | [DMG](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/download/v0.5.5/VoiceBlueprint-Electron-0.5.5-mac-x64.dmg) |
-| Linux x64 | [AppImage](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/download/v0.5.5/VoiceBlueprint-Electron-0.5.5-linux-x64.AppImage) · [deb](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/download/v0.5.5/VoiceBlueprint-Electron-0.5.5-linux-x64.deb) |
+| Windows x64 | [Installer](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/download/v0.5.5/VoiceBlueprint-Electron-0.5.5-win-x64.exe) |
+| macOS Apple Silicon | [DMG](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/download/v0.5.5/VoiceBlueprint-Electron-0.5.5-mac-arm64.dmg) |
+| macOS Intel | [DMG](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/download/v0.5.5/VoiceBlueprint-Electron-0.5.5-mac-x64.dmg) |
+| Linux x64 | [AppImage](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/download/v0.5.5/VoiceBlueprint-Electron-0.5.5-linux-x64.AppImage) · [deb](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/download/v0.5.5/VoiceBlueprint-Electron-0.5.5-linux-x64.deb) |
 
 **Upgrading:** Install over your existing Electron app. If setup asks, choose **Install local runtime** to refresh its dependencies. The 0.5.4 → 0.5.5 upgrade was tested with a saved voice and settings.
 
-**Moving from Tauri:** Close the app, back up its data directory, install Electron, and verify your voices and projects before removing Tauri. Follow the [migration guide](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/v0.5.5/docs/electron-migration.md). Tauri v0.5.3 remains the final Tauri release; its updater cannot install Electron. Intel Macs support the UI with a remote backend.
+**Moving from Tauri:** Close the app, back up its data directory, install Electron, and verify your voices and projects before removing Tauri. Follow the [migration guide](https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/v0.5.5/docs/electron-migration.md). Tauri v0.5.3 remains the final Tauri release; its updater cannot install Electron. Intel Macs support the UI with a remote backend.
 
-**Installer trust:** Electron installers are unsigned or ad-hoc signed and are not Apple-notarized. Windows/macOS may show trust warnings. macOS automatic updates are unverified; use manual installer updates. See the [installation guide](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/v0.5.5/docs/install/troubleshooting.md). Archived Tauri updater signatures are unchanged.
+**Installer trust:** Electron installers are unsigned or ad-hoc signed and are not Apple-notarized. Windows/macOS may show trust warnings. macOS automatic updates are unverified; use manual installer updates. See the [installation guide](https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/v0.5.5/docs/install/troubleshooting.md). Archived Tauri updater signatures are unchanged.
 
 **Highlights**
 
@@ -1248,12 +1248,12 @@ This release also makes Electron installation easier to recover, fixes script-ed
 
 | Platform | Installer |
 | --- | --- |
-| Windows x64 | [Installer](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/download/v0.5.4/VoiceBlueprint-Electron-0.5.4-win-x64.exe) |
-| macOS Apple Silicon | [DMG](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/download/v0.5.4/VoiceBlueprint-Electron-0.5.4-mac-arm64.dmg) |
-| macOS Intel | [DMG](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/download/v0.5.4/VoiceBlueprint-Electron-0.5.4-mac-x64.dmg) |
-| Linux x64 | [AppImage](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/download/v0.5.4/VoiceBlueprint-Electron-0.5.4-linux-x64.AppImage) · [deb](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/download/v0.5.4/VoiceBlueprint-Electron-0.5.4-linux-x64.deb) |
+| Windows x64 | [Installer](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/download/v0.5.4/VoiceBlueprint-Electron-0.5.4-win-x64.exe) |
+| macOS Apple Silicon | [DMG](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/download/v0.5.4/VoiceBlueprint-Electron-0.5.4-mac-arm64.dmg) |
+| macOS Intel | [DMG](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/download/v0.5.4/VoiceBlueprint-Electron-0.5.4-mac-x64.dmg) |
+| Linux x64 | [AppImage](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/download/v0.5.4/VoiceBlueprint-Electron-0.5.4-linux-x64.AppImage) · [deb](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/download/v0.5.4/VoiceBlueprint-Electron-0.5.4-linux-x64.deb) |
 
-Already using Electron? Install over your existing app and keep your data. If prompted, choose **Install local runtime** to refresh its dependencies. Moving from Tauri? Back up your data directory with the app closed, install Electron, then verify your voices and projects before removing Tauri. Follow the [migration guide](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/v0.5.4/docs/electron-migration.md). Tauri v0.5.3 remains the final Tauri release; its updater cannot install Electron.
+Already using Electron? Install over your existing app and keep your data. If prompted, choose **Install local runtime** to refresh its dependencies. Moving from Tauri? Back up your data directory with the app closed, install Electron, then verify your voices and projects before removing Tauri. Follow the [migration guide](https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/v0.5.4/docs/electron-migration.md). Tauri v0.5.3 remains the final Tauri release; its updater cannot install Electron.
 
 **Highlights**
 
@@ -1405,7 +1405,7 @@ Already using Electron? Install over your existing app and keep your data. If pr
 
 VoiceBlueprint moves to **Electron** with v0.5.3: a redesigned workspace for voice cloning, voice design, stories, dubbing, and transcription. Electron is now the primary desktop app on Windows, macOS, and Linux. Local voice creation still runs on your own hardware, without a required account or API key.
 
-![VoiceBlueprint's new Electron interface: voice cloning, saved voices, workspace navigation, and synthesis controls](https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprint-Pro/v0.5.3/docs/media/electron/voice-cloning.png)
+![VoiceBlueprint's new Electron interface: voice cloning, saved voices, workspace navigation, and synthesis controls](https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprintPro/v0.5.3/docs/media/electron/voice-cloning.png)
 
 **Highlights**
 
@@ -1415,16 +1415,16 @@ VoiceBlueprint moves to **Electron** with v0.5.3: a redesigned workspace for voi
 - A simpler Model Catalogue and one-click installs for VoxCPM2, MOSS-TTS-Nano, and CosyVoice 3 (#2013, #2021, #2022, #2025)
 - More reliable generation on older NVIDIA GPUs and live remote-worker CPU, GPU, and memory readings (#2135, #2155)
 
-![The Electron dubbing workspace with source and translated demos, language controls, and synchronized playback](https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprint-Pro/v0.5.3/docs/media/electron/dubbing.png)
+![The Electron dubbing workspace with source and translated demos, language controls, and synchronized playback](https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprintPro/v0.5.3/docs/media/electron/dubbing.png)
 
 **Get the new desktop app**
 
 | Platform | Electron installer |
 | --- | --- |
-| Windows x64 | [Download EXE](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/download/v0.5.3/VoiceBlueprint-Electron-0.5.3-win-x64.exe) |
-| macOS Apple Silicon | [Download DMG](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/download/v0.5.3/VoiceBlueprint-Electron-0.5.3-mac-arm64.dmg) |
-| macOS Intel | [Download DMG](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/download/v0.5.3/VoiceBlueprint-Electron-0.5.3-mac-x64.dmg) |
-| Linux x64 | [AppImage](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/download/v0.5.3/VoiceBlueprint-Electron-0.5.3-linux-x64.AppImage) · [DEB](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/download/v0.5.3/VoiceBlueprint-Electron-0.5.3-linux-x64.deb) |
+| Windows x64 | [Download EXE](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/download/v0.5.3/VoiceBlueprint-Electron-0.5.3-win-x64.exe) |
+| macOS Apple Silicon | [Download DMG](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/download/v0.5.3/VoiceBlueprint-Electron-0.5.3-mac-arm64.dmg) |
+| macOS Intel | [Download DMG](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/download/v0.5.3/VoiceBlueprint-Electron-0.5.3-mac-x64.dmg) |
+| Linux x64 | [AppImage](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/download/v0.5.3/VoiceBlueprint-Electron-0.5.3-linux-x64.AppImage) · [DEB](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/download/v0.5.3/VoiceBlueprint-Electron-0.5.3-linux-x64.deb) |
 
 **Moving from Tauri? Install Electron separately.**
 
@@ -1435,7 +1435,7 @@ v0.5.3 is also the final Tauri update. The Tauri updater will not switch you to 
 3. Verify your voices, projects, history, and model locations; generate a short clip before removing Tauri.
 4. Recheck devices, shortcuts, theme, backend address, permissions, and credentials. Desktop preferences and credentials are not guaranteed to transfer.
 
-[Read the migration guide](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/v0.5.3/docs/electron-migration.md) · [Compare all changes since v0.5.2](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/compare/v0.5.2...v0.5.3)
+[Read the migration guide](https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/v0.5.3/docs/electron-migration.md) · [Compare all changes since v0.5.2](https://github.com/DevTunaSoft/VoiceBlueprintPro/compare/v0.5.2...v0.5.3)
 
 ### Changed
 
@@ -1592,7 +1592,7 @@ v0.5.3 is also the final Tauri update. The Tauri updater will not switch you to 
 - audio.cpp (Breeze-TTS-2) is now a documented opt-in engine: prebuilt binary install, explicit GGUF download, voice modes, and the weights' research/non-commercial terms (#1891)
 - `docs/STRUCTURE.md` describes the tree as it is today, and a test now keeps its counts honest (#1981) — thanks @Dawcraft!
 - Local gigastt is now documented as a supported OpenAI-compatible ASR endpoint, with loopback privacy distinguished from remote servers (#1736) — thanks @ekhodzitsky!
-- The CosyVoice guide now states that packaged builds have no one-click runtime installer and records the exact readiness checks exposed by [Discussion 1631](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/discussions/1631) (#1761)
+- The CosyVoice guide now states that packaged builds have no one-click runtime installer and records the exact readiness checks exposed by [Discussion 1631](https://github.com/DevTunaSoft/VoiceBlueprintPro/discussions/1631) (#1761)
 - A production private-API guide now covers pinned containers, root credentials, network isolation, streaming proxies, health checks, upgrades, and benchmark evidence (#1720)
 - RX 6700 XT/gfx1031 over WSL2 ROCDXG is now explicitly unverified until a published end-to-end GPU workload proves the mapped path (#1716)
 
@@ -1734,7 +1734,7 @@ v0.5.3 is also the final Tauri update. The Tauri updater will not switch you to 
 - A bundled Rust loopback sidecar exposes dictation start/stop/toggle, focused-output sessions, discovery, and JSON-RPC; the backend adds versioned streaming events and a dependency-free CLI bridge for Herdr, coding agents, editors, desktop apps, and TUIs (#1646)
 - Headless NVIDIA and ROCm machines can now join as worker-only Docker Compose services with no published UI and durable protocol-v2 enrollment; update both machines together before reconnecting (#1638) — thanks @jkrogers9862!
 - Linux ARM64 (Asahi Apple Silicon) support for the OmniVoice GGUF engine — a `linux-aarch64` binary built with GGML Vulkan where the toolchain allows it, so Apple GPUs accelerate generation through the open-source Honeykrisp driver instead of falling back to CPU-only (#1641)
-- One-command install on every desktop OS: `curl -fsSL https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprint-Pro/main/scripts/install.sh | sh` (macOS/Linux/WSL) or `irm https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprint-Pro/main/scripts/install.sh | iex` (Windows) — the URL serves the right script per platform, and Windows gains a source installer (`scripts/install.ps1`) with a 3-OS CI smoke (#1626)
+- One-command install on every desktop OS: `curl -fsSL https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprintPro/main/scripts/install.sh | sh` (macOS/Linux/WSL) or `irm https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprintPro/main/scripts/install.sh | iex` (Windows) — the URL serves the right script per platform, and Windows gains a source installer (`scripts/install.ps1`) with a 3-OS CI smoke (#1626)
 - Per-line subtitle management in the dub table: a line's end time is editable alongside its start (typing a time and dragging its timeline edge now take the same path), lines merge with the previous row as well as the next (`Ctrl/Cmd+Shift+M`), and a new line can be inserted into the gap after any row (#1612) — thanks @invio-a11y!
 - CI now enforces performance regression budgets on the hot paths — operation-count tests pin streaming TTS to one synthesis per sentence and cached dub re-mixes to zero re-synthesis; fast-path guards cover zero re-decoding and ⌈N/W⌉ native batch calls when enabled (#1594)
 - Default-engine dubbing now synthesizes several segments per forward pass instead of one call per line — the width follows the host's device headroom (1 on CPU and low-VRAM cards, up to 8), `VOICEBLUEPRINT_DUB_BATCH_WIDTH` overrides it, and engines without native batching keep the single-segment path (#1594)
@@ -1808,7 +1808,7 @@ v0.5.3 is also the final Tauri update. The Tauri updater will not switch you to 
 
 **Highlights**
 
-- The app is now **VoiceBlueprint** (previously VoiceBlueprint-Pro) — one waveform-and-spark identity across the app, docs and installers. Your data folder, settings and Docker image paths stay put.
+- The app is now **VoiceBlueprint** (previously VoiceBlueprint Pro) — one waveform-and-spark identity across the app, docs and installers. Your data folder, settings and Docker image paths stay put.
 - **Model Catalogue** — engines and models in one workspace: every TTS, transcription and LLM engine with its device routing and install state, defaults picked there.
 - Switch TTS, ASR and LLM engines from the status bar or any workspace — ready-only choices, memory status, environment-pin protection, `Ctrl/Cmd+E`. (#1530)
 - Lend another machine's GPU with a join code and a QR scan — a Compute control in the status bar picks where jobs run, and several people can share one GPU box with revocable, certificate-pinned connections. (#1516, #1496)
@@ -1820,11 +1820,11 @@ v0.5.3 is also the final Tauri update. The Tauri updater will not switch you to 
 - The catalogue reads as headroom, not breakage: available engines sort first, uninstalled ones say what they need (#1531), and the LLM row names the provider that actually answers (#1538).
 - Gallery voices can be saved as local profiles — audio lands in your profile store with validated, content-addressed references. (#1542)
 
-<img src="https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprint-Pro/main/docs/media/0.5.0/quick-switch.gif" alt="Switching TTS engines from the status bar" width="820" />
+<img src="https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprintPro/main/docs/media/0.5.0/quick-switch.gif" alt="Switching TTS engines from the status bar" width="820" />
 
 | The Model Catalogue | The Voice Gallery |
 | --- | --- |
-| <img src="https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprint-Pro/main/docs/media/0.5.0/catalogue.png" alt="Model Catalogue — engines pane" width="420" /> | <img src="https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprint-Pro/main/docs/media/0.5.0/gallery-save.png" alt="Voice Gallery — save a voice as a profile" width="420" /> |
+| <img src="https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprintPro/main/docs/media/0.5.0/catalogue.png" alt="Model Catalogue — engines pane" width="420" /> | <img src="https://raw.githubusercontent.com/DevTunaSoft/VoiceBlueprintPro/main/docs/media/0.5.0/gallery-save.png" alt="Voice Gallery — save a voice as a profile" width="420" /> |
 
 ### Changed
 
@@ -1848,8 +1848,8 @@ v0.5.3 is also the final Tauri update. The Tauri updater will not switch you to 
 - The Dub workspace now has a compact production command bar, responsive flag-based language cards, media previews in Dub History, and a narrower Projects rail. (#1489)
 - VoiceBlueprint now uses one waveform-and-spark mark across the title bar, About screen, README, browser favicon, and every desktop/platform icon. (#1487)
 - PocketTTS now asks you to review its code license, model license and gated-access conditions before first use, and explains how to unlock the model instead of showing a raw download failure — thanks @paoloantinori! (#1442)
-- The repository moved to github.com/DevTunaSoft/VoiceBlueprint-Pro. Every link in the app, docs and scripts now points there; GitHub redirects the old URLs, and the Docker image paths, the app bundle identifier and your data folder are all deliberately unchanged. (#1394)
-- The app is now **VoiceBlueprint** (previously VoiceBlueprint-Pro). Only the name you see changes — your data folder, settings and the Docker image paths stay put, so upgrading needs nothing from you. On Linux the .deb is now `voiceblueprint`; remove the old `voiceblueprint-pro` package once.
+- The repository moved to github.com/DevTunaSoft/VoiceBlueprintPro. Every link in the app, docs and scripts now points there; GitHub redirects the old URLs, and the Docker image paths, the app bundle identifier and your data folder are all deliberately unchanged. (#1394)
+- The app is now **VoiceBlueprint** (previously VoiceBlueprint Pro). Only the name you see changes — your data folder, settings and the Docker image paths stay put, so upgrading needs nothing from you. On Linux the .deb is now `voiceblueprint`; remove the old `voiceblueprint-pro` package once.
 - macOS floor raised to 13.3 (Ventura) — the frontend has required Safari 16.4 for some time, so macOS 12 was a promise the stack could not keep (#1268)
 - The first-run setup screen no longer overpromises. It claimed "no account, no cloud, no telemetry" without qualification — untrue for anyone who opts into analytics — and now says what actually holds either way: your voices, recordings and projects never leave the machine, and no processing happens in the cloud.
 - Dictation no longer shows a floating pill. The hotkey records, transcribes and pastes with nothing on screen; the tray icon still marks recording, and anything needing your attention (Accessibility, microphone, a failed transcription) now arrives as a notification in the main window.
@@ -2141,7 +2141,7 @@ v0.5.3 is also the final Tauri update. The Tauri updater will not switch you to 
 - First run: when the app auto-opens in a non-English system language, a one-time, dismissible banner offers to switch the UI to English — shown only until you pick a language, never for English systems (#1215)
 - Source builds carry the publishable analytics token and get the same first-run consent ask as installers; opt-in events now note the install channel (installer / docker / source) — thanks @agudmund! (#1193)
 - Official Google Colab notebook (`notebooks/VoiceBlueprint_Studio_Colab.ipynb`) — full app + API feature tour on a free T4
-- ROCm Docker image `ghcr.io/devtunasoft/voiceblueprint-pro:rocm` (+ `:stable-rocm`, `:X.Y.Z-rocm`) (#1165)
+- ROCm Docker image `ghcr.io/devtunasoft/voiceblueprintpro:rocm` (+ `:stable-rocm`, `:X.Y.Z-rocm`) (#1165)
 - `VOICEBLUEPRINT_TRUSTED_NETWORKS` — comma-separated CIDRs exempted from the consumption auth gates (share PIN / API key / dictation WS); admin routes stay loopback-only (#1170)
 - Info/warn system notifications are dismissible and stay dismissed across restarts; error-level notices can't be dismissed, and the unclean-shutdown notice is now acknowledged server-side — thanks @agudmund! (#1192)
 - `clone_voice` MCP tool — AI agents can clone a new voice from a base64 reference audio sample; returns a `profile_id` immediately usable with `generate_speech` — thanks @paoloantinori! (#1194)
@@ -2426,7 +2426,7 @@ The cold-start release. Three "why is this broken on my machine" mysteries got s
 
 ### Added
 
-- **Agent Skills: `npx skills add devtunasoft/voiceblueprint-pro`.** Two installable [skills](https://skills.sh) now ship in the repo — `omnivoice` teaches any AI agent (Claude Code, Cursor, Codex, …) to speak and transcribe through your local install via the OpenAI-compatible API, including your cloned voices; `oss-maintainer` packages the maintainer methodology this project is run with.
+- **Agent Skills: `npx skills add devtunasoft/voiceblueprintpro`.** Two installable [skills](https://skills.sh) now ship in the repo — `omnivoice` teaches any AI agent (Claude Code, Cursor, Codex, …) to speak and transcribe through your local install via the OpenAI-compatible API, including your cloned voices; `oss-maintainer` packages the maintainer methodology this project is run with.
 
 ### Fixed
 
@@ -3465,7 +3465,7 @@ first-run, and install reliability all get a pass too.
 - **macOS Intel (x86_64) build target reinstated** on `macos-15-intel`, so Intel
   Mac users get installers again. (#342)
 - **Docker Hub publishing.** Images now also publish to Docker Hub
-  (`devtunasoft/voiceblueprint-pro`), with the Docker Hub overview maintained in-repo
+  (`devtunasoft/voiceblueprintpro`), with the Docker Hub overview maintained in-repo
   and auto-synced from `main` (sync is non-fatal so it can't redden a build).
   (#375, #410, #414)
 - **Docs-drift guard.** A daily job compares the canonical feature inventory
@@ -3609,4 +3609,4 @@ Region selector, realtime download speed, retry buttons, recheck top-right, HF m
 
 ## Earlier releases
 
-See [GitHub Releases](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases) for prior versions.
+See [GitHub Releases](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases) for prior versions.

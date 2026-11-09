@@ -96,14 +96,14 @@ export default function PerformancePanel() {
               // Trans injects the link text ("#65") from the translation string.
               issueLink: (
                 <a
-                  href="https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/65"
+                  href="https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/65"
                   target="_blank"
                   rel="noopener noreferrer"
                 />
               ),
               crashLink: (
                 <a
-                  href="https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/2135"
+                  href="https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/2135"
                   target="_blank"
                   rel="noopener noreferrer"
                 />

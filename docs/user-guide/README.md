@@ -2,7 +2,7 @@
 
 **Reviewed:** November 7, 2026 · **Status:** Living fork-specific guide. Automated packaging is tested; real-user-machine acceptance is not complete.
 
-VoiceBlueprint Pro is an independent modernization fork of [VoiceBlueprint](https://github.com/DevTunaSoft/VoiceBlueprint-Pro). The desktop app processes audio with local runtimes and installed models. During migration, its executable and some screens still use the **VoiceBlueprint** name.
+VoiceBlueprint Pro is an independent modernization fork of [VoiceBlueprint](https://github.com/DevTunaSoft/VoiceBlueprintPro). The desktop app processes audio with local runtimes and installed models. During migration, its executable and some screens still use the **VoiceBlueprint** name.
 
 ## Start here: Seven steps to start
 
@@ -26,7 +26,7 @@ VoiceBlueprint Pro is an independent modernization fork of [VoiceBlueprint](http
 
 ## Visual guide and evidence
 
-The [GitHub homepage GUI gallery](../../README.md#inside-the-studio) shows existing Electron-renderer screenshots inherited by the fork. An independent **actual packaged Windows x64 Settings → Models screenshot**, 1024×728, was captured in [Actions run #42426554733](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/actions/runs/42426554733), under `electron-rehearsal-win32-x64`. It shows a loading placeholder, not a successfully downloaded model. The artifact may expire.
+The [GitHub homepage GUI gallery](../../README.md#inside-the-studio) shows existing Electron-renderer screenshots inherited by the fork. An independent **actual packaged Windows x64 Settings → Models screenshot**, 1024×728, was captured in [Actions run #42426554733](https://github.com/DevTunaSoft/VoiceBlueprintPro/actions/runs/42426554733), under `electron-rehearsal-win32-x64`. It shows a loading placeholder, not a successfully downloaded model. The artifact may expire.
 
 ## Terms and privacy
 
@@ -36,7 +36,7 @@ Keep private recordings and diagnostic exports confidential. Confirm model-speci
 
 ## Support and status
 
-GitHub Issues and Discussions are **currently disabled** for this fork, so inherited bug-report buttons may lead to non-working destinations. Preserve diagnostic bundles for a verified maintainer channel; submit source fixes through [pull requests](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/pulls). Vulnerabilities require the [private security reporting policy](../../.github/SECURITY.md).
+GitHub Issues and Discussions are **currently disabled** for this fork, so inherited bug-report buttons may lead to non-working destinations. Preserve diagnostic bundles for a verified maintainer channel; submit source fixes through [pull requests](https://github.com/DevTunaSoft/VoiceBlueprintPro/pulls). Vulnerabilities require the [private security reporting policy](../../.github/SECURITY.md).
 
 Every changed feature must update this manual and the [documentation quality standard](DOCUMENTATION_STANDARD.md) with reproducible evidence. No invented UI controls, performance claims or fake screenshots.
 

@@ -1,10 +1,10 @@
-# Maintainer: Palash Debnath <aur at palash dot dev>
+# Maintainer: DevTunaSoft <DevTunaSoft@users.noreply.github.com>
 pkgname=voiceblueprint-git
 pkgver=0.5.7.r6387.g1a29929
 pkgrel=2
 pkgdesc='Local AI voice studio: cloning, speech, dubbing and transcription (development sources)'
 arch=('x86_64')
-url='https://github.com/DevTunaSoft/VoiceBlueprint-Pro'
+url='https://github.com/DevTunaSoft/VoiceBlueprintPro'
 license=('AGPL-3.0-only')
 depends=(
   'alsa-lib' 'at-spi2-core' 'gcc-libs' 'glibc' 'gtk3' 'libdrm' 'libnotify'
@@ -25,7 +25,7 @@ conflicts=('voiceblueprint')
 # makepkg's GCC LTO objects cannot be consumed by Rust's LLVM linker when
 # linking the locked aws-lc-sys dependency. Keep the toolchains compatible.
 options=('!strip' '!debug' '!lto')
-source=('voiceblueprint::git+https://github.com/DevTunaSoft/VoiceBlueprint-Pro.git#branch=main')
+source=('voiceblueprint::git+https://github.com/DevTunaSoft/VoiceBlueprintPro.git#branch=main')
 sha256sums=('SKIP')
 
 pkgver() {

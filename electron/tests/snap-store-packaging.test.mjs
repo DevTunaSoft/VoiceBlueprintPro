@@ -16,7 +16,7 @@ test('keeps direct Linux packaging and its updater unchanged', () => {
   assert.equal(packaging.snapcraft, undefined);
   assert.deepEqual(packaging.publish, {
     provider: 'generic',
-    url: 'https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/latest/download',
+    url: 'https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/latest/download',
     channel: `electron-stable-${process.platform}-${process.arch}`,
   });
 });

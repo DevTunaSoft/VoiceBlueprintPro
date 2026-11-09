@@ -33,7 +33,7 @@ for this model.
    is not offered on Intel Macs (see Platform notes).
 
 2. **Accept the license in-app**
-   ([#1306](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues/1306)). The code
+   ([#1306](https://github.com/DevTunaSoft/VoiceBlueprintPro/issues/1306)). The code
    is MIT and the weights are CC-BY-4.0, but the weights are **gated on
    HuggingFace** behind an access agreement with an acceptable-use clause.
    VoiceBlueprint surfaces this before first use: the engine stays unavailable

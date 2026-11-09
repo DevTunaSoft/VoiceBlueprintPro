@@ -36,7 +36,7 @@ export function createMicrosoftStoreHandoff({
   output,
   version,
   tag,
-  repository = "DevTunaSoft/VoiceBlueprint-Pro",
+  repository = "DevTunaSoft/VoiceBlueprintPro",
   generatedAt = new Date().toISOString(),
 }) {
   assert.match(version, /^\d+\.\d+\.\d+$/, "Version must be a release version");
@@ -141,7 +141,7 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
     output,
     version,
     tag: option("tag", `v${version}`),
-    repository: option("repository", process.env.GITHUB_REPOSITORY || "DevTunaSoft/VoiceBlueprint-Pro"),
+    repository: option("repository", process.env.GITHUB_REPOSITORY || "DevTunaSoft/VoiceBlueprintPro"),
   });
   console.log(`Wrote ${basename(output)}`);
 }

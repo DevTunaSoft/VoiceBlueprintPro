@@ -25,7 +25,7 @@
 services:
   # ── CPU mode — activate with: docker compose --profile cpu up
   omnivoice:
-    image: ghcr.io/devtunasoft/voiceblueprint-pro:stable
+    image: ghcr.io/devtunasoft/voiceblueprintpro:stable
     # To build from source instead of pulling, comment out `image:` and
     # uncomment the three lines below:
     # build:
@@ -66,7 +66,7 @@ services:
 
   # ── GPU mode — activate with: docker compose --profile gpu up
   omnivoice-gpu:
-    image: ghcr.io/devtunasoft/voiceblueprint-pro:stable
+    image: ghcr.io/devtunasoft/voiceblueprintpro:stable
     # To build from source, swap `image:` for the commented `build:` lines.
     # build:
     #   context: ..
@@ -111,7 +111,7 @@ services:
   # the amdgpu kernel driver (the ROCm userspace ships inside the image).
   # Podman works with the same two --device flags (Quadlet: AddDevice=).
   omnivoice-rocm:
-    image: ghcr.io/devtunasoft/voiceblueprint-pro:stable-rocm
+    image: ghcr.io/devtunasoft/voiceblueprintpro:stable-rocm
     # To build from source instead of pulling, comment out `image:` and
     # uncomment the lines below. BASE_IMAGE/GPU_FLAVOR are required — the
     # Dockerfile's defaults build the CUDA variant.

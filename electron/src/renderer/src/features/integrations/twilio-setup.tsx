@@ -44,7 +44,7 @@ import {
 import './twilio-setup.css';
 
 export const TWILIO_DOCS =
-  'https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/main/docs/integrations/twilio.md';
+  'https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/main/docs/integrations/twilio.md';
 const STATE_PATH = '/api/integrations/twilio/state';
 const QUERY_KEY = ['integrations', 'twilio'] as const;
 /**

@@ -7,7 +7,7 @@ wizard. Historical tests below used a clean archive of that commit, not the inte
 
 ## Integration refresh: 2026-10-05
 
-The branch now includes main [`990f0627ba14dbb309b88c0051ebb953d3101800`](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/commit/990f0627ba14dbb309b88c0051ebb953d3101800),
+The branch now includes main [`990f0627ba14dbb309b88c0051ebb953d3101800`](https://github.com/DevTunaSoft/VoiceBlueprintPro/commit/990f0627ba14dbb309b88c0051ebb953d3101800),
 including the CPU-budget change from #2611. This proposal adds no runtime behavior.
 This is a documentation integration refresh, not a rerun of the source probes or
 native acceptance. The findings, line-pinned evidence and local results below
@@ -174,33 +174,33 @@ packaged install/first-output/update/rollback, native picker/accessibility tools
 macOS/Windows/ARM/GPU hardware. Proposed designs and source-level defects are
 explicitly separate from platform acceptance.
 
-[baseline]: https://github.com/DevTunaSoft/VoiceBlueprint-Pro/commit/fb9a960c88744edc36daf2cf38d48df0971ee713
-[pr2500]: https://github.com/DevTunaSoft/VoiceBlueprint-Pro/pull/2500
-[pr2578]: https://github.com/DevTunaSoft/VoiceBlueprint-Pro/pull/2578
-[pr2557]: https://github.com/DevTunaSoft/VoiceBlueprint-Pro/pull/2557
-[pr2602]: https://github.com/DevTunaSoft/VoiceBlueprint-Pro/pull/2602
-[pr2585]: https://github.com/DevTunaSoft/VoiceBlueprint-Pro/pull/2585
-[pr2600]: https://github.com/DevTunaSoft/VoiceBlueprint-Pro/pull/2600
-[pr2605]: https://github.com/DevTunaSoft/VoiceBlueprint-Pro/pull/2605
-[pr2607]: https://github.com/DevTunaSoft/VoiceBlueprint-Pro/pull/2607
-[cpu-selector]: https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/441673e1ff5423e6713aef834ec0b1b62dc6c703/electron/scripts/torch-variant.mjs#L65-L88
-[cpu-launcher]: https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/441673e1ff5423e6713aef834ec0b1b62dc6c703/scripts/setup-api.mjs#L18-L32
+[baseline]: https://github.com/DevTunaSoft/VoiceBlueprintPro/commit/fb9a960c88744edc36daf2cf38d48df0971ee713
+[pr2500]: https://github.com/DevTunaSoft/VoiceBlueprintPro/pull/2500
+[pr2578]: https://github.com/DevTunaSoft/VoiceBlueprintPro/pull/2578
+[pr2557]: https://github.com/DevTunaSoft/VoiceBlueprintPro/pull/2557
+[pr2602]: https://github.com/DevTunaSoft/VoiceBlueprintPro/pull/2602
+[pr2585]: https://github.com/DevTunaSoft/VoiceBlueprintPro/pull/2585
+[pr2600]: https://github.com/DevTunaSoft/VoiceBlueprintPro/pull/2600
+[pr2605]: https://github.com/DevTunaSoft/VoiceBlueprintPro/pull/2605
+[pr2607]: https://github.com/DevTunaSoft/VoiceBlueprintPro/pull/2607
+[cpu-selector]: https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/441673e1ff5423e6713aef834ec0b1b62dc6c703/electron/scripts/torch-variant.mjs#L65-L88
+[cpu-launcher]: https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/441673e1ff5423e6713aef834ec0b1b62dc6c703/scripts/setup-api.mjs#L18-L32
 [rocm-setup]: https://github.com/Pates2004/VoiceBlueprint/blob/265295e7e1b1687308314aefe27e219c5994e95f/scripts/setup.py#L163-L172
 [rocm-source]: https://github.com/Pates2004/VoiceBlueprint/blob/265295e7e1b1687308314aefe27e219c5994e95f/docs/install/windows-rocm-source.md
-[setup-status]: https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/fb9a960c88744edc36daf2cf38d48df0971ee713/backend/api/routers/setup/wizard.py#L41-L58
-[is-cached]: https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/fb9a960c88744edc36daf2cf38d48df0971ee713/backend/api/routers/setup/models.py#L497-L517
-[catalogue]: https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/fb9a960c88744edc36daf2cf38d48df0971ee713/backend/api/routers/setup/models.py#L650-L670
-[setup-gate]: https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/fb9a960c88744edc36daf2cf38d48df0971ee713/electron/src/renderer/src/components/setup-gate.tsx
-[pack-ui]: https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/fb9a960c88744edc36daf2cf38d48df0971ee713/electron/src/renderer/src/features/settings/model-library.tsx#L133-L314
-[model-jobs]: https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/fb9a960c88744edc36daf2cf38d48df0971ee713/backend/api/routers/setup/download.py#L400-L456
-[sidecar-jobs]: https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/fb9a960c88744edc36daf2cf38d48df0971ee713/backend/services/sidecar_install.py#L988-L1029
-[pack-resolver]: https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/fb9a960c88744edc36daf2cf38d48df0971ee713/electron/src/renderer/src/features/settings/performance-model-packs.ts
-[model-plan]: https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/fb9a960c88744edc36daf2cf38d48df0971ee713/backend/api/routers/setup/download.py#L658-L725
-[runtime]: https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/fb9a960c88744edc36daf2cf38d48df0971ee713/electron/src/main/runtime-project.ts
-[disk-guard]: https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/fb9a960c88744edc36daf2cf38d48df0971ee713/backend/api/routers/setup/models.py#L230-L275
-[sidecar-disk]: https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/fb9a960c88744edc36daf2cf38d48df0971ee713/backend/services/sidecar_install.py#L938-L985
-[sidecar-uninstall]: https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/fb9a960c88744edc36daf2cf38d48df0971ee713/backend/services/sidecar_install.py#L1231-L1271
-[setup-progress]: https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/fb9a960c88744edc36daf2cf38d48df0971ee713/electron/src/renderer/src/lib/setup-progress.ts
-[preflight-ui]: https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/fb9a960c88744edc36daf2cf38d48df0971ee713/electron/src/renderer/src/features/settings/system-preflight.tsx
-[consent]: https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/fb9a960c88744edc36daf2cf38d48df0971ee713/electron/src/renderer/src/components/analytics-consent.tsx#L76-L129
-[readme]: https://github.com/DevTunaSoft/VoiceBlueprint-Pro/blob/fb9a960c88744edc36daf2cf38d48df0971ee713/README.md
+[setup-status]: https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/fb9a960c88744edc36daf2cf38d48df0971ee713/backend/api/routers/setup/wizard.py#L41-L58
+[is-cached]: https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/fb9a960c88744edc36daf2cf38d48df0971ee713/backend/api/routers/setup/models.py#L497-L517
+[catalogue]: https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/fb9a960c88744edc36daf2cf38d48df0971ee713/backend/api/routers/setup/models.py#L650-L670
+[setup-gate]: https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/fb9a960c88744edc36daf2cf38d48df0971ee713/electron/src/renderer/src/components/setup-gate.tsx
+[pack-ui]: https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/fb9a960c88744edc36daf2cf38d48df0971ee713/electron/src/renderer/src/features/settings/model-library.tsx#L133-L314
+[model-jobs]: https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/fb9a960c88744edc36daf2cf38d48df0971ee713/backend/api/routers/setup/download.py#L400-L456
+[sidecar-jobs]: https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/fb9a960c88744edc36daf2cf38d48df0971ee713/backend/services/sidecar_install.py#L988-L1029
+[pack-resolver]: https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/fb9a960c88744edc36daf2cf38d48df0971ee713/electron/src/renderer/src/features/settings/performance-model-packs.ts
+[model-plan]: https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/fb9a960c88744edc36daf2cf38d48df0971ee713/backend/api/routers/setup/download.py#L658-L725
+[runtime]: https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/fb9a960c88744edc36daf2cf38d48df0971ee713/electron/src/main/runtime-project.ts
+[disk-guard]: https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/fb9a960c88744edc36daf2cf38d48df0971ee713/backend/api/routers/setup/models.py#L230-L275
+[sidecar-disk]: https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/fb9a960c88744edc36daf2cf38d48df0971ee713/backend/services/sidecar_install.py#L938-L985
+[sidecar-uninstall]: https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/fb9a960c88744edc36daf2cf38d48df0971ee713/backend/services/sidecar_install.py#L1231-L1271
+[setup-progress]: https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/fb9a960c88744edc36daf2cf38d48df0971ee713/electron/src/renderer/src/lib/setup-progress.ts
+[preflight-ui]: https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/fb9a960c88744edc36daf2cf38d48df0971ee713/electron/src/renderer/src/features/settings/system-preflight.tsx
+[consent]: https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/fb9a960c88744edc36daf2cf38d48df0971ee713/electron/src/renderer/src/components/analytics-consent.tsx#L76-L129
+[readme]: https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/fb9a960c88744edc36daf2cf38d48df0971ee713/README.md

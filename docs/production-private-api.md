@@ -9,7 +9,7 @@ internet.
 ```yaml
 services:
   voiceblueprint:
-    image: ghcr.io/devtunasoft/voiceblueprint-pro:0.5.6
+    image: ghcr.io/devtunasoft/voiceblueprintpro:0.5.6
     restart: unless-stopped
     environment:
       VOICEBLUEPRINT_API_KEY: ${VOICEBLUEPRINT_API_KEY:?set a long random key}

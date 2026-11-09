@@ -22,12 +22,12 @@
 
 The inherited **Settings → About** source includes **Run self-check**, **Save Diagnostic Bundle** and **Copy Diagnostics** actions. These controls are source-inspected; full platform support must still be verified. Include precise reproduction steps and non-sensitive error messages; sanitize home paths, voice content and tokens before sharing.
 
-GitHub Issues and Discussions are **disabled** for this fork. Do not rely on existing app buttons that navigate to dead Issues URLs. Code fixes may be submitted through [pull requests](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/pulls); vulnerabilities belong in the [private security reporting workflow](../../.github/SECURITY.md).
+GitHub Issues and Discussions are **disabled** for this fork. Do not rely on existing app buttons that navigate to dead Issues URLs. Code fixes may be submitted through [pull requests](https://github.com/DevTunaSoft/VoiceBlueprintPro/pulls); vulnerabilities belong in the [private security reporting workflow](../../.github/SECURITY.md).
 
 ## Evidence and release caveats
 
-- [Full CI #42439650200](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/actions/runs/42439650200) passed Python, Electron, desktop UI, renderer, installer contracts and all four platform smoke jobs.
-- [Packaging #42426554733](https://github.com/DevTunaSoft/VoiceBlueprint-Pro/actions/runs/42426554733) passed the five-platform package matrix and Windows local-runtime setup, including experimental Windows ARM64.
+- [Full CI #42439650200](https://github.com/DevTunaSoft/VoiceBlueprintPro/actions/runs/42439650200) passed Python, Electron, desktop UI, renderer, installer contracts and all four platform smoke jobs.
+- [Packaging #42426554733](https://github.com/DevTunaSoft/VoiceBlueprintPro/actions/runs/42426554733) passed the five-platform package matrix and Windows local-runtime setup, including experimental Windows ARM64.
 - The packaged Windows x64 Settings → Models screenshot still contained a loading placeholder. It verifies a real renderer route, **not** a working speech model.
 - Real device installation/upgrade, GPU inference, project save/recovery, microphone and playback are still unverified.
 

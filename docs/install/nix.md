@@ -14,7 +14,7 @@ On NixOS, dynamically loaded Python packages (such as the PyTorch and WhisperX w
 
 ```bash
 # Clone the repository
-git clone https://github.com/DevTunaSoft/VoiceBlueprint-Pro.git
+git clone https://github.com/DevTunaSoft/VoiceBlueprintPro.git
 cd VoiceBlueprint
 
 # Enter the FHS development environment
@@ -32,7 +32,7 @@ If you are developing on macOS or Linux with `nix-ld` configured:
 
 ```bash
 # Clone the repository
-git clone https://github.com/DevTunaSoft/VoiceBlueprint-Pro.git
+git clone https://github.com/DevTunaSoft/VoiceBlueprintPro.git
 cd VoiceBlueprint
 
 # Enter the standard development shell

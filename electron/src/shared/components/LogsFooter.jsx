@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { copyText } from '../utils/copyText';
+import { ISSUES_URL } from '../utils/contactLinks';
 import {
   ChevronUp,
   ChevronDown,
@@ -608,7 +609,7 @@ export default function LogsFooter() {
             className={DISCORD_BTN}
             onClick={() => {
               import('../api/external').then((m) =>
-                m.openExternal('https://discord.gg/bzQavDfVV9'),
+                m.openExternal(ISSUES_URL),
               );
             }}
             title={t('logs.join_discord')}

@@ -4,7 +4,7 @@ export function captureAccess(requestUrl, method, appOrigin) {
   if (
     method === "GET" &&
     url.origin === "https://api.github.com" &&
-    url.pathname === "/repos/DevTunaSoft/VoiceBlueprint-Pro" &&
+    url.pathname === "/repos/DevTunaSoft/VoiceBlueprintPro" &&
     !url.search
   )
     return "read";

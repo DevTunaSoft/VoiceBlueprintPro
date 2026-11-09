@@ -93,7 +93,7 @@ const { appendBlockmap } = require(
 const { size, sha512, blockMapSize } = await appendBlockmap(image);
 assert.equal((await stat(image)).size, size);
 
-const url = `https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/download/${releaseTag}/${filename}`;
+const url = `https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/download/${releaseTag}/${filename}`;
 execFileSync('zsyncmake', ['-u', url, '-o', zsync, image], { stdio: 'inherit' });
 
 const manifest = readFileSync(manifestPath, 'utf8');

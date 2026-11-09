@@ -23,7 +23,7 @@ spec.loader.exec_module(publisher)
 
 class AndroidRepositoryTests(unittest.TestCase):
     def release(self):
-        url = 'https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases'
+        url = 'https://github.com/DevTunaSoft/VoiceBlueprintPro/releases'
         return {'draft': False, 'prerelease': False, 'tag_name': 'v0.5.7',
                 'html_url': url + '/tag/v0.5.7', 'assets': [{
                     'name': 'VoiceBlueprint-0.5.7-android.apk', 'size': 3,
@@ -32,7 +32,7 @@ class AndroidRepositoryTests(unittest.TestCase):
 
     def test_release_download_is_bound_to_the_published_project_and_digest(self):
         release = self.release()
-        asset = publisher.release_asset(release, 'DevTunaSoft/VoiceBlueprint-Pro')
+        asset = publisher.release_asset(release, 'DevTunaSoft/VoiceBlueprintPro')
         with tempfile.TemporaryDirectory() as temporary:
             apk = Path(temporary) / 'release.apk'
             apk.write_bytes(b'apk')
@@ -50,16 +50,16 @@ class AndroidRepositoryTests(unittest.TestCase):
             with self.subTest(key=key):
                 release = self.release(); release[key] = value
                 with self.assertRaises(ValueError):
-                    publisher.release_asset(release, 'DevTunaSoft/VoiceBlueprint-Pro')
+                    publisher.release_asset(release, 'DevTunaSoft/VoiceBlueprintPro')
         for key, value in [('browser_download_url', 'https://untrusted.example/app.apk'),
                            ('size', 0), ('size', 513 * 1024**2), ('digest', None)]:
             with self.subTest(asset_field=key):
                 release = self.release(); release['assets'][0][key] = value
                 with self.assertRaises(ValueError):
-                    publisher.release_asset(release, 'DevTunaSoft/VoiceBlueprint-Pro')
+                    publisher.release_asset(release, 'DevTunaSoft/VoiceBlueprintPro')
         release = self.release(); release['assets'].append(copy.deepcopy(release['assets'][0]))
         with self.assertRaisesRegex(ValueError, 'exactly one'):
-            publisher.release_asset(release, 'DevTunaSoft/VoiceBlueprint-Pro')
+            publisher.release_asset(release, 'DevTunaSoft/VoiceBlueprintPro')
 
     def test_interrupted_or_oversized_download_preserves_the_previous_file(self):
         asset = self.release()['assets'][0]
@@ -104,7 +104,7 @@ class AndroidRepositoryTests(unittest.TestCase):
         link = publisher.obtainium_link(config)
         deep = parse_qs(urlparse(link).query)['r'][0]
         self.assertEqual(json.loads(unquote(deep.removeprefix('obtainium://app/'))), config)
-        self.assertEqual(config['url'], 'https://github.com/DevTunaSoft/VoiceBlueprint-Pro')
+        self.assertEqual(config['url'], 'https://github.com/DevTunaSoft/VoiceBlueprintPro')
 
     @unittest.skipIf(os.name == 'nt' or shutil.which('bash') is None, 'requires the POSIX workflow shell')
     def test_release_workflow_dispatches_the_repository_only_for_stable(self):

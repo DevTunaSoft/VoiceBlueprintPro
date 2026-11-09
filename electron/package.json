@@ -3,11 +3,11 @@
   "version": "0.0.0-electron",
   "private": true,
   "description": "VoiceBlueprint desktop shell (Electron) - local voice cloning, no cloud.",
-  "homepage": "https://github.com/DevTunaSoft/VoiceBlueprint-Pro",
+  "homepage": "https://github.com/DevTunaSoft/VoiceBlueprintPro",
   "license": "AGPL-3.0-only",
   "author": {
     "name": "VoiceBlueprint contributors",
-    "email": "https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues"
+    "email": "https://github.com/DevTunaSoft/VoiceBlueprintPro/issues"
   },
   "type": "module",
   "main": "./out/main/index.js",

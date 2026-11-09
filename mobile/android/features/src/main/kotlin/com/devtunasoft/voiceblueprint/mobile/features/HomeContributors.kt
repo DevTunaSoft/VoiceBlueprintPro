@@ -47,7 +47,7 @@ import kotlin.math.min
 object HomeContributors {
     val logins = listOf("contributor-a", "contributor-b", "kevin9327", "jaketame", "psiberfunk", "rudycelekli", "paoloantinori", "Chang-Jin-Lee", "swadhinbiswas", "BichengWang", "nirmalchatur", "Shivendra-Coherent", "marreiradigital", "nvtoan0201-swe")
     val coreMaintainers = setOf("contributor-a", "contributor-b")
-    const val REPOSITORY = "https://github.com/DevTunaSoft/VoiceBlueprint-Pro"
+    const val REPOSITORY = "https://github.com/DevTunaSoft/VoiceBlueprintPro"
     fun rows(items: List<String>): List<List<String>> {
         val top = min(items.size, ceil((items.size + 3) / 3.0).toInt())
         val middle = min(items.size - top, ceil((items.size - top + 1) / 2.0).toInt())

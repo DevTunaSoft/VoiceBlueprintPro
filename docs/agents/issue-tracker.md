@@ -1,7 +1,7 @@
 # Issue tracker: GitHub
 
 Issues and PRDs for this repo live as GitHub issues on
-[`DevTunaSoft/VoiceBlueprint-Pro`](https://github.com/DevTunaSoft/VoiceBlueprint-Pro). Use the `gh`
+[`DevTunaSoft/VoiceBlueprintPro`](https://github.com/DevTunaSoft/VoiceBlueprintPro). Use the `gh`
 CLI for all operations.
 
 ## Conventions
@@ -36,7 +36,7 @@ GitHub shares one number space across issues and PRs, so a bare `#42` may be eit
 These come from `CLAUDE.md` and apply to anything a skill opens or merges here:
 
 - **Harvest bot reviews before merging.** CodeRabbit and Greptile auto-review every
-  PR. Read their inline comments — `gh api repos/DevTunaSoft/VoiceBlueprint-Pro/pulls/<n>/comments`
+  PR. Read their inline comments — `gh api repos/DevTunaSoft/VoiceBlueprintPro/pulls/<n>/comments`
   filtered by bot login — and triage them before merge. Never merge with an unread
   Critical/P1. This applies to PRs a skill opened, not just human ones.
 - **Never merge with known findings outstanding.** Fix them on the PR branch; don't

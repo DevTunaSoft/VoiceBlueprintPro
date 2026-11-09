@@ -1,1 +1,1 @@
-VoiceBlueprint 0.5.7: signed Android release. Release notes: https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/tag/v0.5.7
+VoiceBlueprint 0.5.7: signed Android release. Release notes: https://github.com/DevTunaSoft/VoiceBlueprintPro/releases/tag/v0.5.7
