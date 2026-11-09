@@ -1,0 +1,10 @@
+.build/
+.cache/
+.generated/
+VoiceBlueprintKit/.build/
+VoiceBlueprintKit/.swiftpm/
+VoiceBlueprint/VoiceBlueprint.xcodeproj/
+**/xcuserdata/
+.DS_Store
+
+.build-*/

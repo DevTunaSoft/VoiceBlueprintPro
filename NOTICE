@@ -1,0 +1,13 @@
+VoiceBlueprint Pro
+
+Copyright 2026 DevTunaSoft
+
+This program is free software licensed under the GNU Affero General Public
+License, version 3 (AGPL-3.0-only). See LICENSE.
+
+Portions of this software were derived from an earlier open-source project
+licensed under AGPL-3.0. Those portions retain their original copyright
+notices and license terms as required by AGPL-3.0.
+
+Third-party components keep their own licenses, including the bundled
+omnivoice/ package (Apache-2.0, by its upstream authors).

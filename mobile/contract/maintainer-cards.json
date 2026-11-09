@@ -1,0 +1,44 @@
+{
+  "contributor-a": {
+    "name": "homeUi.maintainerPalash",
+    "role": "homeUi.creatorCoreTeam",
+    "links": [
+      {
+        "kind": "website",
+        "handle": "palash.dev",
+        "href": "https://palash.dev"
+      },
+      {
+        "kind": "github",
+        "handle": "@DevTunaSoft",
+        "href": "https://github.com/contributor-a"
+      },
+      {
+        "kind": "x",
+        "handle": "@icontributor-a",
+        "href": "https://x.com/icontributor-a"
+      }
+    ]
+  },
+  "contributor-b": {
+    "name": "homeUi.maintainerShimul",
+    "role": "homeUi.coreTeam",
+    "links": [
+      {
+        "kind": "website",
+        "handle": "shimul.me",
+        "href": "https://shimul.me"
+      },
+      {
+        "kind": "github",
+        "handle": "@contributor-b",
+        "href": "https://github.com/contributor-b"
+      },
+      {
+        "kind": "x",
+        "handle": "@shimuldn",
+        "href": "https://x.com/shimuldn"
+      }
+    ]
+  }
+}

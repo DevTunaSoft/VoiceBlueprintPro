@@ -1,0 +1,89 @@
+# Snapcraft Builds (snapcraft.io → Builds) packages the published release.
+# It repackages the official Linux .deb of the latest GitHub release, so a
+# Snapcraft-built revision ships byte-identical app files to the other Linux
+# installers. The release workflow (.github/workflows/snap-store.yml) remains
+# the primary path; keep the interfaces below in step with the `snap-store`
+# target in electron/electron-builder.config.mjs and
+# docs/store-publishing/snap-store.md.
+name: voiceblueprint
+title: VoiceBlueprint
+summary: Local voice cloning, voice design, dubbing and dictation on your computer.
+description: |
+  VoiceBlueprint is an open-source, fully local studio for voice cloning, voice
+  design, video dubbing, audiobooks and real-time dictation. Models run on
+  your own machine, with no account or API key; model downloads and other
+  network features run when you start them.
+license: AGPL-3.0-only
+website: https://github.com/DevTunaSoft/VoiceBlueprint-Pro
+source-code: https://github.com/DevTunaSoft/VoiceBlueprint-Pro
+issues: https://github.com/DevTunaSoft/VoiceBlueprint-Pro/issues
+icon: snap/gui/voiceblueprint.png
+base: core22
+grade: stable
+confinement: strict
+adopt-info: voiceblueprint
+architectures:
+  - build-on: [amd64]
+    build-for: [amd64]
+
+plugs:
+  browser-sandbox:
+    interface: browser-support
+    allow-sandbox: false
+
+apps:
+  voiceblueprint:
+    command: opt/VoiceBlueprint/voiceblueprint-electron --no-sandbox
+    desktop: usr/share/applications/voiceblueprint.desktop
+    extensions: [gnome]
+    environment:
+      # snapd updates the snap; the in-app updater must not.
+      VOICEBLUEPRINT_DISABLE_UPDATER: "1"
+      TMPDIR: $XDG_RUNTIME_DIR
+    plugs:
+      - browser-sandbox
+      - desktop
+      - desktop-legacy
+      - home
+      - x11
+      - wayland
+      - unity7
+      - network
+      - network-bind
+      - gsettings
+      - audio-playback
+      - audio-record
+      - pulseaudio
+      - opengl
+
+parts:
+  voiceblueprint:
+    plugin: nil
+    build-packages: [curl, jq, dpkg]
+    override-pull: |
+      tag=$(curl -fsSL https://api.github.com/repos/DevTunaSoft/VoiceBlueprint-Pro/releases/latest | jq -r .tag_name)
+      version="${tag#v}"
+      craftctl set version="$version"
+      curl -fsSL -o voiceblueprint.deb \
+        "https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/download/${tag}/VoiceBlueprint-${version}-linux-x64.deb"
+      curl -fsSL -o SHA256SUMS.txt \
+        "https://github.com/DevTunaSoft/VoiceBlueprint-Pro/releases/download/${tag}/SHA256SUMS.txt"
+      expected=$(grep " VoiceBlueprint-${version}-linux-x64.deb\$" SHA256SUMS.txt | cut -d' ' -f1)
+      echo "${expected}  voiceblueprint.deb" | sha256sum -c -
+    override-build: |
+      dpkg -x voiceblueprint.deb "$CRAFT_PART_INSTALL"
+      desktop="$CRAFT_PART_INSTALL/usr/share/applications"
+      mv "$desktop/VoiceBlueprint.desktop" "$desktop/voiceblueprint.desktop"
+      sed -i -e 's|^Exec=.*|Exec=voiceblueprint %U|' \
+             -e 's|^Icon=.*|Icon=${SNAP}/meta/gui/voiceblueprint.png|' "$desktop/voiceblueprint.desktop"
+      # Strict confinement cannot use the setuid sandbox helper.
+      rm -f "$CRAFT_PART_INSTALL/opt/VoiceBlueprint/chrome-sandbox"
+    stage-packages:
+      - libnss3
+      - libxss1
+      - libasound2
+      - libgbm1
+      - libsecret-1-0
+      - libnotify4
+      - libxtst6
+      - libuuid1

@@ -1,0 +1,9 @@
+{
+  "productName": "VoiceBlueprint",
+  "appId": "com.devtunasoft.voiceblueprint.desktop",
+  "ports": {
+    "backend": 3900,
+    "web": 3901,
+    "electronDev": 3902
+  }
+}
