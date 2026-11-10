@@ -15,7 +15,7 @@ VoiceBlueprint-Pro is DevTunaSoft's independent, open-source, local-first AI voi
 </p>
 
 > [!IMPORTANT]
-> **Actively in development; no official VoiceBlueprint-Pro release is published yet.** Windows x64 and experimental Windows ARM64 packaging have passed automated acceptance, but real-hardware production acceptance remains outstanding. See [releases](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases) and [live GitHub Actions](https://github.com/DevTunaSoft/VoiceBlueprintPro/actions). An upstream VoiceBlueprint download **will not contain the changes made in this fork**.
+> **Actively in development; no official VoiceBlueprint-Pro release is published yet.** Windows x64 and experimental Windows ARM64 packaging have passed automated acceptance, but real-hardware production acceptance remains outstanding. See [releases](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases) and [live GitHub Actions](https://github.com/DevTunaSoft/VoiceBlueprintPro/actions). Use builds and releases from this repository; external downloads are not official VoiceBlueprint-Pro distributions.
 
 ## What VoiceBlueprint-Pro is
 
@@ -72,16 +72,16 @@ Our mission is to deliver reliable, efficient and accessible voice production wi
 | **Audio quality** | Quality inspection, pronunciation tools, speech-to-script verification and selective regeneration |
 | **Professional production** | Better audiobook, dubbing, editing, voice-directing and export workflows |
 | **Automation** | Integrated production pipelines, reusable recipes, actionable diagnostics and accessible controls |
-| **Trust and openness** | Consent-aware voice use, local-first processing, clear licensing, upstream credit and reproducible builds |
+| **Trust and openness** | Consent-aware voice use, local-first processing, clear licensing, third-party credit and reproducible builds |
 | **Engineering quality** | Fuzzing, fault injection, cross-platform regression tests, real-audio verification and honest release gates |
 
 **Planned does not mean implemented.** See the [consolidated capability program](https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/engineering/modernization-foundation/docs/roadmap/CONSOLIDATED_CAPABILITY_PROGRAM.md) for the complete backlog and verification standards.
 
 ## Development progress
 
-We are strengthening the inherited desktop application through code review, regression coverage, security hardening, fault injection, packaging tests and documentation.
+We are strengthening the desktop application through code review, regression coverage, security hardening, fault injection, packaging tests and documentation.
 
-- The [modernization branch](https://github.com/DevTunaSoft/VoiceBlueprintPro/tree/engineering/modernization-foundation) contains the current engineering work: runtime stability improvements, queue-recovery fixes, Electron IPC checks, test contracts and ongoing quality improvements.
+- The [engineering branch](https://github.com/DevTunaSoft/VoiceBlueprintPro/tree/engineering/modernization-foundation) contains the current engineering work: runtime stability improvements, queue-recovery fixes, Electron IPC checks, test contracts and ongoing quality improvements.
 - On November 7, 2026, [packaging run #42420264814](https://github.com/DevTunaSoft/VoiceBlueprintPro/actions/runs/42420264814) passed all five packaging jobs: **Windows x64, Windows ARM64, Linux x64, macOS Apple Silicon and macOS Intel**. The three supported voice-runtime dependency builds also passed. The Windows jobs exercised packaged startup and isolated local-runtime installation.
 - [Full development CI #42420294120](https://github.com/DevTunaSoft/VoiceBlueprintPro/actions/runs/42420294120) passed on commit `ee379096`: Electron, Python, desktop UI, UI crawlers, renderer tests, installer contracts and platform smoke checks.
 - **Windows ARM64 remains experimental** despite that passing CI run; it uses emulated x64 Python 3.11 and CPU inference, and has not yet been validated on representative physical ARM64 devices.
@@ -91,7 +91,7 @@ A passing automated build is **not** a claim of a stable release or universal ha
 
 ## Existing functionality and technical guides
 
-These describe the **application** and are maintained as the fork evolves. Some internal screenshots, commands and platform guides may still refer to VoiceBlueprint. A guide's existence is not proof that a VoiceBlueprint-Pro-branded release has shipped.
+These guides describe VoiceBlueprint-Pro development workflows. Features and installation instructions may vary by build; consult the verification status before relying on them.
 
 | Area | Documentation |
 | --- | --- |
@@ -115,7 +115,7 @@ There is **no signed, stable VoiceBlueprint-Pro installer yet**. Technically exp
 
 [Windows x64 and ARM64 packaging artifacts](https://github.com/DevTunaSoft/VoiceBlueprintPro/actions/runs/42420264814) were generated on November 7, 2026. CI artifacts expire, so use a newer successful run if unavailable. Windows ARM64 remains experimental and uses an emulated x64 Python backend with CPU inference.
 
-When a stable version is published, use the [VoiceBlueprint-Pro releases page](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases), not upstream downloads. The inherited [Windows installation guide](docs/install/windows.md) may not yet cover project-specific packaging.
+When a stable version is published, use the [VoiceBlueprint-Pro releases page](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases), and consult the [Windows installation guide](docs/install/windows.md) for current setup guidance.
 
 ## How to use the app
 
@@ -132,7 +132,7 @@ For a guided walkthrough, use the [VoiceBlueprint-Pro beginner's manual](docs/us
 
 ## Build and test from source
 
-This repository currently retains upstream build identifiers and development tooling. These commands are **developer workflows**, not a claim that an independently packaged VoiceBlueprint-Pro installer is available.
+This repository retains established compatibility identifiers and development tooling. These commands are **developer workflows**, not a claim that an independently packaged VoiceBlueprint-Pro installer is available.
 
 **Prerequisites:** Git, Bun 1.4.2, a supported Python runtime and the platform-specific build tools described in the [development documentation](docs/README.md). The modernization work currently lives on its own branch.
 
