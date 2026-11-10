@@ -81,7 +81,7 @@ Our mission is to deliver reliable, efficient and accessible voice production wi
 
 We are strengthening the desktop application through code review, regression coverage, security hardening, fault injection, packaging tests and documentation.
 
-- The [engineering branch](https://github.com/DevTunaSoft/VoiceBlueprintPro/tree/engineering/modernization-foundation) contains the current engineering work: runtime stability improvements, queue-recovery fixes, Electron IPC checks, test contracts and ongoing quality improvements.
+- The [engineering branch](https://github.com/DevTunaSoft/VoiceBlueprintPro/tree/engineering/modernization-foundation) contains additional engineering work: runtime stability improvements, queue-recovery fixes, Electron IPC checks, test contracts and ongoing quality improvements.
 - On November 7, 2026, [packaging run #42420264814](https://github.com/DevTunaSoft/VoiceBlueprintPro/actions/runs/42420264814) passed all five packaging jobs: **Windows x64, Windows ARM64, Linux x64, macOS Apple Silicon and macOS Intel**. The three supported voice-runtime dependency builds also passed. The Windows jobs exercised packaged startup and isolated local-runtime installation.
 - [Full development CI #42420294120](https://github.com/DevTunaSoft/VoiceBlueprintPro/actions/runs/42420294120) passed on commit `ee379096`: Electron, Python, desktop UI, UI crawlers, renderer tests, installer contracts and platform smoke checks.
 - **Windows ARM64 remains experimental** despite that passing CI run; it uses emulated x64 Python 3.11 and CPU inference, and has not yet been validated on representative physical ARM64 devices.
