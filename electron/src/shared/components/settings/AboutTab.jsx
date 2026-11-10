@@ -6,8 +6,7 @@ import {
   Download,
   Activity,
   Copy,
-  ExternalLink,
-  Building2,
+  ExternalLink
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { openExternal } from '../../api/external';
@@ -87,7 +86,7 @@ export default function AboutTab({
         value={
           <span className="inline-flex items-center gap-[var(--space-2)]" translate="no">
             <VoiceBlueprintMark className="size-5 text-[var(--chrome-accent)]" />
-            VoiceBlueprint
+            VoiceBlueprint-Pro
           </span>
         }
       />
