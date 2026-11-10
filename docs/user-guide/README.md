@@ -1,12 +1,12 @@
-# VoiceBlueprint Pro — Beginner's User Manual
+# VoiceBlueprint-Pro — Beginner's User Manual
 
 **Reviewed:** November 7, 2026 · **Status:** Living fork-specific guide. Automated packaging is tested; real-user-machine acceptance is not complete.
 
-VoiceBlueprint Pro is an independent modernization fork of [VoiceBlueprint](https://github.com/DevTunaSoft/VoiceBlueprintPro). The desktop app processes audio with local runtimes and installed models. During migration, its executable and some screens still use the **VoiceBlueprint** name.
+VoiceBlueprint-Pro is DevTunaSoft's independent, local-first AI voice production suite. It processes audio with supported local runtimes and installed models. Third-party acknowledgments and license notices remain available in the repository.
 
 ## Start here: Seven steps to start
 
-1. **Use a fork-owned build.** No stable VoiceBlueprint Pro release is published. For experimental builds, use the [installer guide](installation.md) and inspect the individual GitHub Actions packaging job for your operating system.
+1. **Use a fork-owned build.** No stable VoiceBlueprint-Pro release is published. For experimental builds, use the [installer guide](installation.md) and inspect the individual GitHub Actions packaging job for your operating system.
 2. **Save your existing work.** Back up recordings, scripts, projects and model data. Do not replace an existing upstream installation.
 3. **Choose storage.** The local runtime and models can require substantial disk space. Record the destination before installation.
 4. **Install the local runtime.** The first-run screen offers **Install local runtime** on supported platforms. The packaged acceptance test verifies that visiting setup or changing location alone does not install anything.
