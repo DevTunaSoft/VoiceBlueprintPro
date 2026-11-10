@@ -1879,7 +1879,9 @@
     },
     "postcard": {
       "title": "Support VoiceBlueprint-Pro development",
-      "later": "Maybe later"
+      "later": "Maybe later",
+      "lead_default": "VoiceBlueprint-Pro is local-first and open source. Optional contributions support ongoing development.",
+      "lead_tenth_dub": "Ten dubs completed. Optional contributions support ongoing development."
     }
   },
   "enterprise": {
@@ -2967,7 +2969,7 @@
   "footer_donate": {
     "aria": "A friendly note from VoiceBlueprint-Pro",
     "line_1": "That export was 100% local — no cloud, no fees. If VoiceBlueprint-Pro saves you time, a coffee keeps it alive.",
-    "line_2": "Another one finished, entirely on your machine. VoiceBlueprint-Pro is one developer plus supporters like you — a small tip goes a long way.",
+    "line_2": "Another project completed locally. VoiceBlueprint-Pro is supported by its users and contributors.",
     "line_3": "You just made that with zero API keys and zero subscriptions. If it was worth a coffee, that keeps the updates coming.",
     "line_4": "Glad that worked! VoiceBlueprint-Pro stays free and open source — and supporters are what keep it that way.",
     "kofi": "Ko-fi",
