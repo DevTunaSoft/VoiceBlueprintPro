@@ -1,6 +1,6 @@
-# VoiceBlueprint brand
+# VoiceBlueprint-Pro brand
 
-VoiceBlueprint uses a waveform-and-spark mark. The waveform identifies audio; the
+VoiceBlueprint-Pro uses a waveform-and-spark mark. The waveform identifies audio; the
 spark identifies creation. The product voice is clear, calm, and direct.
 
 ## Assets
@@ -56,7 +56,7 @@ together; do not put text inside the icon or add another enclosing ring.
 
 ## Name and copy
 
-- Product name: **VoiceBlueprint**—one word, capital V and S.
+- Product name: **VoiceBlueprint-Pro**. The public identity and installer artwork use this name.
 - Voice: concise, professional, warm, and direct.
 - Promise: local-first creation without a subscription or usage meter.
 - Avoid absolute privacy claims: network-backed engines, downloads, analytics,
