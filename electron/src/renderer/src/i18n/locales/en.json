@@ -2717,9 +2717,9 @@
     },
     "postcard": {
       "title": "Support VoiceBlueprint-Pro development",
-      "lead_default": "Glad that worked! VoiceBlueprint-Pro is free and fully local. If it saves you time, a small monthly chip-in funds the Claude Max behind it.",
+      "lead_default": "VoiceBlueprint-Pro is local-first and open source. Optional contributions support ongoing development.",
       "lead_first_clone": "Your first voice clone is done — nice! VoiceBlueprint-Pro runs entirely on your machine, and your support keeps it that way.",
-      "lead_tenth_dub": "Ten dubs in — you're clearly putting it to work. A small monthly chip-in funds the Claude Max that ships these features.",
+      "lead_tenth_dub": "Ten dubs completed. Optional contributions support ongoing development.",
       "lead_sustained": "You've been with VoiceBlueprint-Pro for a month. If it's earned a spot in your workflow, consider helping fund what's next.",
       "chip_in": "Chip in",
       "later": "Maybe later",
