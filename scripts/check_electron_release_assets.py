@@ -24,9 +24,6 @@ CHANNEL_VERSION = {
 TARGETS = {
     # electron-updater's Provider.getCustomChannelName appends an OS suffix
     # for macOS/Linux but leaves Windows channel names unchanged.
-    "darwin-arm64": ("darwin-arm64-mac", "mac", "arm64", ".zip"),
-    "darwin-x64": ("darwin-x64-mac", "mac", "x64", ".zip"),
-    "linux-x64": ("linux-x64-linux", "linux", "x64", ".AppImage"),
     "win32-x64": ("win32-x64", "win", "x64", ".exe"),
 }
 
@@ -45,7 +42,7 @@ def artifact_name(version: str, os_token: str, arch: str, extension: str) -> str
     Releases up to v0.5.7-beta.3 were `VoiceBlueprint-Electron-*`; they are built
     and verified from their own tags, so only the current name is checked here.
     """
-    return f"VoiceBlueprint-{version}-{os_token}-{arch}{extension}"
+    return f"VoiceBlueprintPro-{version}-{os_token}-{arch}{extension}"
 
 
 class ReleaseContractError(RuntimeError):
