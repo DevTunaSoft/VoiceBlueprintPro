@@ -1,20 +1,20 @@
 {
   "schemaVersion": 1,
   "identity": {
-    "productName": "VoiceBlueprint",
+    "productName": "VoiceBlueprintPro",
     "applicationId": "com.devtunasoft.voiceblueprint.desktop",
     "macAppStore": {
       "applicationId": "com.devtunasoft.voiceblueprint.pro",
       "appStoreConnectId": "6829361961"
     },
-    "publisherLegalName": "Yupcha Softwares Private Limited",
+    "publisherLegalName": "DevTunaSoft",
     "license": "AGPL-3.0-only",
     "defaultLocale": "en-US"
   },
   "listing": {
-    "title": "VoiceBlueprint",
+    "title": "VoiceBlueprintPro",
     "shortDescription": "Local voice cloning, voice design, dubbing and dictation on your computer.",
-    "description": "VoiceBlueprint is a local-first desktop studio for voice cloning, voice design, video dubbing, transcription and real-time dictation. Audio and projects remain on the user's computer by default, with no account or API key required. Models and the managed runtime are installed only through explicit setup or model-install actions.",
+    "description": "VoiceBlueprintPro is a local-first desktop studio for voice cloning, voice design, video dubbing, transcription and real-time dictation. Audio and projects remain on the user's computer by default, with no account or API key required. Models and the managed runtime are installed only through explicit setup or model-install actions.",
     "keywords": [
       "voice cloning",
       "text to speech",
@@ -34,14 +34,13 @@
     "diskGib": 10,
     "firstRunNetworkRequired": true,
     "architectures": {
-      "windows": ["x64", "arm64-experimental"],
-      "linux": ["x64"],
-      "macos": ["arm64", "x64-ui-only"]
+      "windows": [
+        "x64",
+        "arm64-experimental"
+      ]
     },
     "minimumOs": {
-      "windows": "Windows 10",
-      "macos": "macOS 13.3",
-      "linux": "Distribution supported by the selected package format"
+      "windows": "Windows 10"
     }
   },
   "permissions": {
