@@ -20,8 +20,10 @@ permissions:
 # Keep only the newest validation for each active PR or main branch head.
 # Separate merge-queue refs still validate independently.
 concurrency:
-  group: ci-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: ${{ github.event_name == 'pull_request' || (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
+  # Superseded PR revisions may cancel; every main commit needs its own CI result.
+  # This avoids cancellation starvation during a series of small main commits.
+  group: ci-${{ github.event.pull_request.number || github.sha }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 env:
   # Run all JavaScript actions on Node 24 (GH deprecates Node 20 in Sep 2026).
