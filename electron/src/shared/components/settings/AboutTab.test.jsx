@@ -31,8 +31,8 @@ describe('AboutTab — external links', () => {
 
   it('the GitHub button opens the canonical repo (derived from the shared REPO_URL constant)', () => {
     render(<AboutTab {...baseProps} />);
-    expect(screen.getByText('VoiceBlueprint-Pro')).toBeTruthy();
-    fireEvent.click(screen.getByRole('button', { name: 'VoiceBlueprint-Pro on GitHub' }));
+    expect(screen.getByText('VoiceBlueprintPro')).toBeTruthy();
+    fireEvent.click(screen.getByRole('button', { name: 'VoiceBlueprintPro on GitHub' }));
     expect(openExternal).toHaveBeenCalledWith(REPO_URL);
     // Belt-and-braces: the constant itself must point at this project, not a
     // lookalike (the original bug linked github.com/k2-fsa/OmniVoice).
