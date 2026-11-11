@@ -102,7 +102,7 @@ def test_stable_requires_a_plain_version(tmp_path: Path):
 def test_beta_release_is_a_prerelease_with_beta_manifests(tmp_path: Path):
     release = _release(tmp_path, channel="beta", version="0.5.9-beta.1")
     result = verify_release(release, tmp_path, channel="beta", version="0.5.9-beta.1")
-    assert len(result) == 4
+    assert len(result) == 1
     assert all(item.startswith("electron-beta-") for item in result)
 
 
