@@ -1,5 +1,5 @@
 {
-  "productName": "VoiceBlueprint-Pro",
+  "productName": "VoiceBlueprintPro",
   "appId": "com.devtunasoft.voiceblueprint.desktop",
   "ports": {
     "backend": 3900,
