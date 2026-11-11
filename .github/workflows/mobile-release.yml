@@ -1,8 +1,5 @@
-# Phone binaries share the desktop release tag. The reusable workflow produces
-# signed Android APK/AAB and an unsigned iOS IPA for sideloading; optional App
-# Store signing runs afterwards. Legacy mobile-v* tags still draft a prerelease.
-# Store uploads stay in android-play-internal.yml and ios-testflight.yml.
-# Secrets live in the protected mobile-release environment.
+# Android binaries share the desktop release tag. Legacy mobile-v* tags draft an Android prerelease.
+# Signing secrets are held in the protected mobile-release environment.
 
 name: mobile-release
 
@@ -23,7 +20,115 @@ on:
         description: Build Android
         type: boolean
         default: true
-      release:
+  push:
+    tags: ["mobile-v*"]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mobile-release-${{ inputs.release_ref || github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  android:
+    if: github.event_name == 'push' || inputs.release_ref != '' || inputs.android
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    environment: mobile-release
+    concurrency:
+      group: signed-android-builds
+      cancel-in-progress: false
+    defaults:
+      run:
+        working-directory: mobile/android
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          ref: ${{ inputs.release_ref || github.ref }}
+          persist-credentials: false
+
+      - name: Validate release source
+        if: inputs.release_ref != ''
+        working-directory: ${{ github.workspace }}
+        shell: bash
+        env:
+          RELEASE_REF: ${{ inputs.release_ref }}
+        run: |
+          [[ "$RELEASE_REF" =~ ^v[0-9]+\.[0-9]+\.[0-9]+(-beta\.[0-9]+)?$ ]]
+          test "$(git rev-parse HEAD)" = "$(git rev-parse "refs/tags/${RELEASE_REF}^{commit}")"
+          test "${RELEASE_REF#v}" = "$(python3 -c 'import json; print(json.load(open("package.json"))["version"])')"
+
+      - uses: actions/setup-java@c5195efecf7bdfc987ee8bae7a71cb8b11521c00 # v4.7.1
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - uses: gradle/actions/setup-gradle@42ebad84b0585498c0413b0967cf4e80ec0e1d19 # v4.4.1
+
+      - name: SDK location
+        run: printf 'sdk.dir=%s\n' "$ANDROID_HOME" > local.properties
+
+      # release_ref may check out a tag older than the installer, so it comes from the
+      # workflow's own commit, like the iOS signing tools below.
+      - name: Checkout Android SDK installer
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          repository: ${{ job.workflow_repository }}
+          ref: ${{ job.workflow_sha }}
+          path: .ci-android-tools
+          sparse-checkout: |
+            mobile/android/install-sdk-packages.sh
+          sparse-checkout-cone-mode: false
+          persist-credentials: false
+
+      - name: NDK and CMake
+        run: bash "$GITHUB_WORKSPACE/.ci-android-tools/mobile/android/install-sdk-packages.sh"
+
+      - name: Cache native runtimes
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: mobile/native/android/build
+          key: android-native-${{ hashFiles('mobile/native/pins.json', 'mobile/native/android/**', '!mobile/native/android/build/**', 'mobile/native/mp3/**', 'mobile/ios/VoiceBlueprintKit/Sources/VSNative/Lame/**', 'mobile/ios/VoiceBlueprintKit/Sources/VSNative/Mp3Encoder.c', 'mobile/ios/VoiceBlueprintKit/Sources/VSNative/include/Mp3Encoder.h') }}
+
+      - name: Decode keystore
+        env:
+          KEYSTORE: ${{ secrets.ANDROID_UPLOAD_KEYSTORE }}
+        run: |
+          test -n "$KEYSTORE" || { echo "::error::ANDROID_UPLOAD_KEYSTORE is not set in the mobile-release environment"; exit 1; }
+          umask 077
+          printf '%s' "$KEYSTORE" | base64 --decode > "$RUNNER_TEMP/release.keystore"
+
+      - name: Build signed APK and AAB
+        env:
+          VOICEBLUEPRINT_ANDROID_KEYSTORE: ${{ runner.temp }}/release.keystore
+          VOICEBLUEPRINT_ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_UPLOAD_KEYSTORE_PASSWORD }}
+          VOICEBLUEPRINT_ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_UPLOAD_KEY_ALIAS }}
+          VOICEBLUEPRINT_ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_UPLOAD_KEY_PASSWORD }}
+        run: |
+          # Shared clock and serialized builds keep codes increasing across both release workflows.
+          export VOICEBLUEPRINT_ANDROID_VERSION_CODE="$(python3 "$GITHUB_WORKSPACE/scripts/android_version_code.py")"
+          test -n "$VOICEBLUEPRINT_ANDROID_VERSION_CODE"
+          ./gradlew --no-daemon :app:assembleRelease :app:bundleRelease
+
+      - name: Collect outputs
+        run: |
+          mkdir -p "$RUNNER_TEMP/out"
+          cp app/build/outputs/apk/release/*.apk "$RUNNER_TEMP/out/VoiceBlueprint.apk"
+          cp app/build/outputs/bundle/release/*.aab "$RUNNER_TEMP/out/VoiceBlueprint.aab"
+
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: VoiceBlueprintPro-android-release
+          path: ${{ runner.temp }}/out
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Remove keystore
+        if: always()
+        run: rm -f "$RUNNER_TEMP/release.keystore"
+
+  release:
     if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/mobile-v')
     needs: [android]
     runs-on: ubuntu-24.04
