@@ -2,12 +2,12 @@
   "name": "voiceblueprint-electron",
   "version": "0.0.0-electron",
   "private": true,
-  "description": "VoiceBlueprint-Pro desktop studio for local-first AI voice production.",
+  "description": "VoiceBlueprintPro desktop studio for local-first AI voice production.",
   "homepage": "https://github.com/DevTunaSoft/VoiceBlueprintPro",
   "license": "AGPL-3.0-only",
   "author": {
     "name": "DevTunaSoft and open-source contributors",
-    "email": "https://github.com/DevTunaSoft/VoiceBlueprintPro"
+    "url": "https://github.com/DevTunaSoft/VoiceBlueprintPro"
   },
   "type": "module",
   "main": "./out/main/index.js",
