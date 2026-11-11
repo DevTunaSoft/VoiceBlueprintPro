@@ -1,5 +1,11 @@
 import { beforeEach, describe, expect, it } from 'vitest';
-import { clearFrontendLogs, getFrontendLogs, installConsoleCapture } from './consoleBuffer';
+import {
+  clearFrontendLogs,
+  formatConsoleMessage,
+  getFrontendLogs,
+  installConsoleCapture,
+  MAX_CONSOLE_MESSAGE_CHARS,
+} from './consoleBuffer';
 
 describe('consoleBuffer', () => {
   // installConsoleCapture() wraps console.* exactly once per page load (a
@@ -33,5 +39,39 @@ describe('consoleBuffer', () => {
     expect(getFrontendLogs().some((l) => l.msg.includes('some other IPC warning entirely'))).toBe(
       true,
     );
+  });
+});
+
+
+describe('strict resource limits for captured frontend logs', () => {
+  it('omits very large messages instead of retaining truncated sensitive content', () => {
+    const msg = formatConsoleMessage(['secret-key=' + 'x'.repeat(2 * 1024 * 1024)]);
+    expect(msg).toContain('Oversized console value omitted');
+    expect(msg).not.toContain('secret-key');
+    expect(msg.length).toBeLessThanOrEqual(MAX_CONSOLE_MESSAGE_CHARS);
+  });
+
+  it('limits object breadth and depth without serializing every entry', () => {
+    const huge = Array.from({ length: 100_000 }, (_, index) => index);
+    const msg = formatConsoleMessage([{ data: huge, reason: 'test' }]);
+    expect(msg).toContain('[more items omitted]');
+    expect(msg).toContain('test');
+    expect(msg.length).toBeLessThanOrEqual(MAX_CONSOLE_MESSAGE_CHARS);
+  });
+
+  it('handles cycles and hostile getters without breaking console capture', () => {
+    const obj = { kind: 'error' };
+    obj.self = obj;
+    Object.defineProperty(obj, 'failing', { enumerable: true, get() { throw Error('secret'); } });
+    const msg = formatConsoleMessage([obj]);
+    expect(msg).toContain('[Circular]');
+    expect(msg).toContain('[unreadable]');
+    expect(msg).not.toContain('secret');
+  });
+
+  it('redacts tokens and user home paths before retention', () => {
+    const msg = formatConsoleMessage(['log /home/alice/cache bearer ' + 's'.repeat(36)]);
+    expect(msg).not.toContain('alice');
+    expect(msg).not.toContain('s'.repeat(36));
   });
 });
