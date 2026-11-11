@@ -1,4 +1,3 @@
-import importlib
 import os
 import sys
 
@@ -146,9 +145,6 @@ from services.hf_auth import apply_process_token_policy as _apply_hf_token_polic
 
 _apply_hf_token_policy()
 
-# Importing it removes Electron's account-bridge capability from os.environ, so
-# engine and tool subprocesses never inherit it.
-importlib.import_module("services.cloud_account")
 
 # ── cuDNN 8 library preload ─────────────────────────────────────────────
 # Moved into _phase_a_build (`native_preload` step, early-bind refactor): the
