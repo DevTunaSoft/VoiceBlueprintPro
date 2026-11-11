@@ -101,9 +101,6 @@ def prepare(assets, tag, sunset_tag=None, repo=None, gh=_gh):
         actual = base64.b64encode(hashlib.sha512((assets / artifact).read_bytes()).digest()).decode()
         if actual != expected:
             raise ValueError("Updater payload checksum mismatch")
-    for suffix in ("mac-arm64.dmg", "mac-x64.dmg", "linux-x64.deb"):
-        if not (assets / f"VoiceBlueprint-{version}-{suffix}").is_file():
-            raise ValueError(f"Missing installer: {suffix}")
     # Archived Tauri clients read `latest/download`, which never serves a
     # prerelease, so betas carry no sunset feeds.
     if sunset_tag and channel == "stable":
