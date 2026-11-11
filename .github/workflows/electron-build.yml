@@ -74,11 +74,6 @@ jobs:
         with:
           version: '0.12.13'
           enable-cache: false
-      - name: Linux native dependencies
-        if: runner.os == 'Linux'
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libasound2-dev libxdo-dev libxtst-dev libx11-dev libxkbcommon-dev libwayland-dev libssl-dev pkg-config xvfb zsync
       - name: Bundle pinned uv for the host architecture
         run: |
           node --input-type=module <<'NODE'
@@ -118,13 +113,7 @@ jobs:
       - name: Packaged startup smoke test
         working-directory: electron
         run: |
-          if [ "$RUNNER_OS" = Linux ]; then
-            for image in release/VoiceBlueprintPro-*-linux-x64.AppImage; do
-              VOICEBLUEPRINT_PACKAGED_EXE="electron/$image" xvfb-run -a node tests/packaged-smoke.mjs --setup
-            done
-          else
-            node tests/packaged-smoke.mjs --setup
-          fi
+          node tests/packaged-smoke.mjs --setup
       - name: Install and start a fresh packaged runtime
         if: matrix.local_runtime
         working-directory: electron
@@ -132,11 +121,7 @@ jobs:
         env:
           VOICEBLUEPRINT_RUNTIME_TIMEOUT_MS: '1200000'
         run: |
-          if [ "$RUNNER_OS" = Linux ]; then
-            xvfb-run -a node tests/packaged-smoke.mjs --install
-          else
-            node tests/packaged-smoke.mjs --install
-          fi
+          node tests/packaged-smoke.mjs --install
       - name: Save installers and updater metadata for review
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
