@@ -167,3 +167,47 @@ def test_import_reports_malformed_json_and_does_not_create_files(tmp_path):
     with pytest.raises(ArchiveError, match='invalid project manifest JSON'):
         b.read_bundle(source, destination)
     assert not destination.exists()
+
+
+def test_export_rejects_oversized_asset_before_hashing_or_creating_output(tmp_path, monkeypatch):
+    oversized = tmp_path / 'oversized.wav'
+    with oversized.open('wb') as stream:
+        stream.truncate(b.MAX_MEMBER + 1)
+    output = tmp_path / 'export.vsproject'
+
+    def unexpected_digest(_path):
+        pytest.fail('oversized asset must not be read or hashed')
+
+    monkeypatch.setattr(b, 'digest', unexpected_digest)
+    with pytest.raises(ArchiveError, match='too large'):
+        b.write_bundle({}, {'assets/oversized.wav': oversized}, output)
+    assert not output.exists()
+
+
+def test_export_rejects_invalid_asset_name_before_hashing(tmp_path, monkeypatch):
+    asset = tmp_path / 'audio.wav'
+    asset.write_bytes(b'test')
+    output = tmp_path / 'export.vsproject'
+
+    def unexpected_digest(_path):
+        pytest.fail('invalid asset must not be read or hashed')
+
+    monkeypatch.setattr(b, 'digest', unexpected_digest)
+    with pytest.raises(ArchiveError, match='unsupported or duplicate'):
+        b.write_bundle({}, {'assets/audio.exe': asset}, output)
+    assert not output.exists()
+
+
+def test_export_rejects_excessive_member_count_before_hashing(tmp_path, monkeypatch):
+    asset = tmp_path / 'audio.wav'
+    asset.write_bytes(b'test')
+    files = {f'assets/a{i}.wav': asset for i in range(b.MAX_FILES)}
+    output = tmp_path / 'export.vsproject'
+
+    def unexpected_digest(_path):
+        pytest.fail('too many assets must not be read or hashed')
+
+    monkeypatch.setattr(b, 'digest', unexpected_digest)
+    with pytest.raises(ArchiveError, match='too large'):
+        b.write_bundle({}, files, output)
+    assert not output.exists()
