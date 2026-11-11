@@ -363,9 +363,8 @@ jobs:
       - name: Collect phone binaries
         run: |
           VERSION="${TAG#v}"
-          cp phone-assets/VoiceBlueprint-android-release/VoiceBlueprint.apk "release-assets/VoiceBlueprint-${VERSION}-android.apk"
-          cp phone-assets/VoiceBlueprint-android-release/VoiceBlueprint.aab "release-assets/VoiceBlueprint-${VERSION}-android.aab"
-          cp phone-assets/VoiceBlueprint-ios-unsigned/VoiceBlueprint-unsigned.ipa "release-assets/VoiceBlueprint-${VERSION}-ios-unsigned.ipa"
+          cp phone-assets/VoiceBlueprintPro-android-release/VoiceBlueprint.apk "release-assets/VoiceBlueprintPro-${VERSION}-android.apk"
+          cp phone-assets/VoiceBlueprintPro-android-release/VoiceBlueprint.aab "release-assets/VoiceBlueprintPro-${VERSION}-android.aab"
       - name: Validate all platforms before creating a release
         run: |
           python3 scripts/prepare_electron_release.py --assets release-assets --tag "$TAG" --repo "$GITHUB_REPOSITORY"
@@ -412,7 +411,7 @@ jobs:
           PRERELEASE=false
           if [ "$CHANNEL" = beta ]; then PRERELEASE=true; fi
           if ! gh release view "$TAG" >/dev/null 2>&1; then
-            gh release create "$TAG" --verify-tag --draft --prerelease="$PRERELEASE" --title "$TAG — VoiceBlueprint" --notes-file release-assets/RELEASE_NOTES.md
+            gh release create "$TAG" --verify-tag --draft --prerelease="$PRERELEASE" --title "$TAG — VoiceBlueprintPro" --notes-file release-assets/RELEASE_NOTES.md
           fi
           test "$(gh release view "$TAG" --json isDraft --jq .isDraft)" = true || { echo "Refusing to replace a published release"; exit 1; }
           gh release edit "$TAG" --prerelease="$PRERELEASE" --notes-file release-assets/RELEASE_NOTES.md
