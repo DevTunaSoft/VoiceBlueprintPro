@@ -106,6 +106,9 @@ test("packaging carries the recipe and all shared native helpers", async () => {
   const { default: config } = await import("../../electron/electron-builder.config.mjs");
   assert.ok(config.extraResources.some((item) => item.to === "scripts/windows-rocm-recipe.json"));
   assert.ok(config.extraResources.some((item) => item.to === "scripts/smoke_windows_rocm.py"));
+  assert.equal(config.productName, "VoiceBlueprintPro");
+  // Reading a macOS-only Info.plist on import broke Linux CI testing Windows packaging.
+  assert.match(config.mac.extendInfo.NSMicrophoneUsageDescription, /VoiceBlueprintPro/);
   const backend = config.extraResources.find((item) => item.to === "backend");
   assert.ok(backend.filter.includes("**/*"));
   assert.ok(

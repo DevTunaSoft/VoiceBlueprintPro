@@ -247,9 +247,9 @@ export default {
         : {}),
     notarize: notarizeMac,
     extendInfo: {
-      NSMicrophoneUsageDescription: readFileSync(resolve(here, 'build/Info.plist'), 'utf8')
-        .match(/<key>NSMicrophoneUsageDescription<\/key>\s*<string>([^<]+)<\/string>/)[1]
-        .replaceAll('__APP_PRODUCT_NAME__', PRODUCT_NAME),
+      // Static metadata: loading the Windows packaging config must not access
+      // macOS-only files that are absent from the supported build targets.
+      NSMicrophoneUsageDescription: `${PRODUCT_NAME} uses the microphone to record voice samples.`,
     },
     // The CLI matrix selects one architecture per runner and updater feed.
     target: isMacAppStore ? ['mas'] : ['dmg', 'zip'],

@@ -35,7 +35,8 @@ def test_current_version_is_in_lockstep_everywhere() -> None:
 
 
 def test_visible_brand_surfaces_say_voiceblueprint() -> None:
-    visible_files = ("electron/build/Info.plist", "electron/src/renderer/index.html")
+    # The old macOS Info.plist is not shipped; Windows/Android are supported.
+    visible_files = ("electron/src/renderer/index.html",)
     product_name = json.loads((ROOT / "config/app.json").read_text())["productName"]
     assert product_name == "VoiceBlueprintPro"
     for path in visible_files:
@@ -48,6 +49,11 @@ def test_visible_brand_surfaces_say_voiceblueprint() -> None:
     readme = (ROOT / "README.md").read_text()
     assert readme.startswith("# VoiceBlueprintPro\n")
     assert "independent DevTunaSoft project" in readme
+
+    builder = (ROOT / "electron/electron-builder.config.mjs").read_text()
+    assert "productName: PRODUCT_NAME" in builder
+    assert "NSMicrophoneUsageDescription: `\u0024{PRODUCT_NAME}" in builder
+    assert "build/Info.plist" not in builder
 
 
 def test_brand_mark_is_shared_and_fills_the_icon() -> None:
