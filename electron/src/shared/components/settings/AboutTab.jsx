@@ -86,7 +86,7 @@ export default function AboutTab({
         value={
           <span className="inline-flex items-center gap-[var(--space-2)]" translate="no">
             <VoiceBlueprintMark className="size-5 text-[var(--chrome-accent)]" />
-            VoiceBlueprint-Pro
+            VoiceBlueprintPro
           </span>
         }
       />
