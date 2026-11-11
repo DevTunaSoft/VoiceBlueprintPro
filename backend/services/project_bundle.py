@@ -180,11 +180,25 @@ def write_bundle(manifest: dict, files: dict[str, Path], output: Path) -> dict:
         raise ArchiveError(409, 'project archive already exists')
     result = copy.deepcopy(manifest); result.update(format=FORMAT, version=VERSION)
     result['assets'] = []
+    # Reject impossible exports before hashing or copying large asset files.
+    if len(files) + 1 > MAX_FILES:
+        raise ArchiveError(413, 'project archive is too large')
+    total = 0
+    seen_paths = set()
     for name, path in files.items():
         archive_path(name)
+        if (not name.startswith(('assets/', 'voices/', 'native/'))
+                or Path(name).suffix.lower() not in _ALLOWED_EXT
+                or name.lower() in seen_paths):
+            raise ArchiveError(400, 'unsupported or duplicate project asset')
+        seen_paths.add(name.lower())
         if path.is_symlink() or not path.is_file():
             raise ArchiveError(400, 'project assets must be regular local files')
-        result['assets'].append({'path': name, 'size': path.stat().st_size, 'sha256': digest(path)})
+        size = path.stat().st_size
+        total += size
+        if size > MAX_MEMBER or total > MAX_TOTAL:
+            raise ArchiveError(413, 'project archive is too large')
+        result['assets'].append({'path': name, 'size': size, 'sha256': digest(path)})
     result = validate_manifest(result)
     encoded = json.dumps(result, ensure_ascii=False, allow_nan=False, separators=(',', ':')).encode()
     if len(encoded) > MAX_MANIFEST or len(encoded)+sum(a['size'] for a in result['assets']) > MAX_TOTAL:
