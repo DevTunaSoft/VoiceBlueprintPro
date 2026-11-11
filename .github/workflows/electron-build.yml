@@ -142,7 +142,7 @@ jobs:
         working-directory: electron
         run: |
           if [ "$RUNNER_OS" = Linux ]; then
-            for image in release/VoiceBlueprint-*-linux-x64.AppImage; do
+            for image in release/VoiceBlueprintPro-*-linux-x64.AppImage; do
               VOICEBLUEPRINT_PACKAGED_EXE="electron/$image" xvfb-run -a node tests/packaged-smoke.mjs --setup
             done
           else
@@ -167,6 +167,6 @@ jobs:
           retention-days: 14
           if-no-files-found: error
           path: |
-            electron/release/VoiceBlueprint-*
+            electron/release/VoiceBlueprintPro-*
             electron/release/electron-*.yml
             electron/release/store-artifact-manifest-*.json
