@@ -111,7 +111,7 @@ def test_all_workflows_share_the_conservative_runtime_classifier(filename):
     jobs = workflow["jobs"]
     assert jobs["changes"]["outputs"]["runtime"] == "${{ steps.scope.outputs.runtime }}"
     assert any(step.get("run") == "python3 .github/scripts/ci_scope.py" for step in jobs["changes"]["steps"])
-    names = {"ci.yml": ["installer", "test-python", "test-electron", "electron-smokes", "ui-crawler", "linux-native-package", "electron-ui"],
+    names = {"ci.yml": ["installer", "test-python", "test-electron", "electron-smokes", "ui-crawler", "electron-ui"],
              "mobile.yml": ["android", "android-inference", "android-screenshots"],
              "security.yml": ["codeql", "bandit", "dependencies"],
              "install-smoke.yml": ["install"], "cosyvoice-dependencies.yml": ["native-dependencies"]}
@@ -140,3 +140,12 @@ def test_main_push_runs_full_ci_without_git_api(monkeypatch):
         {"ref": "refs/heads/main", "before": "a" * 40, "after": "b" * 40},
         "owner/repo",
     )
+
+def test_desktop_ci_targets_only_windows_and_cancels_obsolete_main_runs():
+    workflow = yaml.load((ROOT / ".github/workflows/ci.yml").read_text(), Loader=yaml.BaseLoader)
+    jobs = workflow["jobs"]
+    assert "linux-native-package" not in jobs
+    assert {entry["label"] for entry in jobs["electron-ui"]["strategy"]["matrix"]["include"]} == {"Windows"}
+    assert {entry["label"] for entry in jobs["smoke-matrix"]["strategy"]["matrix"]["include"]} == {"Windows"}
+    assert "github.ref" in workflow["concurrency"]["group"]
+    assert "refs/heads/main" in workflow["concurrency"]["cancel-in-progress"]

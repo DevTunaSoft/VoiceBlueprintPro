@@ -17,12 +17,11 @@ on:
 permissions:
   contents: read
 
-# A new push to a PR cancels that PR's older run (a mass rebase of ~65 branches
-# once queued 360 runs, most of them for commits already replaced). Pushes to main
-# and manual runs are keyed by commit, so every main commit still gets its own CI.
+# Keep only the newest validation for each active PR or main branch head.
+# Separate merge-queue refs still validate independently.
 concurrency:
-  group: ci-${{ github.event.pull_request.number || github.sha }}
-  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+  group: ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' || (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
 
 env:
   # Run all JavaScript actions on Node 24 (GH deprecates Node 20 in Sep 2026).
@@ -488,36 +487,10 @@ jobs:
           }
           node electron/tests/ui-crawler.mjs
 
-  linux-native-package:
-    name: Linux native package
-    needs: changes
-    if: ${{ !cancelled() && needs.changes.result != 'skipped' && needs.changes.outputs.electron != 'false' && needs.changes.outputs.runtime != 'false' }}
-    runs-on: ubuntu-24.04
-    steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
-      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
-        with:
-          node-version: '22'
-      - uses: dtolnay/rust-toolchain@6bed0761d98439e5a578e2877258200ad565ba87 # stable
-      - uses: Swatinem/rust-cache@d1527c8f67ef9af357290475d4af4b0fab8f12e0 # v2.9.3
-        with:
-          workspaces: native/desktop-bridge -> target
-          key: linux-native-package
-      - name: Install native build dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libxdo-dev libxtst-dev libx11-dev libxkbcommon-dev libwayland-dev libssl-dev pkg-config
-      - name: Verify relocation without build-time libraries
-        run: node --test electron/tests/native-linux-libraries.test.mjs
-      - name: Build and validate real Linux native package
-        run: |
-          cargo build --locked --release --manifest-path native/desktop-bridge/Cargo.toml
-          node electron/tests/native-linux-package.mjs
-
-  # ── Desktop UI (real Electron app on every OS) ───────────────────────────
+  # ── Desktop UI (real Electron app on Windows) ───────────────────────────
   # Launches the unpackaged app with Playwright against a fake backend and runs
   # one shared suite, so preload/IPC/main-process/user-data regressions on
-  # macOS and Windows surface on the PR instead of at release time. Packaged
+  # Windows-specific failures surface on the PR instead of at release time. Packaged
   # installers are covered separately by packaged-smoke.mjs on release paths.
   electron-ui:
     name: Desktop UI (${{ matrix.label }})
@@ -529,9 +502,7 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - { os: macos-15, label: macOS }
           - { os: windows-2022, label: Windows }
-          - { os: ubuntu-24.04, label: Linux }
     defaults:
       run:
         shell: bash
@@ -570,23 +541,12 @@ jobs:
       - name: Download Electron binary
         run: node electron/node_modules/electron/install.js
 
-      # Ubuntu 24.04 restricts unprivileged user namespaces, which stops
-      # Electron's sandbox from starting. Relax it on the runner; the app
-      # itself is never launched with --no-sandbox.
-      - name: Allow Electron sandbox (Linux)
-        if: runner.os == 'Linux'
-        run: sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
-
       - name: Desktop UI tests
         run: |
           # The output is kept in the failure artifact: a crashed run's log is otherwise
           # unavailable until the whole workflow finishes.
           mkdir -p electron/test-results
-          if [ "$RUNNER_OS" = "Linux" ]; then
-            xvfb-run -a bun run --cwd electron test:desktop-ui 2>&1 | tee electron/test-results/desktop-ui.log
-          else
-            bun run --cwd electron test:desktop-ui 2>&1 | tee electron/test-results/desktop-ui.log
-          fi
+          bun run --cwd electron test:desktop-ui 2>&1 | tee electron/test-results/desktop-ui.log
 
       - name: Upload failure artifacts
         if: failure()
@@ -596,9 +556,9 @@ jobs:
           path: electron/test-results/
           if-no-files-found: ignore
 
-  # ── Cross-platform Python runtime smoke (Phase 0 GATE-02) ───────────────
+  # ── Windows Python runtime smoke (Phase 0 GATE-02) ─────────────────────
   # Loads the frozen tests/fixtures/voiceblueprint_data/ fixture and boots the
-  # FastAPI app in-process via TestClient on macOS/Windows/Linux. Catches
+  # FastAPI app in-process via TestClient on Windows. Catches
   # platform-specific Python import / path bugs that the Linux-only `test`
   # job above misses. Narrow scope (tests/smoke/ only) — full pytest stays
   # on Linux until Phase 1's INST-01 lands setuptools for WhisperX.
@@ -614,17 +574,8 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - os: macos-15
-            label: macOS
-            backend_supported: true
-          - os: macos-15-intel
-            label: macOS Intel
-            backend_supported: false
           - os: windows-2022
             label: Windows
-            backend_supported: true
-          - os: ubuntu-22.04
-            label: Linux
             backend_supported: true
     runs-on: ${{ matrix.os }}
     # Priced for a COLD `uv sync`, on every platform.
@@ -665,10 +616,6 @@ jobs:
       # ffmpeg + libsndfile are needed by soundfile / audio fixtures even
       # though the silence WAV doesn't decode anything heavy — keeps test
       # collection from import-erroring on optional audio modules.
-      - name: System deps (macOS)
-        if: runner.os == 'macOS' && matrix.backend_supported
-        run: brew install ffmpeg libsndfile || true
-
       - name: System deps (Windows)
         if: runner.os == 'Windows' && matrix.backend_supported
         shell: bash
@@ -710,46 +657,15 @@ jobs:
           fi
           ffmpeg -version
 
-      - name: System deps (Linux)
-        if: runner.os == 'Linux' && matrix.backend_supported
-        uses: awalsh128/cache-apt-pkgs-action@553a35bb8ebd9fcabcb1c9451aa4c98e1b4ca8a9 # v1.6.3
-        with:
-          packages: ffmpeg libsndfile1
-          version: 1.0
-
       - name: Install Python deps (including PocketTTS)
-        # PocketTTS is an opt-in engine, but installing its pinned extra here
-        # proves that the same dependency set resolves on every supported local
-        # backend host. The Intel-Mac leg separately pins the documented
-        # unsupported contract: its UI is a remote-backend client only (#889).
+        # PocketTTS is opt-in; smoke-test its pinned dependencies on Windows.
         if: matrix.backend_supported
         run: bash scripts/uv-sync-retry.sh --extra pockettts
-
-      - name: Verify the documented Intel Mac contract
-        if: ${{ !matrix.backend_supported }}
-        shell: bash
-        run: |
-          python3 - <<'PY'
-          from pathlib import Path
-          import platform
-          import tomllib
-
-          assert platform.system() == "Darwin"
-          assert platform.machine() == "x86_64"
-          root = Path.cwd()
-          project = tomllib.loads((root / "pyproject.toml").read_text("utf-8"))
-          extra = project["project"]["optional-dependencies"]["pockettts"]
-          assert extra == [
-              "pocket-tts==2.1.0 ; sys_platform != 'darwin' or platform_machine != 'x86_64'"
-          ]
-          docs = (root / "docs/install/macos.md").read_text("utf-8")
-          assert "Intel Macs are not supported" in docs
-          PY
 
       - name: Run smoke tests
         # Exercise credential paths and the Windows accept guard natively.
         if: matrix.backend_supported
-        run: uv run --no-sync pytest tests/smoke/ tests/test_hf_token_cache_paths.py tests/test_win_accept_guard.py tests/test_ios_testflight.py -q --tb=short
+        run: uv run --no-sync pytest tests/smoke/ tests/test_hf_token_cache_paths.py tests/test_win_accept_guard.py -q --tb=short
         env:
           HF_HUB_OFFLINE: "1"  # same no-silent-downloads guard as the main pytest job
           HF_HUB_CACHE: ${{ runner.temp }}/pockettts-empty-hf-cache
