@@ -89,6 +89,8 @@ describe('prefKeys registry', () => {
       localStorage.setItem('omnivoice.app', '{"state":{}}');
       localStorage.setItem('omnivoice.navRailSide', 'right');
       localStorage.setItem('voiceblueprint.logs.collapsed', '1');
+      localStorage.setItem('voiceblueprint.logs.height', '250');
+      localStorage.setItem('voiceblueprint.logs.active', 'backend');
       localStorage.setItem('omnivoice.settings.category', 'storage');
       localStorage.setItem('omni_capture_live_typing', '1');
       localStorage.setItem('ov_stories_global_speed', '1.2');
@@ -103,10 +105,12 @@ describe('prefKeys registry', () => {
 
       const removed = clearLocalPreferences();
 
-      expect(removed).toHaveLength(8);
+      expect(removed).toHaveLength(10);
       expect(localStorage.getItem('omnivoice.app')).toBeNull();
       expect(localStorage.getItem('omnivoice.navRailSide')).toBeNull();
       expect(localStorage.getItem('voiceblueprint.logs.collapsed')).toBeNull();
+      expect(localStorage.getItem('voiceblueprint.logs.height')).toBeNull();
+      expect(localStorage.getItem('voiceblueprint.logs.active')).toBeNull();
       expect(localStorage.getItem('omnivoice.settings.category')).toBeNull();
       expect(localStorage.getItem('omni_capture_live_typing')).toBeNull();
       expect(localStorage.getItem('ov_stories_global_speed')).toBeNull();

@@ -21,7 +21,8 @@ const APPLICATION_STATE_KEY = 'omnivoice.app';
 
 /** Prefixes owned by UI preferences — factory reset clears every match. */
 export const PREF_KEY_PREFIXES = [
-  'omnivoice.', // zustand blob ('omnivoice.app') + navRailSide, logs.*, settings.category, donate.*, recents.*, dismissed-tip flags
+  'omnivoice.', // legacy zustand blob ('omnivoice.app') and existing UI preference keys
+  'voiceblueprint.logs.', // current logs panel height/active and pre-rename collapsed flag
   'omni_capture_', // CaptureWidget mode + live-typing
   'ov_stories_', // StoriesEditor global speed
 ];

@@ -39,6 +39,11 @@ describe('AboutTab — external links', () => {
     expect(REPO_URL).toBe('https://github.com/DevTunaSoft/VoiceBlueprintPro');
   });
 
+  it('renders independently branded About controls without a runtime exception', () => {
+    expect(() => render(<AboutTab {...baseProps} />)).not.toThrow();
+    expect(screen.getByRole('button', { name: /commercial license/i })).toBeTruthy();
+  });
+
   it('has no "Model card" link — the app is multi-engine with no single model card', () => {
     render(<AboutTab {...baseProps} />);
     expect(screen.queryByRole('button', { name: /model card/i })).toBeNull();

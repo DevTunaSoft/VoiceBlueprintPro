@@ -6,7 +6,8 @@ import {
   Download,
   Activity,
   Copy,
-  ExternalLink
+  ExternalLink,
+  Building2,
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { openExternal } from '../../api/external';
