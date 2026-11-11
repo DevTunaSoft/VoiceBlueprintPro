@@ -184,3 +184,15 @@ def test_electron_launch_preserves_an_existing_backend():
     assert scripts["dev"] == "bun run --cwd electron dev"
     assert scripts["desktop-prod:run"] == "bun run start"
     assert scripts["start"] == "bun run --cwd electron start"
+
+
+
+def test_windows_store_identity_matches_app_identity() -> None:
+    app = json.loads((ROOT / "config/app.json").read_text())
+    store = json.loads((ROOT / "store/metadata.json").read_text())
+    assert store["identity"]["productName"] == app["productName"]
+    assert store["identity"]["applicationId"] == app["appId"]
+    assert store["identity"]["publisherLegalName"] == "DevTunaSoft"
+    assert store["listing"]["title"] == app["productName"]
+    assert set(store["requirements"]["architectures"]) == {"windows"}
+    assert set(store["requirements"]["minimumOs"]) == {"windows"}

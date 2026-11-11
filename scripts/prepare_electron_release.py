@@ -83,6 +83,12 @@ def contributors_section(repo, tag, gh=_gh):
     return f"### Contributors\n\nThanks to everyone who contributed to this release: {mentions}\n"
 
 
+def _file_hash(path: Path, algorithm: str):
+    """Hash large installer artifacts using bounded memory."""
+    with path.open("rb") as stream:
+        return hashlib.file_digest(stream, algorithm)
+
+
 def prepare(assets, tag, sunset_tag=None, repo=None, gh=_gh):
     version = json.loads(Path("package.json").read_text())["version"]
     if tag != f"v{version}":
@@ -91,14 +97,14 @@ def prepare(assets, tag, sunset_tag=None, repo=None, gh=_gh):
     files = [p for p in assets.iterdir() if p.is_file()]
     release = {"tagName": tag, "isPrerelease": channel == "beta", "assets": [
         {"name": p.name, "size": p.stat().st_size,
-         "digest": "sha256:" + hashlib.sha256(p.read_bytes()).hexdigest()}
+         "digest": "sha256:" + _file_hash(p, 'sha256').hexdigest()}
         for p in files]}
     verify_release(release, assets, channel=channel, version=version)
     for manifest in assets.glob(f"electron-{channel}-*.yml"):
         text = manifest.read_text()
         artifact = re.search(r"^\s+- url:\s*(.+)$", text, re.M)[1].strip().strip("'\"")
         expected = re.search(r"^\s{4}sha512:\s*(.+)$", text, re.M)[1].strip().strip("'\"")
-        actual = base64.b64encode(hashlib.sha512((assets / artifact).read_bytes()).digest()).decode()
+        actual = base64.b64encode(_file_hash(assets / artifact, 'sha512').digest()).decode()
         if actual != expected:
             raise ValueError("Updater payload checksum mismatch")
     # Archived Tauri clients read `latest/download`, which never serves a
@@ -123,7 +129,7 @@ def prepare(assets, tag, sunset_tag=None, repo=None, gh=_gh):
             notes += "\n" + block
     (assets / "RELEASE_NOTES.md").write_text(notes)
     (assets / "SHA256SUMS.txt").write_text("\n".join(
-        f"{hashlib.sha256(p.read_bytes()).hexdigest()}  {p.name}" for p in sorted(files)
+        f"{_file_hash(p, 'sha256').hexdigest()}  {p.name}" for p in sorted(files)
         if p.name not in {"SHA256SUMS.txt", "RELEASE_NOTES.md"}) + "\n")
 
 if __name__ == "__main__":

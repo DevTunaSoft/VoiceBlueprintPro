@@ -147,3 +147,40 @@ def test_appimage_update_info_contract_matches_the_embed_script():
     assert "isBeta ? releaseTag : 'latest'" in embed
     assert "channel.startsWith('electron-beta-') ? `v${version}` : 'latest'" in contract
     assert "|latest|VoiceBlueprint-" not in contract, "contract must not hardcode latest"
+
+
+
+def test_prepare_hashes_large_artifacts_without_loading_them_into_memory(
+    release_module, monkeypatch, tmp_path
+):
+    monkeypatch.chdir(tmp_path)
+    version = "1.2.3-beta.2"
+    Path("package.json").write_text(json.dumps({"version": version}))
+    Path("CHANGELOG.md").write_text(f"## [{version}]\n\n- Memory-safe release hashing\n")
+
+    assets = tmp_path / "assets"
+    assets.mkdir()
+    installer = assets / f"VoiceBlueprintPro-{version}-win-x64.exe"
+    # A sparse installer is cheap to create but catches accidental full-file reads.
+    with installer.open("wb") as out:
+        out.truncate(8 * 1024 * 1024)
+    with installer.open("rb") as stream:
+        installer_sha512 = base64.b64encode(hashlib.file_digest(stream, "sha512").digest()).decode()
+    (assets / "electron-beta-win32-x64.yml").write_text(
+        f"files:\n  - url: {installer.name}\n    sha512: {installer_sha512}\n"
+    )
+    monkeypatch.setattr(release_module, "verify_release", lambda *args, **kwargs: [])
+
+    original_read = Path.read_bytes
+
+    def disallow_full_installer_read(self):
+        if self == installer:
+            pytest.fail("An installer must be hashed in streaming mode, not read_bytes()")
+        return original_read(self)
+
+    monkeypatch.setattr(Path, "read_bytes", disallow_full_installer_read)
+    release_module.prepare(assets, f"v{version}")
+
+    expected = f"{release_module._file_hash(installer, 'sha256').hexdigest()}  {installer.name}"
+    assert expected in (assets / "SHA256SUMS.txt").read_text()
+    assert "Memory-safe release hashing" in (assets / "RELEASE_NOTES.md").read_text()
