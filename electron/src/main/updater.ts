@@ -69,7 +69,7 @@ export async function resolveBetaFeed(
   fetcher: typeof fetch = fetch,
 ): Promise<{ url: string; channel: string }> {
   const response = await fetcher(RELEASES_API, {
-    headers: { Accept: 'application/vnd.github+json', 'User-Agent': 'VoiceBlueprint' },
+    headers: { Accept: 'application/vnd.github+json', 'User-Agent': 'VoiceBlueprintPro' },
     signal: AbortSignal.timeout(10_000),
   });
   if (!response.ok) throw new Error(`Beta update feed lookup failed (${response.status})`);
@@ -134,7 +134,7 @@ export async function resolveUpdateFeedUrl(
   const response = await fetcher(RELEASES_API, {
     headers: {
       Accept: 'application/vnd.github+json',
-      'User-Agent': 'VoiceBlueprint',
+      'User-Agent': 'VoiceBlueprintPro',
     },
     signal: AbortSignal.timeout(10_000),
   });
@@ -196,7 +196,7 @@ export async function listDesktopReleases(
   const response = await fetcher(RELEASES_API, {
     headers: {
       Accept: 'application/vnd.github+json',
-      'User-Agent': 'VoiceBlueprint',
+      'User-Agent': 'VoiceBlueprintPro',
     },
     signal: AbortSignal.timeout(10_000),
   });
