@@ -1,18 +1,26 @@
 # VoiceBlueprintPro — Beginner's User Manual
 
-**Reviewed:** November 7, 2026 · **Status:** Living fork-specific guide. Automated packaging is tested; real-user-machine acceptance is not complete.
+**Reviewed:** November 11, 2026 · **Status:** Living development guide. Windows and Android are the maintained targets; real-device acceptance remains incomplete.
 
-VoiceBlueprintPro is DevTunaSoft's independent, local-first AI voice production suite. It processes audio with supported local runtimes and installed models. Third-party acknowledgments and license notices remain available in the repository.
+VoiceBlueprintPro is DevTunaSoft's independent, local-first AI voice production suite. It processes audio with supported local runtimes and installed models. **Windows desktop and Android are the only maintained release targets.** Windows ARM64 is experimental; Linux, macOS and iOS are not supported release targets. Third-party acknowledgments and license notices remain available in the repository.
 
 ## Start here: Seven steps to start
 
-1. **Use a fork-owned build.** No stable VoiceBlueprintPro release is published. For experimental builds, use the [installer guide](installation.md) and inspect the individual GitHub Actions packaging job for your operating system.
-2. **Save your existing work.** Back up recordings, scripts, projects and model data. Do not replace an existing upstream installation.
+1. **Use a project-owned development build.** No stable VoiceBlueprintPro release is published. For experimental builds, use the [installer guide](installation.md) and inspect the individual GitHub Actions packaging job for your operating system.
+2. **Save your existing work.** Back up recordings, scripts, projects and model data. Do not overwrite other applications or their existing data.
 3. **Choose storage.** The local runtime and models can require substantial disk space. Record the destination before installation.
 4. **Install the local runtime.** The first-run screen offers **Install local runtime** on supported platforms. The packaged acceptance test verifies that visiting setup or changing location alone does not install anything.
 5. **Open Settings → Models.** Review speech, transcription and related model categories. A category tile does not prove a model has been downloaded.
 6. **Try authorized audio.** After installing a compatible licensed engine, start with a short recording or script and inspect the result. Real speech generation and hardware audio remain unverified on users' devices.
 7. **Preserve evidence of problems.** Use [Troubleshooting and recovery](troubleshooting.md) before changing runtime directories or reinstalling.
+
+## Supported platforms and resource use
+
+On **Windows**, use the desktop installation guide. On **Android**, use only Android APK/AAB artifacts from this repository's verified build workflows. Feature availability differs by platform and by installed model; a build passing CI is not proof of successful on-device inference.
+
+For lower memory use, install only the engines and models required for your task, avoid running multiple inference operations at once, and close unused workloads before starting larger models. Actual peak RAM and CPU use must be measured on the target device rather than assumed.
+
+Cloud account synchronization is **not** a verified feature; the backend no longer attempts to start the missing legacy cloud-sync service.
 
 ## Manual chapters
 
@@ -20,13 +28,13 @@ VoiceBlueprintPro is DevTunaSoft's independent, local-first AI voice production 
 | --- | --- | --- |
 | Download and run an experimental package | [Installation and first run](installation.md) | Automated CI setup tests, not real-device acceptance |
 | Understand CPU, GPU and model requirements | [Models and resources](models.md) | Settings route tested; real model inference pending |
-| Clone, synthesize, transcribe or dub | [Voice and audio workflows](workflows.md) | Preliminary inherited workflow documentation |
+| Clone, synthesize, transcribe or dub | [Voice and audio workflows](workflows.md) | Development workflow documentation; hardware verification pending |
 | Investigate startup or audio failures | [Troubleshooting and recovery](troubleshooting.md) | Source-inspected diagnostics and safe recovery guidance |
 | See exactly what passed | [Feature verification ledger](feature-verification.md) | Specific run IDs, limitations and missing acceptance |
 
 ## Visual guide and evidence
 
-The [GitHub homepage GUI gallery](../../README.md#inside-the-studio) shows existing Electron-renderer screenshots inherited by the fork. An independent **actual packaged Windows x64 Settings → Models screenshot**, 1024×728, was captured in [Actions run #42426554733](https://github.com/DevTunaSoft/VoiceBlueprintPro/actions/runs/42426554733), under `electron-rehearsal-win32-x64`. It shows a loading placeholder, not a successfully downloaded model. The artifact may expire.
+The [GitHub homepage GUI gallery](../../README.md#inside-the-studio) shows desktop renderer screenshots from this codebase. An independent **actual packaged Windows x64 Settings → Models screenshot**, 1024×728, was captured in [Actions run #42426554733](https://github.com/DevTunaSoft/VoiceBlueprintPro/actions/runs/42426554733), under `electron-rehearsal-win32-x64`. It shows a loading placeholder, not a successfully downloaded model. The artifact may expire.
 
 ## Terms and privacy
 
@@ -36,7 +44,7 @@ Keep private recordings and diagnostic exports confidential. Confirm model-speci
 
 ## Support and status
 
-GitHub Issues and Discussions are **currently disabled** for this fork, so inherited bug-report buttons may lead to non-working destinations. Preserve diagnostic bundles for a verified maintainer channel; submit source fixes through [pull requests](https://github.com/DevTunaSoft/VoiceBlueprintPro/pulls). Vulnerabilities require the [private security reporting policy](../../.github/SECURITY.md).
+GitHub Issues and Discussions are **currently disabled** for this project, so inherited bug-report buttons may lead to non-working destinations. Preserve diagnostic bundles for a verified maintainer channel; submit source fixes through [pull requests](https://github.com/DevTunaSoft/VoiceBlueprintPro/pulls). Vulnerabilities require the [private security reporting policy](../../.github/SECURITY.md).
 
 Every changed feature must update this manual and the [documentation quality standard](DOCUMENTATION_STANDARD.md) with reproducible evidence. No invented UI controls, performance claims or fake screenshots.
 
