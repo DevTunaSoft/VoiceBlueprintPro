@@ -75,3 +75,12 @@ describe('strict resource limits for captured frontend logs', () => {
     expect(msg).not.toContain('s'.repeat(36));
   });
 });
+
+
+it('retains readable Error stacks without retaining huge Error payloads', () => {
+  const normal = formatConsoleMessage([new Error('example failure')]);
+  expect(normal).toMatch(/^Error: example failure/);
+  expect(normal.startsWith('"')).toBe(false);
+  const huge = new Error('x'.repeat(30_000));
+  expect(formatConsoleMessage([huge])).toContain('Oversized console value omitted');
+});

@@ -38,7 +38,8 @@ function preview(value, state, depth = 0) {
     if (value.length > MAX_FIELDS) output.push('[more items omitted]');
     return output;
   }
-  const output = {};
+  // Null-prototype summaries avoid special key side effects (e.g. __proto__).
+  const output = Object.create(null);
   let count = 0;
   for (const key in value) {
     if (!Object.prototype.hasOwnProperty.call(value, key)) continue;
@@ -59,11 +60,18 @@ export function formatConsoleMessage(args) {
   for (let i = 0; i < Math.min(args.length, MAX_FIELDS); i++) {
     try {
       const value = args[i];
-      rendered.push(
-        typeof value === 'string'
-          ? value.length > MAX_CONSOLE_MESSAGE_CHARS ? OVERSIZED : value
-          : JSON.stringify(preview(value, state)) ?? '[unprintable]',
-      );
+      if (value instanceof Error) {
+        // Preserve readable stack lines for diagnoses; JSON-quoting an Error
+        // escapes every newline and makes the frontend log difficult to use.
+        const detail = value.stack || `${value.name}: ${value.message}`;
+        rendered.push(detail.length > MAX_CONSOLE_MESSAGE_CHARS ? OVERSIZED : detail);
+      } else {
+        rendered.push(
+          typeof value === 'string'
+            ? value.length > MAX_CONSOLE_MESSAGE_CHARS ? OVERSIZED : value
+            : JSON.stringify(preview(value, state)) ?? '[unprintable]',
+        );
+      }
     } catch {
       rendered.push('[unprintable]');
     }
