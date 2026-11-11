@@ -52,7 +52,7 @@ def test_visible_brand_surfaces_say_voiceblueprint() -> None:
 
     builder = (ROOT / "electron/electron-builder.config.mjs").read_text()
     assert "productName: PRODUCT_NAME" in builder
-    assert "NSMicrophoneUsageDescription: `\u0024{PRODUCT_NAME}" in builder
+    assert "NSMicrophoneUsageDescription: `${PRODUCT_NAME}" in builder
     assert "build/Info.plist" not in builder
 
 
