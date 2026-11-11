@@ -1,6 +1,6 @@
-# VoiceBlueprint-Pro brand
+# VoiceBlueprintPro brand
 
-VoiceBlueprint-Pro uses a waveform-and-spark mark. The waveform identifies audio; the
+VoiceBlueprintPro uses a waveform-and-spark mark. The waveform identifies audio; the
 spark identifies creation. The product voice is clear, calm, and direct.
 
 ## Assets
@@ -56,7 +56,7 @@ together; do not put text inside the icon or add another enclosing ring.
 
 ## Name and copy
 
-- Product name: **VoiceBlueprint-Pro**. The public identity and installer artwork use this name.
+- Product name: **VoiceBlueprintPro**. The public identity and installer artwork use this name.
 - Voice: concise, professional, warm, and direct.
 - Promise: local-first creation without a subscription or usage meter.
 - Avoid absolute privacy claims: network-backed engines, downloads, analytics,
@@ -70,7 +70,7 @@ The rebrand must not break existing installations. Keep these identifiers until
 a separately tested migration exists:
 
 - `omnivoice` Python imports and package name
-- `voiceblueprint-pro` binary/package, Docker Hub path, and legacy GHCR alias
+- `voiceblueprintpro` binary/package, Docker Hub path, and legacy GHCR alias
 - `VOICEBLUEPRINT_*` environment variables and `X-VoiceBlueprint-*` API headers
 - existing OmniVoice data/cache directories and uninstall aliases
 - upstream repositories, model IDs, classes, and engine IDs
