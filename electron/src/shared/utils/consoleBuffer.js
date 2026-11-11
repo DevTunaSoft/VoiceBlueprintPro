@@ -125,7 +125,9 @@ export function installConsoleCapture() {
 }
 
 export function getFrontendLogs() {
-  return buf.slice();
+  // Copy the bounded records as well as the array so consumers cannot mutate
+  // retained diagnostics. No persistent second buffer is allocated.
+  return buf.map((entry) => ({ ...entry }));
 }
 
 export function clearFrontendLogs() {
