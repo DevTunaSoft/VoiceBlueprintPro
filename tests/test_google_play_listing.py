@@ -13,6 +13,7 @@ LISTING = json.loads((ROOT / "store/google-play/listing.json").read_text())
 def test_text_fits_play_limits():
     text = LISTING["listing"]
     assert 0 < len(text["title"]) <= 30
+    assert text["title"].startswith("VoiceBlueprintPro")
     assert 0 < len(text["shortDescription"]) <= 80
     assert 0 < len("\n".join(text["fullDescription"])) <= 4000
 
