@@ -24,7 +24,8 @@ describe('bounded child log decoder', () => {
     const reader = createBoundedLogLineReader(emit);
     reader.write(line);
     reader.finish();
-    expect(emit).toHaveBeenCalledExactlyOnceWith(line);
+    expect(emit).toHaveBeenCalledTimes(1);
+    expect(emit).toHaveBeenCalledWith(line);
   });
 
   it('drops oversized lines entirely, then recovers for later lines', () => {
