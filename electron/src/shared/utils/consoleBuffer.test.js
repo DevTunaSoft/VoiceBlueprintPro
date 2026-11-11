@@ -101,6 +101,8 @@ describe('bounded console ring regression', () => {
     console.debug('snapshot-entry');
     const snapshot = getFrontendLogs();
     snapshot.push({ t: 0, level: 'error', msg: 'injected' });
+    snapshot[0].msg = 'mutated existing entry';
     expect(getFrontendLogs().some((entry) => entry.msg === 'injected')).toBe(false);
+    expect(getFrontendLogs()[0].msg).toBe('snapshot-entry');
   });
 });
