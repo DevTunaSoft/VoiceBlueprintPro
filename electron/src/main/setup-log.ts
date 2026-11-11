@@ -5,6 +5,8 @@ import { scrubText } from '../shared/utils/scrub';
 
 const MAX_CHARS = 256 * 1024;
 const HEAD_CHARS = 32 * 1024;
+const MAX_ENTRY_CHARS = 8192;
+const OVERSIZED_ENTRY = '[Oversized setup log entry omitted to limit memory]';
 
 /** Keep URL credentials and signed query strings out of locally shareable logs. */
 export function scrubSetupText(value: string): string {
@@ -35,14 +37,20 @@ function bounded(text: string): string {
 export class SetupLog {
   private text = '';
   private loaded = false;
-  private queued: string[] = [];
+  // Bounded even while a slow disk write is in progress.
+  private queuedText = '';
   private writing: Promise<void> | null = null;
   private persistenceFailed = false;
 
   constructor(private readonly path: string) {}
 
   append(message: string, now = new Date()): void {
-    this.queued.push(`${now.toISOString()} ${scrubSetupText(message).slice(0, 8192)}\n`);
+    // A pre-scrub cap avoids processing unbounded subprocess output. Never
+    // expose a truncated credential whose prefix the redactor cannot identify.
+    const safe = message.length > MAX_ENTRY_CHARS
+      ? OVERSIZED_ENTRY
+      : scrubSetupText(message).slice(0, MAX_ENTRY_CHARS);
+    this.queuedText = bounded(this.queuedText + `${now.toISOString()} ${safe}\n`);
     this.flush();
   }
 
@@ -80,8 +88,10 @@ export class SetupLog {
           /* First install, or unavailable log directory. */
         }
       }
-      while (this.queued.length) {
-        this.text = bounded(this.text + this.queued.splice(0).join(''));
+      while (this.queuedText.length) {
+        const pending = this.queuedText;
+        this.queuedText = '';
+        this.text = bounded(this.text + pending);
         try {
           await mkdir(dirname(this.path), { recursive: true });
           const { replaceFile } = await import('./replace-file');

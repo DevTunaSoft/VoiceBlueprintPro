@@ -93,3 +93,48 @@ it('ignores oversized retained files and flushes queued final entries without an
   expect(saved).toContain('Application closing during setup');
   expect(saved).not.toContain('Unrelated');
 });
+
+
+it('bounds pending setup logs while persistence is blocked', async () => {
+  const path = join(await fixture(), 'setup.log');
+  await writeFile(path, 'Original context');
+  const realOpen = fs.open;
+  let unblock!: () => void;
+  const blocked = new Promise<void>((resolve) => { unblock = resolve; });
+  const opened = vi.spyOn(fs, 'open').mockImplementationOnce(async (...args) => {
+    await blocked;
+    return realOpen(...args);
+  });
+  const log = new SetupLog(path);
+  log.append('Install began');
+  expect(opened).toHaveBeenCalled();
+
+  try {
+    for (let i = 0; i < 400; i++) log.append('x'.repeat(4096));
+    log.append('Latest failure after stalled persistence');
+    // Awaiting an actual disk open must not allow 400 queued strings to grow
+    // without bound. The live ring preserves the beginning and latest tail.
+    const queued = (log as unknown as { queuedText: string }).queuedText;
+    expect(queued.length).toBeLessThanOrEqual(256 * 1024);
+    expect(queued).toContain('Latest failure after stalled persistence');
+    expect(queued).toContain('omitted');
+  } finally {
+    unblock();
+    await log.flush();
+  }
+
+  const saved = await readFile(path, 'utf8');
+  expect(saved).toContain('Original context');
+  expect(saved).toContain('Latest failure after stalled persistence');
+  expect(saved.length).toBeLessThanOrEqual(256 * 1024);
+});
+
+it('omits huge setup log entries before scrubbing or duplicating their contents', async () => {
+  const log = new SetupLog(join(await fixture(), 'setup.log'));
+  log.append('SECRET_VALUE'.repeat(2_000));
+  log.append('Installation recovered');
+  const exported = await log.read();
+  expect(exported).toContain('Oversized setup log entry omitted');
+  expect(exported).not.toContain('SECRET_VALUE');
+  expect(exported).toContain('Installation recovered');
+});

@@ -1,6 +1,6 @@
 # Troubleshooting and recovery
 
-**Reviewed:** November 7, 2026. **Status:** Practical safe diagnostics; target-hardware fixes and migration recovery remain unverified.
+**Reviewed:** November 11, 2026. **Status:** Practical safe diagnostics for Windows desktop and Android; target-hardware fixes and migration recovery remain unverified.
 
 ## App stuck during startup
 
@@ -14,7 +14,7 @@
 
 1. Check **Settings → Models** for available engine categories and readiness; a tile by itself is not a complete model download.
 2. Record model ID, storage, RAM/VRAM, the CPU/GPU runtime choice and any backend error.
-3. For silence, confirm whether the app produced an output file, then check Windows/macOS/Linux output routing and system mute state.
+3. For silence, confirm whether the app produced an output file, then check Windows output routing and system mute state.
 4. Try a short non-sensitive test project if it is safe; avoid repeatedly submitting long jobs or deleting user data.
 5. Keep copied logs private until you have reviewed them for credentials and personal information.
 
@@ -23,6 +23,8 @@
 The inherited **Settings → About** source includes **Run self-check**, **Save Diagnostic Bundle** and **Copy Diagnostics** actions. These controls are source-inspected; full platform support must still be verified. Include precise reproduction steps and non-sensitive error messages; sanitize home paths, voice content and tokens before sharing.
 
 GitHub Issues and Discussions are **disabled** for this fork. Do not rely on existing app buttons that navigate to dead Issues URLs. Code fixes may be submitted through [pull requests](https://github.com/DevTunaSoft/VoiceBlueprintPro/pulls); vulnerabilities belong in the [private security reporting workflow](../../.github/SECURITY.md).
+
+The Windows desktop backend and setup logs have bounded in-memory history. If a backend or setup tool emits a single oversized log line, its contents are omitted with an explicit diagnostic marker. During excessive logging, older entries may also be dropped to preserve resource limits. Keep original crash files and diagnostic exports when available; do not assume an omitted line means that no error occurred.
 
 ## Evidence and release caveats
 
