@@ -232,6 +232,11 @@ def read_bundle(source: Path, destination: Path) -> tuple[dict, dict[str, Path]]
                 def bad_constant(value):
                     raise ValueError(value)
                 manifest = validate_manifest(json.loads(archive.read(info), parse_constant=bad_constant))
+            except ArchiveError:
+                # Validation already identified the precise security/format
+                # problem. ArchiveError derives from ValueError, so catch it
+                # first rather than incorrectly reporting malformed JSON.
+                raise
             except (ValueError, RecursionError, UnicodeDecodeError) as exc:
                 raise ArchiveError(400, 'invalid project manifest JSON') from exc
             expected = {'manifest.json'} | {a['path'] for a in manifest['assets']}

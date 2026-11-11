@@ -146,3 +146,24 @@ def test_duplicate_desktop_identities_are_rejected_before_unchanged_snapshot_imp
     manifest['document']['desktop']['draft'][collection] = [{'id':'same'},{'id':'same'}]
     with pytest.raises(ArchiveError): b.validate_manifest(manifest)
     with pytest.raises(ArchiveError): b.manuscript_document(manifest['document']['desktop'])
+
+
+
+def test_import_reports_unsupported_format_without_masking_it_as_json(tmp_path):
+    source = tmp_path / 'unsupported.vsproject'
+    with zipfile.ZipFile(source, 'w', compression=zipfile.ZIP_STORED) as archive:
+        archive.writestr('manifest.json', json.dumps({'format': 'unsupported', 'version': 1}))
+    destination = tmp_path / 'output'
+    with pytest.raises(ArchiveError, match='unsupported project archive version'):
+        b.read_bundle(source, destination)
+    assert not destination.exists()
+
+
+def test_import_reports_malformed_json_and_does_not_create_files(tmp_path):
+    source = tmp_path / 'malformed.vsproject'
+    with zipfile.ZipFile(source, 'w', compression=zipfile.ZIP_STORED) as archive:
+        archive.writestr('manifest.json', b'{broken')
+    destination = tmp_path / 'output'
+    with pytest.raises(ArchiveError, match='invalid project manifest JSON'):
+        b.read_bundle(source, destination)
+    assert not destination.exists()
