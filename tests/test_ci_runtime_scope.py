@@ -112,7 +112,7 @@ def test_all_workflows_share_the_conservative_runtime_classifier(filename):
     assert jobs["changes"]["outputs"]["runtime"] == "${{ steps.scope.outputs.runtime }}"
     assert any(step.get("run") == "python3 .github/scripts/ci_scope.py" for step in jobs["changes"]["steps"])
     names = {"ci.yml": ["installer", "test-python", "test-electron", "electron-smokes", "ui-crawler", "linux-native-package", "electron-ui"],
-             "mobile.yml": ["android", "ios", "ios-inference", "android-inference", "android-screenshots"],
+             "mobile.yml": ["android", "android-inference", "android-screenshots"],
              "security.yml": ["codeql", "bandit", "dependencies"],
              "install-smoke.yml": ["install"], "cosyvoice-dependencies.yml": ["native-dependencies"]}
     for name in names[filename]:
@@ -127,3 +127,16 @@ def test_backend_smokes_run_after_success_despite_a_skipped_internal_approval():
     # the skipped approve-external ancestor through an otherwise successful job.
     assert "!cancelled()" in smoke.get("if", "")
     assert "needs.test-python.result == 'success'" in smoke["if"]
+
+def test_main_push_runs_full_ci_without_git_api(monkeypatch):
+    monkeypatch.setenv("VOICEBLUEPRINT_FORCE_MAIN_CI", "1")
+
+    def unexpected_api_call(*_args, **_kwargs):
+        raise AssertionError("main CI must not depend on GitHub compare API")
+
+    monkeypatch.setattr(scope.subprocess, "run", unexpected_api_call)
+    assert scope.detect(
+        "push",
+        {"ref": "refs/heads/main", "before": "a" * 40, "after": "b" * 40},
+        "owner/repo",
+    )

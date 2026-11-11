@@ -4,9 +4,9 @@
 
 VoiceBlueprintPro is DevTunaSoft's independent, open-source, local-first AI voice production studio for voice cloning, speech generation, dubbing, transcription and audiobook workflows.
 
-[Features](#what-voiceblueprintpro-is) · [Get a development build](#try-a-development-build) · [How to use](#how-to-use-the-app) · [Beginner manual](docs/user-guide/README.md) · [Developer setup](#build-and-test-from-source) · [Documentation](docs/README.md) · [Roadmap](https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/engineering/modernization-foundation/docs/roadmap/CONSOLIDATED_CAPABILITY_PROGRAM.md) · [Build status](https://github.com/DevTunaSoft/VoiceBlueprintPro/actions) · [Releases](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases) · [Credits](#open-source-credits-and-licensing)
+[Features](#what-voiceblueprintpro-is) · [Get a development build](#try-a-development-build) · [How to use](#how-to-use-the-app) · [Beginner manual](docs/user-guide/README.md) · [Developer setup](#build-and-test-from-source) · [Documentation](docs/README.md) · [Roadmap](#our-direction) · [Build status](https://github.com/DevTunaSoft/VoiceBlueprintPro/actions) · [Releases](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases) · [Credits](#open-source-credits-and-licensing)
 
-[![Development CI](https://github.com/DevTunaSoft/VoiceBlueprintPro/actions/workflows/ci.yml/badge.svg?branch=engineering%2Fmodernization-foundation)](https://github.com/DevTunaSoft/VoiceBlueprintPro/actions/workflows/ci.yml) [![AGPL-3.0](https://img.shields.io/badge/license-AGPL--3.0-blue)](LICENSE)
+[![Development CI](https://github.com/DevTunaSoft/VoiceBlueprintPro/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/DevTunaSoft/VoiceBlueprintPro/actions/workflows/ci.yml) [![AGPL-3.0](https://img.shields.io/badge/license-AGPL--3.0-blue)](LICENSE)
 
 <p align="center">
   <img src="docs/media/electron/overview.webp" width="880" alt="VoiceBlueprintPro desktop workspace preview" />
@@ -15,7 +15,7 @@ VoiceBlueprintPro is DevTunaSoft's independent, open-source, local-first AI voic
 </p>
 
 > [!IMPORTANT]
-> **Actively in development; no official VoiceBlueprintPro release is published yet.** Windows x64 and experimental Windows ARM64 packaging have passed automated acceptance, but real-hardware production acceptance remains outstanding. See [releases](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases) and [live GitHub Actions](https://github.com/DevTunaSoft/VoiceBlueprintPro/actions). Use builds and releases from this repository; external downloads are not official VoiceBlueprintPro distributions.
+> **Actively in development; no official VoiceBlueprintPro release is published yet.** Supported release targets are **Windows desktop (x64; ARM64 experimental) and Android**. macOS, Linux and iOS are not maintained release targets. Windows x64 and experimental Windows ARM64 packaging have passed automated acceptance, but real-hardware production acceptance remains outstanding. See [releases](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases) and [live GitHub Actions](https://github.com/DevTunaSoft/VoiceBlueprintPro/actions). Use builds and releases from this repository; external downloads are not official VoiceBlueprintPro distributions.
 
 ## What VoiceBlueprintPro is
 
@@ -73,15 +73,15 @@ Our mission is to deliver reliable, efficient and accessible voice production wi
 | **Professional production** | Better audiobook, dubbing, editing, voice-directing and export workflows |
 | **Automation** | Integrated production pipelines, reusable recipes, actionable diagnostics and accessible controls |
 | **Trust and openness** | Consent-aware voice use, local-first processing, clear licensing, third-party credit and reproducible builds |
-| **Engineering quality** | Fuzzing, fault injection, cross-platform regression tests, real-audio verification and honest release gates |
+| **Engineering quality** | Fuzzing, fault injection, Windows/Android regression tests, real-audio verification and honest release gates |
 
-**Planned does not mean implemented.** See the [consolidated capability program](https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/engineering/modernization-foundation/docs/roadmap/CONSOLIDATED_CAPABILITY_PROGRAM.md) for the complete backlog and verification standards.
+**Planned does not mean implemented.** See the [consolidated capability program](#our-direction) for the complete backlog and verification standards.
 
 ## Development progress
 
 We are strengthening the desktop application through code review, regression coverage, security hardening, fault injection, packaging tests and documentation.
 
-- The [engineering branch](https://github.com/DevTunaSoft/VoiceBlueprintPro/tree/engineering/modernization-foundation) contains additional engineering work: runtime stability improvements, queue-recovery fixes, Electron IPC checks, test contracts and ongoing quality improvements.
+- Active engineering changes are committed to `main`, including runtime stability improvements, test contracts and security hardening. CI may still contain legacy platform checks while the Windows/Android scope is being finalized.
 - On November 7, 2026, [packaging run #42420264814](https://github.com/DevTunaSoft/VoiceBlueprintPro/actions/runs/42420264814) passed all five packaging jobs: **Windows x64, Windows ARM64, Linux x64, macOS Apple Silicon and macOS Intel**. The three supported voice-runtime dependency builds also passed. The Windows jobs exercised packaged startup and isolated local-runtime installation.
 - [Full development CI #42420294120](https://github.com/DevTunaSoft/VoiceBlueprintPro/actions/runs/42420294120) passed on commit `ee379096`: Electron, Python, desktop UI, UI crawlers, renderer tests, installer contracts and platform smoke checks.
 - **Windows ARM64 remains experimental** despite that passing CI run; it uses emulated x64 Python 3.11 and CPU inference, and has not yet been validated on representative physical ARM64 devices.
@@ -134,12 +134,11 @@ For a guided walkthrough, use the [VoiceBlueprintPro beginner's manual](docs/use
 
 This repository retains established compatibility identifiers and development tooling. These commands are **developer workflows**, not a claim that an independently packaged VoiceBlueprintPro installer is available.
 
-**Prerequisites:** Git, Bun 1.4.2, a supported Python runtime and the platform-specific build tools described in the [development documentation](docs/README.md). The modernization work currently lives on its own branch.
+**Prerequisites:** Git, Bun 1.4.2, a supported Python runtime and the platform-specific build tools described in the [development documentation](docs/README.md). Active development and the current codebase are on `main`.
 
 ```sh
 git clone https://github.com/DevTunaSoft/VoiceBlueprintPro.git
 cd VoiceBlueprintPro
-git switch engineering/modernization-foundation
 bun install
 bun run typecheck
 bun run lint
@@ -147,7 +146,7 @@ bun run test
 bun run build
 ```
 
-For Python tests, use the repository's existing `uv` environment and test instructions. See [CI](.github/workflows/ci.yml) for the full cross-platform verification matrix. Not all native, GPU or installer tests can run on every development machine.
+For Python tests, use the repository's existing `uv` environment and test instructions. See [CI](.github/workflows/ci.yml) for the current verification jobs. Not all native, GPU or installer tests can run on every development machine.
 
 ## No duplicate implementations
 
@@ -168,7 +167,7 @@ We welcome fixes, tests, documentation, accessibility improvements, and new idea
 - [Submit a reproducible fix or enhancement as a pull request](https://github.com/DevTunaSoft/VoiceBlueprintPro/pulls)
 - [Review development changes](https://github.com/DevTunaSoft/VoiceBlueprintPro/pulls)
 - [Contribution review standards](.github/pull_request_template.md)
-- [Development roadmap](https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/engineering/modernization-foundation/docs/roadmap/MODERNIZATION_PROGRAM.md)
+- [Development roadmap](#our-direction)
 
 **Issues and Discussions are currently disabled.** Follow the [security policy](.github/SECURITY.md) to report vulnerabilities privately rather than disclosing exploitable details.
 

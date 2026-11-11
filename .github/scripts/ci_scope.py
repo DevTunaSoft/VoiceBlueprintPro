@@ -44,6 +44,10 @@ def runtime_needed(files: list[dict], limit: int) -> bool:
 
 
 def detect(event_name: str, event: dict, repo: str) -> bool:
+    # On main, a green CI run must never mean all tests were skipped.
+    if (event_name == "push" and event.get("ref") == "refs/heads/main"
+            and os.environ.get("VOICEBLUEPRINT_FORCE_MAIN_CI") == "1"):
+        return True
     if event_name == "pull_request":
         endpoint = f"repos/{repo}/pulls/{int(event['number'])}/files"
         args, limit = ["--paginate", "--slurp"], 3000

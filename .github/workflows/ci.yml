@@ -73,6 +73,7 @@ jobs:
       - id: scope
         env:
           GH_TOKEN: ${{ github.token }}
+          VOICEBLUEPRINT_FORCE_MAIN_CI: "1"
         run: python3 .github/scripts/ci_scope.py
       - id: detect
         shell: bash
