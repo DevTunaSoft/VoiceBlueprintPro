@@ -37,7 +37,7 @@ def test_current_version_is_in_lockstep_everywhere() -> None:
 def test_visible_brand_surfaces_say_voiceblueprint() -> None:
     visible_files = ("electron/build/Info.plist", "electron/src/renderer/index.html")
     product_name = json.loads((ROOT / "config/app.json").read_text())["productName"]
-    assert product_name == "VoiceBlueprint-Pro"
+    assert product_name == "VoiceBlueprintPro"
     for path in visible_files:
         text = (ROOT / path).read_text()
         assert "__APP_PRODUCT_NAME__" in text, path
@@ -46,7 +46,7 @@ def test_visible_brand_surfaces_say_voiceblueprint() -> None:
         assert "OmniVoice Gallery" not in text, path
 
     readme = (ROOT / "README.md").read_text()
-    assert readme.startswith("# VoiceBlueprint-Pro\n")
+    assert readme.startswith("# VoiceBlueprintPro\n")
     assert "independent DevTunaSoft project" in readme
 
 
@@ -147,7 +147,7 @@ def test_engine_help_names_the_app_not_the_upstream_model() -> None:
 
 def test_compatibility_identifiers_stay_stable() -> None:
     package = json.loads((ROOT / "package.json").read_text())
-    assert package["name"] == "voiceblueprint-pro-monorepo"
+    assert package["name"] == "voiceblueprintpro-monorepo"
     assert 'name = "omnivoice"' in (ROOT / "pyproject.toml").read_text()
     app_config = json.loads((ROOT / "config/app.json").read_text())
     assert app_config["appId"] == "com.devtunasoft.voiceblueprint.desktop"
