@@ -80,7 +80,7 @@ it('shows the Codex TOML export and one heading per panel', () => {
     '~/.codex/config.toml',
   );
   expect(screen.getByRole('heading', { name: 'Set up Codex CLI' })).toBeInTheDocument();
-  expect(screen.getByText('Works with VoiceBlueprint')).toBeInTheDocument();
+  expect(screen.getByText('Works with VoiceBlueprintPro')).toBeInTheDocument();
   expect(screen.queryByRole('heading', { name: 'Details' })).toBeNull();
 });
 
@@ -88,7 +88,7 @@ it('does not expose detail pages for entries without completed wiring', () => {
   route.slug = 'zapier';
   render(<IntegrationDetailPage />);
   expect(screen.queryByRole('button', { name: 'Copy' })).toBeNull();
-  expect(screen.queryByText('Works with VoiceBlueprint')).toBeNull();
+  expect(screen.queryByText('Works with VoiceBlueprintPro')).toBeNull();
   expect(screen.getByText('No matches')).toBeInTheDocument();
 });
 
@@ -107,7 +107,7 @@ it('shows the OpenAI Agents snippet for the live backend', async () => {
   Object.defineProperty(navigator, 'clipboard', { value: { writeText: copy }, configurable: true });
   render(<IntegrationDetailPage />);
   expect(screen.getByText(/Point the OpenAI Agents SDK voice pipeline/)).toBeInTheDocument();
-  expect(screen.getByText('Works with VoiceBlueprint')).toBeInTheDocument();
+  expect(screen.getByText('Works with VoiceBlueprintPro')).toBeInTheDocument();
   expect(screen.getByText('Local language model')).toBeInTheDocument();
   fireEvent.click(screen.getByRole('button', { name: 'Copy' }));
   await waitFor(() => expect(copy).toHaveBeenCalledTimes(1));
@@ -120,7 +120,7 @@ it('renders Twilio from the registry as a working connector with its setup panel
   render(<IntegrationDetailPage />);
   expect(screen.getByRole('heading', { name: 'Twilio', level: 2 })).toBeInTheDocument();
   expect(screen.getByText('Twilio phone setup panel')).toBeInTheDocument();
-  expect(screen.getByText('Works with VoiceBlueprint')).toBeInTheDocument();
+  expect(screen.getByText('Works with VoiceBlueprintPro')).toBeInTheDocument();
   expect(screen.getByText('Phone calls')).toBeInTheDocument();
   expect(screen.queryByText(/Directory examples only/)).toBeNull();
   expect(screen.queryByText(/Setup is unavailable/)).toBeNull();

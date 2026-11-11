@@ -307,7 +307,7 @@ it('explains unsupported Windows proxy bypass rules before retrying setup', () =
   );
   expect(screen.getByText(i18n.t('backend.proxy_bypass_help'))).toBeVisible();
   expect(i18n.t('backend.proxy_bypass_help')).toMatch(
-    /quit VoiceBlueprint.*launch VoiceBlueprint from that terminal/,
+    /quit VoiceBlueprintPro.*launch VoiceBlueprintPro from that terminal/,
   );
 });
 

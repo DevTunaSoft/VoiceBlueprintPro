@@ -35,7 +35,7 @@ it('previews the official website only when the title is clicked', () => {
   browser.open.mockClear();
   render(<HomePage />);
   const title = screen.getByRole('link', { name: 'homeUi.title' });
-  expect(en.homeUi.title).toBe('VoiceBlueprint.sh Open Source');
+  expect(en.homeUi.title).toBe('VoiceBlueprintPro Open Source');
   expect(title).toHaveAttribute('href', 'https://github.com/DevTunaSoft/VoiceBlueprintPro');
   fireEvent.mouseEnter(title);
   expect(browser.open).not.toHaveBeenCalled();
