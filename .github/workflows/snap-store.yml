@@ -5,8 +5,6 @@ name: Snap Store package
 # runbook's install, refresh and rollback checks. Store credentials exist only
 # in the `snap-store` environment used by the upload and promote jobs.
 on:
-  push:
-    tags: ['v*']
   workflow_dispatch:
     inputs:
       upload:

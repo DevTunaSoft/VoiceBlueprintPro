@@ -1,4 +1,4 @@
-# Publish Docker images to GitHub Container Registry (GHCR).
+# Archived Docker image workflow: manual invocation only. Windows and Android are the maintained release targets.
 #
 # Triggers:
 #   - GitHub Release published (`v*` tag, e.g. `v0.3.0`) → :0.3.0, :0.3, :stable, :sha-
@@ -58,35 +58,6 @@
 name: Docker (GHCR)
 
 on:
-  push:
-    branches: [main]
-    # A merge that only touches these cannot change what the image contains, so it
-    # does not rebuild the GPU images. Docker Hub overview text has a separate
-    # lightweight publishing workflow; Markdown and tests skip image rebuilds.
-    # Release/manual runs are unaffected.
-    paths-ignore:
-      - "**/*.md"
-      - "**/*.mdx"
-      - "**/*.rst"
-      - "**/*.adoc"
-      - "tests/**"
-      - "test/**"
-      - "**/tests/**"
-      - "**/test/**"
-      - "**/__tests__/**"
-      - "**/*.test.*"
-      - "**/*.spec.*"
-      - "**/test_*.py"
-      - "**/*_test.py"
-      - "**/conftest.py"
-      - "docs/**"
-      - "mobile/**"
-      - "changelog.d/**"
-      - "CHANGELOG.md"
-      - ".github/ISSUE_TEMPLATE/**"
-      - ".github/*.md"
-  release:
-    types: [published]
   workflow_dispatch:
     inputs:
       backfill_release:

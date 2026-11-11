@@ -110,18 +110,12 @@ def test_a_beta_is_never_published_as_latest():
     assert 'CHANNEL" = beta' in draft and '--prerelease="$PRERELEASE"' in draft
 
 
-def test_only_stable_moves_the_stable_container_tags():
-    run = next(
-        s["run"]
-        for s in _release_workflow()["jobs"]["release"]["steps"]
-        if s.get("name") == "Publish release container images"
-    )
-    assert 'CHANNEL" = stable' in run and 'promote_stable="$PROMOTE"' in run
-    docker = (WORKFLOWS / "docker.yml").read_text(encoding="utf-8")
-    assert docker.count('test "$PROMOTE_STABLE" != "true"') == 3, "every flavor must refuse"
-    for line in docker.splitlines():
-        if "pattern={{major}}.{{minor}}" in line or "value=stable" in line:
-            assert "!contains(github.ref, '-')" in line, f"beta must not move: {line.strip()}"
+def test_desktop_release_does_not_publish_legacy_containers():
+    release = _release_workflow()["jobs"]["release"]
+    commands = "\n".join(step.get("run", "") for step in release["steps"])
+    assert "gh workflow run docker.yml" not in commands
+    docker = yaml.load((WORKFLOWS / "docker.yml").read_text(), Loader=yaml.BaseLoader)
+    assert set(docker["on"]) == {"workflow_dispatch"}
 
 
 def test_snap_store_skips_beta_tags():

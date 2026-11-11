@@ -1,11 +1,6 @@
 name: Docker Hub description
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - "deploy/dockerhub-overview.md"
-      - ".github/workflows/dockerhub-description.yml"
   workflow_dispatch:
 
 permissions:
