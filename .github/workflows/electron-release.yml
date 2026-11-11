@@ -397,10 +397,9 @@ jobs:
             echo
             echo '### Phone downloads'
             echo
-            BASE="https://github.com/$GITHUB_REPOSITORY/releases/download/$TAG/VoiceBlueprint-${TAG#v}"
+            BASE="https://github.com/$GITHUB_REPOSITORY/releases/download/$TAG/VoiceBlueprintPro-${TAG#v}"
             echo "Android: [signed APK](${BASE}-android.apk) · [Play bundle](${BASE}-android.aab)."
             echo
-            echo "iPhone: [unsigned sideload IPA](${BASE}-ios-unsigned.ipa). Sign with your own Apple ID to install; this is not a TestFlight build."
             echo
             cat release-assets/RELEASE_NOTES.md
           } > "$RUNNER_TEMP/RELEASE_NOTES.md"
