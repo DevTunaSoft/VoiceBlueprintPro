@@ -27,9 +27,9 @@ const macRuntimeArch = process.env.VOICEBLUEPRINT_RUST_TARGET?.startsWith('x86_6
     ? 'arm64'
     : process.arch;
 const bundlesMasRuntime = isMacAppStore && macRuntimeArch === 'arm64';
-// Direct downloads are `VoiceBlueprint-<version>-<os>-<arch>.<ext>`; store builds
+// Direct downloads are `VoiceBlueprintPro-<version>-<os>-<arch>.<ext>`; store builds
 // keep a label so they never collide with them. Releases up to v0.5.7-beta.3
-// used `VoiceBlueprint-Electron-*`; the installers still resolve those names.
+// used `VoiceBlueprint-Electron-*`; legacy update compatibility is preserved.
 const artifactLabel = {
   'microsoft-store': 'MicrosoftStore',
   'mac-app-store': 'MacAppStore',
@@ -151,7 +151,7 @@ export default {
     voiceblueprintDistribution: DISTRIBUTION_TARGET,
     voiceblueprintUpdateOwner: DISTRIBUTION_PROFILE.applicationUpdates,
     ...(DISTRIBUTION_TARGET === 'microsoft-store'
-      ? { author: { name: storeIdentity.publisherLegalName, email: 'https://github.com/DevTunaSoft/VoiceBlueprintPro/issues' } }
+      ? { author: { name: storeIdentity.publisherLegalName, url: 'https://github.com/DevTunaSoft/VoiceBlueprintPro/issues' } }
       : {}),
   },
   directories: { output: 'release', buildResources: 'build' },
