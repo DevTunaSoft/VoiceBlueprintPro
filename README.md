@@ -1,23 +1,23 @@
-# VoiceBlueprint-Pro
+# VoiceBlueprintPro
 
 **A local-first AI voice production suite focused on reliability, performance, accessibility, audio quality and professional workflows.**
 
-VoiceBlueprint-Pro is DevTunaSoft's independent, open-source, local-first AI voice production studio for voice cloning, speech generation, dubbing, transcription and audiobook workflows.
+VoiceBlueprintPro is DevTunaSoft's independent, open-source, local-first AI voice production studio for voice cloning, speech generation, dubbing, transcription and audiobook workflows.
 
-[Features](#what-voiceblueprint-pro-is) · [Get a development build](#try-a-development-build) · [How to use](#how-to-use-the-app) · [Beginner manual](docs/user-guide/README.md) · [Developer setup](#build-and-test-from-source) · [Documentation](docs/README.md) · [Roadmap](https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/engineering/modernization-foundation/docs/roadmap/CONSOLIDATED_CAPABILITY_PROGRAM.md) · [Build status](https://github.com/DevTunaSoft/VoiceBlueprintPro/actions) · [Releases](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases) · [Credits](#open-source-credits-and-licensing)
+[Features](#what-voiceblueprintpro-is) · [Get a development build](#try-a-development-build) · [How to use](#how-to-use-the-app) · [Beginner manual](docs/user-guide/README.md) · [Developer setup](#build-and-test-from-source) · [Documentation](docs/README.md) · [Roadmap](https://github.com/DevTunaSoft/VoiceBlueprintPro/blob/engineering/modernization-foundation/docs/roadmap/CONSOLIDATED_CAPABILITY_PROGRAM.md) · [Build status](https://github.com/DevTunaSoft/VoiceBlueprintPro/actions) · [Releases](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases) · [Credits](#open-source-credits-and-licensing)
 
 [![Development CI](https://github.com/DevTunaSoft/VoiceBlueprintPro/actions/workflows/ci.yml/badge.svg?branch=engineering%2Fmodernization-foundation)](https://github.com/DevTunaSoft/VoiceBlueprintPro/actions/workflows/ci.yml) [![AGPL-3.0](https://img.shields.io/badge/license-AGPL--3.0-blue)](LICENSE)
 
 <p align="center">
-  <img src="docs/media/electron/overview.webp" width="880" alt="VoiceBlueprint-Pro desktop workspace preview" />
+  <img src="docs/media/electron/overview.webp" width="880" alt="VoiceBlueprintPro desktop workspace preview" />
   <br />
   <sub>Development interface preview; the current build may differ.</sub>
 </p>
 
 > [!IMPORTANT]
-> **Actively in development; no official VoiceBlueprint-Pro release is published yet.** Windows x64 and experimental Windows ARM64 packaging have passed automated acceptance, but real-hardware production acceptance remains outstanding. See [releases](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases) and [live GitHub Actions](https://github.com/DevTunaSoft/VoiceBlueprintPro/actions). Use builds and releases from this repository; external downloads are not official VoiceBlueprint-Pro distributions.
+> **Actively in development; no official VoiceBlueprintPro release is published yet.** Windows x64 and experimental Windows ARM64 packaging have passed automated acceptance, but real-hardware production acceptance remains outstanding. See [releases](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases) and [live GitHub Actions](https://github.com/DevTunaSoft/VoiceBlueprintPro/actions). Use builds and releases from this repository; external downloads are not official VoiceBlueprintPro distributions.
 
-## What VoiceBlueprint-Pro is
+## What VoiceBlueprintPro is
 
 A local-first AI speech and voice-production application. The codebase includes voice cloning and design, transcription, dubbing, narration and audiobooks, model management, queued jobs, and automation. Actual capabilities depend on installed engines, hardware, platform, model licenses and configuration.
 
@@ -26,7 +26,7 @@ Our mission is to deliver reliable, efficient and accessible voice production wi
 ## Inside the studio
 
 <p align="center">
-  <sub>Actual screenshots retained with this codebase, illustrating the Electron desktop interface. VoiceBlueprint-Pro's modernization work is ongoing, so visual details in current development builds may differ.</sub>
+  <sub>Actual screenshots retained with this codebase, illustrating the Electron desktop interface. VoiceBlueprintPro's modernization work is ongoing, so visual details in current development builds may differ.</sub>
 </p>
 
 <table>
@@ -91,7 +91,7 @@ A passing automated build is **not** a claim of a stable release or universal ha
 
 ## Existing functionality and technical guides
 
-These guides describe VoiceBlueprint-Pro development workflows. Features and installation instructions may vary by build; consult the verification status before relying on them.
+These guides describe VoiceBlueprintPro development workflows. Features and installation instructions may vary by build; consult the verification status before relying on them.
 
 | Area | Documentation |
 | --- | --- |
@@ -105,7 +105,7 @@ These guides describe VoiceBlueprint-Pro development workflows. Features and ins
 
 ## Try a development build
 
-There is **no signed, stable VoiceBlueprint-Pro installer yet**. Technically experienced testers can inspect and try CI-generated artifacts:
+There is **no signed, stable VoiceBlueprintPro installer yet**. Technically experienced testers can inspect and try CI-generated artifacts:
 
 1. Open the [Electron packaging workflow](https://github.com/DevTunaSoft/VoiceBlueprintPro/actions/workflows/electron-build.yml).
 2. Choose a completed run and confirm the **package job for your exact operating-system architecture** passed. Inspect individual jobs even when the overall workflow is green; experimental jobs may not affect the overall result.
@@ -115,7 +115,7 @@ There is **no signed, stable VoiceBlueprint-Pro installer yet**. Technically exp
 
 [Windows x64 and ARM64 packaging artifacts](https://github.com/DevTunaSoft/VoiceBlueprintPro/actions/runs/42420264814) were generated on November 7, 2026. CI artifacts expire, so use a newer successful run if unavailable. Windows ARM64 remains experimental and uses an emulated x64 Python backend with CPU inference.
 
-When a stable version is published, use the [VoiceBlueprint-Pro releases page](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases), and consult the [Windows installation guide](docs/install/windows.md) for current setup guidance.
+When a stable version is published, use the [VoiceBlueprintPro releases page](https://github.com/DevTunaSoft/VoiceBlueprintPro/releases), and consult the [Windows installation guide](docs/install/windows.md) for current setup guidance.
 
 ## How to use the app
 
@@ -128,11 +128,11 @@ After the runtime and appropriate models are installed:
 5. **Stories and audiobooks:** create longer narration, review sections and manage output or projects.
 6. **Model management and automation:** download supported local models, manage projects, and explore the local API, recipes and integrations.
 
-For a guided walkthrough, use the [VoiceBlueprint-Pro beginner's manual](docs/user-guide/README.md). The app's available workflows depend on the build, operating system, installed engines, model licenses and available CPU/GPU resources. Start with the [feature catalog](docs/feature-catalog.md), [model download guide](docs/downloading-models.md), [Electron app instructions](electron/README.md) and [documentation index](docs/README.md). Offline inference is possible with compatible local engines after their model files have been downloaded. Optional online services remain separate.
+For a guided walkthrough, use the [VoiceBlueprintPro beginner's manual](docs/user-guide/README.md). The app's available workflows depend on the build, operating system, installed engines, model licenses and available CPU/GPU resources. Start with the [feature catalog](docs/feature-catalog.md), [model download guide](docs/downloading-models.md), [Electron app instructions](electron/README.md) and [documentation index](docs/README.md). Offline inference is possible with compatible local engines after their model files have been downloaded. Optional online services remain separate.
 
 ## Build and test from source
 
-This repository retains established compatibility identifiers and development tooling. These commands are **developer workflows**, not a claim that an independently packaged VoiceBlueprint-Pro installer is available.
+This repository retains established compatibility identifiers and development tooling. These commands are **developer workflows**, not a claim that an independently packaged VoiceBlueprintPro installer is available.
 
 **Prerequisites:** Git, Bun 1.4.2, a supported Python runtime and the platform-specific build tools described in the [development documentation](docs/README.md). The modernization work currently lives on its own branch.
 
@@ -157,7 +157,7 @@ Every substantive change should include a reproducible test, regression verifica
 
 ## Open source, credits and licensing
 
-VoiceBlueprint-Pro is an independent DevTunaSoft project. It is distributed under AGPL-3.0-only, subject to the repository's LICENSE and NOTICE. Components and model weights may carry separate restrictions and rights; review applicable licenses before distribution or commercial use.
+VoiceBlueprintPro is an independent DevTunaSoft project. It is distributed under AGPL-3.0-only, subject to the repository's LICENSE and NOTICE. Components and model weights may carry separate restrictions and rights; review applicable licenses before distribution or commercial use.
 
 Historical copyright and third-party attribution must remain intact where required by law and licenses. These acknowledgments do not imply sponsorship, partnership or affiliation with prior projects.
 
@@ -174,4 +174,4 @@ We welcome fixes, tests, documentation, accessibility improvements, and new idea
 
 ---
 
-*VoiceBlueprint-Pro · Design. Clone. Create. · DevTunaSoft*
+*VoiceBlueprintPro · Design. Clone. Create. · DevTunaSoft*
