@@ -49,8 +49,8 @@ describe('matchCategories — search matching', () => {
   });
 
   it('uses the concise VoiceBlueprint API label', () => {
-    expect(CATEGORY_BY_ID.openapi.defaultLabel).toBe('VoiceBlueprint API');
-    expect(en.settings.openapi).toBe('VoiceBlueprint API');
+    expect(CATEGORY_BY_ID.openapi.defaultLabel).toBe('VoiceBlueprintPro API');
+    expect(en.settings.openapi).toBe('VoiceBlueprintPro API');
   });
 
   it('keywordKeys match through the active locale, so localized setting names find their category', () => {

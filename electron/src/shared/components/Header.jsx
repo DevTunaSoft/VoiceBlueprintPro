@@ -366,7 +366,7 @@ export default function Header({
             className="size-7 overflow-visible text-[var(--chrome-accent)]"
           />
           <span className="text-[0.92rem] font-semibold text-[var(--chrome-fg)] tracking-[0.02em] [font-family:var(--font-sans)] not-italic">
-            Voice<span className="text-[var(--chrome-accent)]">Studio</span>
+            VoiceBlueprint<span className="text-[var(--chrome-accent)]">Pro</span>
           </span>
         </div>
       )}

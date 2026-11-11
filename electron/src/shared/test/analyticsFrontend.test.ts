@@ -130,7 +130,7 @@ describe('sanitizeOutgoingEvent — renderer URLs never leave', () => {
       },
     });
     expect(clean?.properties).toEqual({
-      $current_url: 'https://github.com/DevTunaSoft/VoiceBlueprintPro',
+      $current_url: 'app://voiceblueprint/clone',
       $host: 'voiceblueprint.local',
       $pathname: '/clone',
     });

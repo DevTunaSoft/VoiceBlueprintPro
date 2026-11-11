@@ -127,7 +127,7 @@ describe('Header — rail mode (default)', () => {
     expect(container.querySelector('.header-area--tabs')).toBeNull();
     expect(screen.queryByTestId('titletab-dub')).toBeNull();
     // Breadcrumb (current view) + centred wordmark both stay.
-    expect(container.textContent).toMatch(/VoiceBlueprint/);
+    expect(container.textContent).toMatch(/VoiceBlueprintPro/);
     expect(screen.getByTestId('voice-blueprint-logo')).toBeInTheDocument();
     expect(container.textContent).toMatch(/Dub/);
   });

@@ -293,7 +293,7 @@ export const GROUPS = [
       {
         id: 'openapi',
         labelKey: 'settings.openapi',
-        defaultLabel: 'VoiceBlueprint API',
+        defaultLabel: 'VoiceBlueprintPro API',
         icon: Braces,
         keywords: ['api', 'openapi', 'scalar', 'rest', 'swagger', 'docs', 'reference', 'endpoints'],
       },
