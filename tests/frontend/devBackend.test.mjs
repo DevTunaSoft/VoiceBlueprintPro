@@ -177,7 +177,7 @@ test('banner flags OOM-kill shapes and adds the Linux journalctl hint', () => {
   assert.match(killed, /killed by signal SIGKILL/);
   assert.match(killed, /out-of-memory killer/);
   assert.match(killed, /journalctl -k \| grep -i oom/);
-  assert.match(killed, /no omnivoice\.log found/);
+  assert.match(killed, /no voiceblueprint\.log found/);
 
   const oom137 = buildExitBanner({
     code: 137,
