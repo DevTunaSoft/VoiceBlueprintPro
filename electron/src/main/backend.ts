@@ -6,6 +6,11 @@ import { runRuntimeProbe } from './runtime-probe';
 import { RuntimeLaunchRefusedError } from './runtime-launch-refusal';
 import { pypiFilesHost } from './pypi-mirror';
 import { SetupLog, scrubSetupText } from './setup-log';
+import {
+  createBoundedLogLineReader,
+  MAX_BACKEND_LOG_LINE_CHARS,
+  OVERSIZED_BACKEND_LOG_LINE,
+} from './backend-log-lines';
 import { checkSetupConnection, setupProbeUrl } from './setup-connection-check';
 import { downloadProxyEnv } from './proxy-env';
 import {
@@ -2001,6 +2006,10 @@ export class BackendSupervisor extends EventEmitter<{
     // Backend output can carry a token or a home directory (and with it the
     // user's name). It is quoted in failure messages, shown in the log tail and
     // forwarded to repair agents, so it is scrubbed once, here, at the source.
+    // The ring limits line count, not line size. A sidecar may also log without
+    // going through attachLineReader, so cap every entry before costly scrubbing.
+    // Drop oversized content entirely rather than printing a partial secret.
+    if (line.length > MAX_BACKEND_LOG_LINE_CHARS) line = OVERSIZED_BACKEND_LOG_LINE;
     line = scrubText(cleanProcessLine(line));
     if (!line) return;
     if (stream === 'err' && !staleChild) this.crashes.captureLine(line);
@@ -2035,22 +2044,13 @@ export class BackendSupervisor extends EventEmitter<{
     gen?: number,
   ): void {
     if (!readable) return;
-    let pending = '';
     const stale = () => gen !== undefined && gen !== this.generation;
-    const flushPending = () => {
-      if (pending.length > 0) this.pushLog(stream, pending, true, stale());
-      pending = '';
-    };
+    const reader = createBoundedLogLineReader((line) => this.pushLog(stream, line, true, stale()));
     readable.setEncoding('utf8');
-    readable.on('data', (chunk: string) => {
-      pending += chunk;
-      const lines = pending.split(/[\r\n]+/);
-      pending = lines.pop() ?? '';
-      for (const line of lines) if (line.length > 0) this.pushLog(stream, line, true, stale());
-    });
-    readable.on('end', flushPending);
+    readable.on('data', (chunk: string) => reader.write(chunk));
+    readable.on('end', () => reader.finish());
     readable.on('error', (error: unknown) => {
-      flushPending();
+      reader.finish();
       if (!isExpectedPipeClose(error)) {
         this.pushLog('err', `Backend ${stream} stream failed: ${errorMessage(error)}`);
       }
