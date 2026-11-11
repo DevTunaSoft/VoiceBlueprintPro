@@ -84,3 +84,23 @@ it('retains readable Error stacks without retaining huge Error payloads', () => 
   const huge = new Error('x'.repeat(30_000));
   expect(formatConsoleMessage([huge])).toContain('Oversized console value omitted');
 });
+
+describe('bounded console ring regression', () => {
+  it('retains only the newest 500 messages in chronological order', () => {
+    clearFrontendLogs();
+    for (let i = 0; i < 525; i++) console.debug('ring-entry', i);
+    const entries = getFrontendLogs();
+    expect(entries).toHaveLength(500);
+    expect(entries[0].msg).toContain('ring-entry 25');
+    expect(entries[499].msg).toContain('ring-entry 524');
+    expect(entries.some((entry) => entry.msg === 'ring-entry 0')).toBe(false);
+  });
+
+  it('returns a snapshot so callers cannot change retained log entries by appending', () => {
+    clearFrontendLogs();
+    console.debug('snapshot-entry');
+    const snapshot = getFrontendLogs();
+    snapshot.push({ t: 0, level: 'error', msg: 'injected' });
+    expect(getFrontendLogs().some((entry) => entry.msg === 'injected')).toBe(false);
+  });
+});
