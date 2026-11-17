@@ -47,10 +47,37 @@ def archive_path(value: str) -> str:
 
 def digest(path: Path) -> str:
     result = hashlib.sha256()
+    count = 0
     with path.open('rb') as source:
-        for block in iter(lambda: source.read(262144), b''):
+        while True:
+            block = source.read(min(262144, MAX_MEMBER + 1 - count))
+            if not block:
+                break
+            count += len(block)
+            if count > MAX_MEMBER:
+                raise ArchiveError(413, 'project archive is too large')
             result.update(block)
     return result.hexdigest()
+
+
+def _write_asset(archive: zipfile.ZipFile, name: str, path: Path,
+                 expected_size: int, expected_digest: str) -> None:
+    info = zipfile.ZipInfo(name)
+    info.compress_type = zipfile.ZIP_STORED
+    info.file_size = expected_size
+    info.external_attr = (stat.S_IFREG | 0o600) << 16
+    checksum = hashlib.sha256()
+    count = 0
+    with path.open('rb') as source, archive.open(info, 'w') as target:
+        while count < expected_size:
+            block = source.read(min(262144, expected_size - count))
+            if not block:
+                break
+            count += len(block)
+            checksum.update(block)
+            target.write(block)
+        if count != expected_size or source.read(1) or checksum.hexdigest() != expected_digest:
+            raise ArchiveError(409, 'project changed during export')
 
 
 def clean_document(value, depth=0):
@@ -208,10 +235,8 @@ def write_bundle(manifest: dict, files: dict[str, Path], output: Path) -> dict:
         with zipfile.ZipFile(pending, 'w', compression=zipfile.ZIP_STORED) as archive:
             archive.writestr('manifest.json', encoded)
             for asset in result['assets']:
-                path = files[asset['path']]
-                archive.write(path, asset['path'])
-                if path.stat().st_size != asset['size'] or digest(path) != asset['sha256']:
-                    raise ArchiveError(409, 'project changed during export')
+                _write_asset(archive, asset['path'], files[asset['path']],
+                             asset['size'], asset['sha256'])
         pending.replace(output)
     finally:
         pending.unlink(missing_ok=True)
