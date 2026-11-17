@@ -2,7 +2,7 @@
 
 **Updated:** 2026-11-17. **Repository:** `DevTunaSoft/VoiceBlueprintPro`. **Base:** `main` at `5be8a73bfd40dd11839dc2a17fb6d88f891f8b7d`; active work: `fix/project-export-validation-race`.
 **Audited starting SHA:** `5be8a73bfd40dd11839dc2a17fb6d88f891f8b7d`.
-**Last verified engineering SHA:** `5be8a73bfd40dd11839dc2a17fb6d88f891f8b7d` (focused tests only; changes are uncommitted).
+**Last verified engineering SHA:** `3f3c6a4` (focused tests only; GitHub Actions pending).
 
 This file is the **single canonical development task ledger**. Keep feature-level evidence in
 [the user-facing verification record](user-guide/feature-verification.md), architectural facts
