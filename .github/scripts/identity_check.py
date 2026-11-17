@@ -14,9 +14,74 @@ import re
 import subprocess
 import sys
 import tempfile
+import urllib.error
+import urllib.request
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from cla_check import GitHub, head_blockers, set_status
+
+
+class GitHub:
+    """Minimal GitHub API client for the trusted identity status workflow."""
+
+    def __init__(self, token: str, repo: str, api: str = "https://api.github.com"):
+        self.token, self.repo, self.api = token, repo, api.rstrip("/")
+
+    def request(self, method: str, path: str, body: dict | None = None):
+        data = json.dumps(body).encode() if body is not None else None
+        request = urllib.request.Request(f"{self.api}{path}", data=data, method=method)
+        request.add_header("Authorization", f"Bearer {self.token}")
+        request.add_header("Accept", "application/vnd.github+json")
+        request.add_header("X-GitHub-Api-Version", "2022-11-28")
+        try:
+            with urllib.request.urlopen(request, timeout=30) as response:
+                raw = response.read()
+                return response.status, json.loads(raw) if raw else None, response.headers
+        except urllib.error.HTTPError as error:
+            raw = error.read()
+            try:
+                payload = json.loads(raw) if raw else None
+            except ValueError:
+                payload = None
+            return error.code, payload, error.headers
+
+    def get(self, path: str):
+        status, payload, _ = self.request("GET", path)
+        if status != 200:
+            raise RuntimeError(f"GitHub GET {path} failed with {status}")
+        return payload
+
+    def paginate(self, path: str, *, limit: int):
+        items = []
+        page = 1
+        while len(items) < limit:
+            separator = "&" if "?" in path else "?"
+            status, payload, _ = self.request(
+                "GET", f"{path}{separator}per_page={min(100, limit - len(items))}&page={page}"
+            )
+            if status != 200 or not isinstance(payload, list):
+                raise RuntimeError(f"GitHub GET {path} failed with {status}")
+            items.extend(payload)
+            if len(payload) < min(100, limit - (len(items) - len(payload))):
+                break
+            page += 1
+        return items[:limit]
+
+
+def head_blockers(gh: GitHub, pr: dict) -> list[dict]:
+    """Return other open PRs sharing this head SHA, which would reuse its status."""
+    sha = pr["head"]["sha"]
+    return [candidate for candidate in gh.paginate(
+        f"/repos/{gh.repo}/pulls?state=open", limit=100
+    ) if candidate.get("number") != pr.get("number")
+        and candidate.get("head", {}).get("sha") == sha]
+
+
+def set_status(gh: GitHub, sha: str, state: str, description: str, *, context: str) -> None:
+    status, _, _ = gh.request("POST", f"/repos/{gh.repo}/statuses/{sha}", {
+        "state": state, "description": description[:140], "context": context,
+    })
+    if status != 201:
+        raise RuntimeError(f"Could not write {context} status ({status})")
 
 ROOT = Path(__file__).resolve().parents[2]
 STATUS_CONTEXT = "Commit identity policy"
