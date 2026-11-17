@@ -421,6 +421,43 @@ def test_android_native_fetch_rejects_unsafe_archives(tmp_path, monkeypatch, dat
     assert not (tmp_path.parent / "outside").exists()
 
 
+def test_ios_and_android_stamp_the_pinned_upstream_omnivoice_version(tmp_path):
+    import importlib.util
+
+    spec = importlib.util.spec_from_file_location(
+        "omnivoice_version", ROOT / "mobile/native/omnivoice_version.py"
+    )
+    version = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(version)
+    commit = "886fc079838ca7400cb2b42b36e2a65aa1daabe8"
+    source = tmp_path / "omnivoice"
+    (source / "tools").mkdir(parents=True)
+
+    generated = version.stamp_version(source, commit)
+
+    assert generated == source / "tools/version.cmake"
+    assert f'#define OMNIVOICE_VERSION "{commit} (pinned)"' in generated.read_text()
+    assert f'#define VOICEBLUEPRINT_VERSION "{commit} (pinned)"' in generated.read_text()
+    for build_script in ("mobile/native/android/fetch.py", "mobile/native/ios/build.py"):
+        assert "stamp_version(" in (ROOT / build_script).read_text()
+
+
+def test_omnivoice_version_stamper_rejects_non_commit_ids_without_writing(tmp_path):
+    import importlib.util
+
+    spec = importlib.util.spec_from_file_location(
+        "omnivoice_version", ROOT / "mobile/native/omnivoice_version.py"
+    )
+    version = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(version)
+    source = tmp_path / "omnivoice"
+    (source / "tools").mkdir(parents=True)
+
+    with pytest.raises(ValueError, match="Invalid pinned OmniVoice commit"):
+        version.stamp_version(source, "../../untrusted")
+    assert not (source / "tools/version.cmake").exists()
+
+
 def test_ios_home_contributors_match_electron_snapshot():
     """The iOS Home cluster mirrors Electron's bundled snapshot, avatars included (offline)."""
     import re
