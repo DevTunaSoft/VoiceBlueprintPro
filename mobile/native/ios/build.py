@@ -10,11 +10,15 @@ import platform
 import re
 import shutil
 import subprocess
+import sys
 import tarfile
 import urllib.request
 import zipfile
 
 HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE.parent))
+from omnivoice_version import stamp_version  # noqa: E402
+
 ROOT = HERE.parents[2]
 PINS = json.loads((HERE.parent / 'pins.json').read_text())
 BUILD = HERE / 'build'
@@ -187,9 +191,7 @@ def stamp_omni_source(verified, output):
     if not target.exists():
         shutil.copytree(verified, target)
     commit = PINS['omnivoice.cpp']['source']['commit']
-    content = '#pragma once\n#define VOICEBLUEPRINT_VERSION "' + commit + ' (pinned)"\n'
-    cmake = 'set(CONTENT [=[' + content + ']=])\nif(EXISTS "${OUTPUT}")\n  file(READ "${OUTPUT}" EXISTING)\n  if("${EXISTING}" STREQUAL "${CONTENT}")\n    return()\n  endif()\nendif()\nfile(WRITE "${OUTPUT}" "${CONTENT}")\n'
-    (target / 'tools/version.cmake').write_text(cmake)
+    stamp_version(target, commit)
     patches = [HERE / 'patches/omnivoice-metal-transfers.patch', HERE / 'patches/omnivoice-scoped-backend.patch']
     # Fail closed and apply to the private build tree, never the verified source.
     env = {**os.environ, 'GIT_CEILING_DIRECTORIES': str(target.parent)}

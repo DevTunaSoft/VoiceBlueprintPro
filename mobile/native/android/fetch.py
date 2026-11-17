@@ -4,8 +4,12 @@ import hashlib
 import json
 import pathlib
 import shutil
+import sys
 import tarfile
 import urllib.request
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1]))
+from omnivoice_version import stamp_version  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent
 PINS = json.loads((ROOT.parent / 'pins.json').read_text())
@@ -80,5 +84,5 @@ if __name__ == '__main__':
 
     # Source archives have no .git directory. Avoid accidentally stamping the
     # parent VoiceBlueprint checkout's identity into the runtime binary.
-    version_script = BUILD / 'sources' / ('omnivoice.cpp-' + PINS['omnivoice.cpp']['source']['commit']) / 'tools/version.cmake'
-    version_script.write_text('file(WRITE "${OUTPUT}" "#pragma once\\n#define VOICEBLUEPRINT_VERSION \\"' + PINS['omnivoice.cpp']['source']['commit'] + '\\"\\n")\n')
+    version_source = BUILD / 'sources' / ('omnivoice.cpp-' + PINS['omnivoice.cpp']['source']['commit'])
+    stamp_version(version_source, PINS['omnivoice.cpp']['source']['commit'])
