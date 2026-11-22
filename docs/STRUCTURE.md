@@ -32,11 +32,11 @@ VoiceBlueprint/
 │
 ├── backend/                     ⟵ FastAPI server
 │   ├── main.py                  sole process entry; its annotated startup sequence must retain its order
-│   ├── api/routers/             44 routers, auto-included; HTTP/WS adaptation stays thin here
+│   ├── api/routers/             43 routers, auto-included; HTTP/WS adaptation stays thin here
 │   │   └── setup/               setup-wizard endpoints and model acquisition
 │   ├── core/                    shared infrastructure: configuration, persistence, job/event plumbing,
 │   │                            auth and CSRF, safe paths, analytics consent, version and diagnostics
-│   ├── services/                116 modules of business logic spanning speech, dubbing, DSP, GPU dispatch,
+│   ├── services/                114 modules of business logic spanning speech, dubbing, DSP, GPU dispatch,
 │   │                            engine selection and loaded-model ownership
 │   ├── engines/                 per-engine adapters: audiocpp, confucius4, cosyvoice_gguf,
 │   │                            cosyvoice_subprocess, dots_tts, indextts, moss_tts_nano_subprocess,

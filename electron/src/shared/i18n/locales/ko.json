@@ -1901,7 +1901,9 @@
     },
     "postcard": {
       "title": "VoiceBlueprint 개발 지원",
-      "later": "어쩌면 나중에"
+      "later": "어쩌면 나중에",
+      "lead_default": "효과가 있어서 다행이에요! VoiceBlueprint는 무료이며 완전히 로컬입니다. 시간을 절약할 수 있다면 매월 소액의 칩인을 통해 Claude Max에 자금을 지원할 수 있습니다.",
+      "lead_tenth_dub": "10개의 더빙이 포함되어 있습니다. 확실히 효과를 발휘하고 계십니다. 이러한 기능을 제공하는 Claude Max에는 매월 소액의 칩인 자금이 지원됩니다."
     },
     "pill": "VoiceBlueprint 후원"
   },
