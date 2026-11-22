@@ -1850,7 +1850,9 @@
     },
     "postcard": {
       "title": "支持 VoiceBlueprint 开发",
-      "later": "以后再说"
+      "later": "以后再说",
+      "lead_default": "很高兴一切顺利！VoiceBlueprint 免费且完全本地运行。如果它帮你节省了时间，每月小额赞助即可支持背后的 Claude Max。",
+      "lead_tenth_dub": "已经完成十次配音 — 看来你正充分利用它。每月小额赞助可支持用于开发这些功能的 Claude Max。"
     },
     "choose_method": "选择支持方式",
     "github_desc": "通过 GitHub 直接单次或定期赞助。",

@@ -1,8 +1,8 @@
 # VoiceBlueprintPro — canonical development task ledger and recovery handoff
 
-**Updated:** 2026-11-11. **Repository:** `DevTunaSoft/VoiceBlueprintPro`. **Default/working branch:** `main`.
+**Updated:** 2026-11-21. **Repository:** `DevTunaSoft/VoiceBlueprintPro`. **Default/working branch:** `main`.
 **Audited starting SHA:** `cf22c0e20d984e05bc3f972207aa9b8e88ccaac4`.
-**Last verified engineering SHA:** `652dc36010d923acd675bbf373ed08eb83b21632`.
+**Last verified engineering SHA:** `238e8b9663c8edd22b98f4409aa8200d1ed5ec04`.
 The documentation commit that updates this ledger follows that SHA; verify the actual branch head before resuming.
 
 This file is the **single canonical development task ledger**. Keep feature-level evidence in
@@ -25,12 +25,11 @@ Do not maintain a second task backlog in those documents.
 
 | Task | Scope / measurable acceptance criteria | Branch / PR; starting → ending SHA | Status and evidence | Blocker / next action |
 | --- | --- | --- | --- | --- |
-| **CI-001** | Main commits never cancel each other's CI; newer PR revisions still cancel their superseded runs. Preserve job gates and permissions. | `main`, no PR; `cf22c0e` → `652dc36` | **PASS (local contract):** `python -m pytest -q tests/test_ci_queue_hygiene.py` → 7 passed; source contract still matches `ci.yml`. Multiple prior main CI runs were cancelled on repeated pushes. **NOT RUN:** post-change Actions completion on main. | Confirm full Actions completion on `652dc36` or a descendant; avoid unnecessary commits while a full run completes. |
-| **ARCH-001** | Reject oversized, invalid, duplicate-case and excessive-count export asset inputs *before* hashing. Preserve valid imports and atomic output. | `main`, no PR; `cf22c0e` baseline includes `8e51c10`, `a44d7a3` and `cf22c0e` | **PASS (source commit verification); NOT RUN (execution).** Three focused tests added under `tests/test_project_bundle.py`. | Run `python -m pytest -q tests/test_project_bundle.py`; investigate fixture failures and check file-size race between validation and export. |
-| **CI-002** | Current full Windows/Electron/Python CI finishes with a trustworthy pass or categorized failure list. | `main`; latest run pending | **UNVERIFIED.** Historical run `43088446274` reported 12,616 passed, 77 failed and 7 errors; this is not current-sha validation. | Review [Actions](https://github.com/DevTunaSoft/VoiceBlueprintPro/actions); identify reproducible first failures, fix root causes with regression tests. |
+| **CI-001** | Main commits never cancel each other's CI; newer PR revisions still cancel their superseded runs. Preserve job gates and permissions. | `main`, no PR; `cf22c0e` → `d6d922b` | **PASS (source contract + bootstrap + Actions observation):** restored missing `.github/scripts/cla_check.py`; `tests/test_identity_gate.py` → 12 passed. Full run `44976652665` on `24b483c` completed with independent per-SHA main groups; no cancellation starvation. | No further action. Main failures come from test/fixture drift recorded under CI-002, not concurrency. |
+| **ARCH-001** | Reject oversized, invalid, duplicate-case and excessive-count export asset inputs *before* hashing. Preserve valid imports and atomic output. | `main`, no PR; `cf22c0e` baseline includes `8e51c10`, `a44d7a3` and `cf22c0e` | **PASS (execution).** `python -m pytest -q tests/test_project_bundle.py` → 34 passed. Repaired two stale `.vsproject` fixtures whose manifests used retired `voicestudio.project` instead of `voiceblueprint.project` (7 failures). `write_bundle` rechecks size and SHA-256 after `archive.write` and replaces via pending file, so the validation→export race cannot produce a bad archive. | Verify Swift/Kotlin fixture consumers on device under PORT-001; no remaining local action for ARCH-001. |
+| **CI-002** | Current full Windows/Electron/Python CI finishes with a trustworthy pass or categorized failure list. | `main`; runs `44976652665` on `24b483c` and `44985656362` on `8f18712` | **CATEGORIZED, NOT GREEN.** Fixture repair removed exactly seven Python failures: 72 → 65 failed, 12,638 → 12,645 passed; zero `test_project_bundle.py` failures remain. Latest run still fails renderer smokes, UI crawler (3/3), Electron typecheck/tests and Python (6 errors). Remaining groups: files and locales absent from this repository, brand/identifier drift, workflow snapshot drift, stale iOS/GGUF expectations, smoke-text drift. | Reconcile remaining groups one coherent change per cycle. Do not call main release-verified. |
 | **PORT-001** | Windows-to-Android project interchange preserves editable content and asset fingerprints; malformed archives fail safely. | `main`; prior bundle implementation | **UNVERIFIED** on devices. Historical portable fixture incompatibilities remain. | Run bundle contracts and Android tests, check real fixture files, repair smallest confirmed incompatibility. |
 | **PLAT-001** | Windows x64/ARM64 and Android install, audio, offline models and memory limits verified on representative hardware. | `main`; release not published | **NOT RUN** for current commit and real hardware. | Establish measured target hardware memory budget and run end-to-end generation/install/uninstall tests before release claims. |
-| **MOB-001** | iOS and Android native builds stamp pinned OmniVoice source with upstream-required `OMNIVOICE_VERSION` and preserve the app version macro. | PR #7, `fix/android-omnivoice-version`; `5be8a73` → `ea7f41c` | **PASS:** Android NDK compiled both ABIs and verified JNI exports after the macro fix (Actions run `44182287335`). **FAIL (Android packaging):** Gradle then rejected missing `mobile/contract/support-artwork` and `electron/src/renderer/src/features/home/contributors` inputs. These directories and their source assets are absent from `main`; no substitute images were fabricated. **BLOCKED (required identity):** base-owned check fails because `main` imports missing `cla_check`. **FAIL (local suite baseline):** `python -m pytest -q tests/test_mobile_contract.py` → 8 failed, 57 passed, 2 skipped on Windows before the LF fix in PR #9; errors include missing `uvicorn`, bundled model pin mismatch and missing Electron contributor source. **NOT RUN:** iOS Xcode build. | Restore canonical offline support/contributor assets before claiming Android packaging parity; maintainer action is needed for base-owned identity bootstrap. |
 
 ## Coordination / CI safeguards
 
@@ -51,10 +50,10 @@ Do not maintain a second task backlog in those documents.
 1. Read this file, `AGENTS.md`, `CLAUDE.md`, the relevant implementation/test files, and the live
    `main` SHA. Compare against the latest commit before applying patches.
 2. Read open PRs, issues (if available), Actions workflows and statuses. Do not repeat already landed work.
-3. Continue **CI-001 verification** first: check workflow run for `652dc36` and test result.
-   If CI reports failures, capture failing job name, command, environment, SHA and error signature before editing.
-4. Then address **ARCH-001 / PORT-001** with focused regression tests; retain strict per-member
-   and total archive limits and do not relax validation merely to satisfy fixtures.
+3. **CI-001 verification done:** run `44976652665` on `24b483c` completed; no concurrency
+   starvation. Its other failures are grouped under CI-002, not CI-001.
+4. **ARCH-001 closed** at `238e8b9`; continue with **PORT-001** device checks. Retain strict
+   per-member and total archive limits; fix stale fixtures instead of relaxing validation.
 5. Make one coherent change per cycle; use tracked SHA reads and explicit rollback via a
    reverting commit if regression evidence warrants it. Do not force-push or discard unrelated changes.
 6. Record test commands, actual results, changed files, SHA, failures and next actions here.
