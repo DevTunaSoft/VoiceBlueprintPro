@@ -119,3 +119,12 @@ def test_worker_never_executes_two_tasks_in_once_mode(isolated, monkeypatch):
     q.work(None, 60, once=True)
     assert executed == ["VBP-01-01"]
     assert q.queue_status(q.read_state())["counts"]["done"] == 1
+
+
+def test_cross_workstream_dependencies_prevent_premature_phase(isolated):
+    by_id = {task["id"]: task for task in q.read_state()["tasks"]}
+    assert by_id["VBP-05-01"]["depends_on"] == ["VBP-04-01"]
+    assert by_id["VBP-17-01"]["depends_on"] == ["VBP-04-01", "VBP-10-01"]
+    assert by_id["VBP-19-01"]["depends_on"] == ["VBP-15-01", "VBP-16-01"]
+    assert by_id["VBP-20-01"]["depends_on"] == ["VBP-06-01", "VBP-10-01"]
+    assert all(q.ready_task(q.read_state()["tasks"])["id"] == "VBP-01-01" for _ in range(2))
