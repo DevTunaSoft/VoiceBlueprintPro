@@ -1879,7 +1879,9 @@
     },
     "postcard": {
       "title": "Apoio ao desenvolvemento de VoiceBlueprint",
-      "later": "Quizais máis tarde"
+      "later": "Quizais máis tarde",
+      "lead_default": "Feliz de que funcionou! VoiceBlueprint é gratuíto e totalmente local. Se che aforra tempo, un pequeno chip-in mensual financia o Claude Max detrás.",
+      "lead_tenth_dub": "Dez dobraxes, é evidente que o estás a traballar. Un pequeno chip-in mensual financia o Claude Max que ofrece estas funcións."
     }
   },
   "enterprise": {
