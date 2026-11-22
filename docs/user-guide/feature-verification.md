@@ -20,7 +20,7 @@
 **Scope:** Windows desktop and Android only; older Linux/macOS/iOS artifacts are historical and not supported targets.
 
 - Source fixes include the missing About-panel icon, renamed preference reset keys, synthetic analytics URL test, bounded desktop backend/setup log buffers and bounded frontend console capture. The console buffer retains at most 500 captured messages, each at most 4,096 characters, omitting oversized values. These are code limits, **not measured app RAM**.
-- Project bundle import now preserves the specific archive-format validation reason instead of relabeling it as malformed JSON. Import tests using existing portable fixture bundles still have unresolved compatibility failures; do not claim phone/desktop project handoff works.
+- Project bundle import now preserves the specific archive-format validation reason instead of relabeling it as malformed JSON. Python fixture imports pass after `238e8b9`; real phone/desktop handoff still needs device verification before any claim.
 - Android Google Play title corrected to `VoiceBlueprintPro: Offline AI` (29 characters against the 30-character Play limit).
 - Last completed broad Python run [CI #43088446274](https://github.com/DevTunaSoft/VoiceBlueprintPro/actions/runs/43088446274) reported 12,616 passed, 77 failed and 7 errors. It also failed renderer/desktop tests; its many stale-platform and missing-fixture assertions need separate reconciliation.
 - Current commit and [Actions](https://github.com/DevTunaSoft/VoiceBlueprintPro/actions) must be checked for fresh CI evidence. Windows/Android real-device inference and peak memory remain **NOT RUN / UNVERIFIED**.
@@ -29,7 +29,8 @@
 
 - Commits [8e51c10](https://github.com/DevTunaSoft/VoiceBlueprintPro/commit/8e51c10f514dde3b7ca637636d3c349245002a74) and [a44d7a3](https://github.com/DevTunaSoft/VoiceBlueprintPro/commit/a44d7a3107be829807567132d7243fbca2a87eda) reject oversized, excessive-count, invalid-extension and duplicate-case asset names before hashing rejected files.
 - Three focused regression tests were added to `tests/test_project_bundle.py`, with a digest guard ensuring rejected inputs are not hashed. Source and test changes were read back from GitHub.
-- **Execution status: NOT RUN**. Full Python CI, real-device import/export interoperability and measured peak RAM/disk I/O are **UNVERIFIED**. Prior shared fixture incompatibilities remain open. Run `pytest -q tests/test_project_bundle.py` before considering these changes runtime-verified.
+- **Execution status: PASS on `238e8b9663c8edd22b98f4409aa8200d1ed5ec04`.** `python -m pytest -q tests/test_project_bundle.py` → 34 passed. The seven earlier fixture failures came from `desktop-book.vsproject` and `desktop-dub.vsproject` still declaring `voicestudio.project`; both manifests now declare `voiceblueprint.project`, matching the backend, iOS and Android readers and the fixture README. Asset bytes and ZIP metadata are unchanged.
+- Full Python CI, real-device import/export interoperability and measured peak RAM/disk I/O remain **UNVERIFIED**. Other CI failures are unrelated test/fixture drift grouped in `docs/ROADMAP.md` under CI-002.
 
 ## Screenshot provenance
 

@@ -50,10 +50,10 @@ Do not maintain a second task backlog in those documents.
 1. Read this file, `AGENTS.md`, `CLAUDE.md`, the relevant implementation/test files, and the live
    `main` SHA. Compare against the latest commit before applying patches.
 2. Read open PRs, issues (if available), Actions workflows and statuses. Do not repeat already landed work.
-3. Continue **CI-001 verification** first: check workflow run for `652dc36` and test result.
-   If CI reports failures, capture failing job name, command, environment, SHA and error signature before editing.
-4. Then address **ARCH-001 / PORT-001** with focused regression tests; retain strict per-member
-   and total archive limits and do not relax validation merely to satisfy fixtures.
+3. **CI-001 verification done:** run `44976652665` on `24b483c` completed; no concurrency
+   starvation. Its other failures are grouped under CI-002, not CI-001.
+4. **ARCH-001 closed** at `238e8b9`; continue with **PORT-001** device checks. Retain strict
+   per-member and total archive limits; fix stale fixtures instead of relaxing validation.
 5. Make one coherent change per cycle; use tracked SHA reads and explicit rollback via a
    reverting commit if regression evidence warrants it. Do not force-push or discard unrelated changes.
 6. Record test commands, actual results, changed files, SHA, failures and next actions here.
