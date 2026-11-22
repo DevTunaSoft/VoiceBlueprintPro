@@ -128,3 +128,19 @@ def test_cross_workstream_dependencies_prevent_premature_phase(isolated):
     assert by_id["VBP-19-01"]["depends_on"] == ["VBP-15-01", "VBP-16-01"]
     assert by_id["VBP-20-01"]["depends_on"] == ["VBP-06-01", "VBP-10-01"]
     assert all(q.ready_task(q.read_state()["tasks"])["id"] == "VBP-01-01" for _ in range(2))
+
+
+def test_repeated_cli_infrastructure_failure_stops_without_blocking_all_tracks(isolated, monkeypatch):
+    monkeypatch.setattr(q.shutil, "which", lambda command: "/fake/opencode")
+    seen = []
+
+    def failing_execute(task, _model, _timeout):
+        seen.append(task["id"])
+        return False, [], "OpenCode exited 1"
+
+    monkeypatch.setattr(q, "execute", failing_execute)
+    q.work(None, 60, once=False)
+    statuses = q.queue_status(q.read_state())["counts"]
+    assert seen == ["VBP-01-01", "VBP-01-01"]
+    assert statuses["blocked"] == 1
+    assert statuses["pending"] == 199
