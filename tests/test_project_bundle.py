@@ -211,3 +211,71 @@ def test_export_rejects_excessive_member_count_before_hashing(tmp_path, monkeypa
     with pytest.raises(ArchiveError, match='too large'):
         b.write_bundle({}, files, output)
     assert not output.exists()
+
+
+def test_export_bounds_hash_read_when_asset_grows_after_stat(tmp_path, monkeypatch):
+    asset = tmp_path / 'growing.wav'
+    asset.write_bytes(b'abcd')
+    output = tmp_path / 'export.vsproject'
+    monkeypatch.setattr(b, 'MAX_MEMBER', 4)
+    original_open = Path.open
+
+    class GrowingReader(io.BytesIO):
+        bytes_read = 0
+
+        def read(self, size=-1):
+            block = super().read(size)
+            self.bytes_read += len(block)
+            return block
+
+    reader = GrowingReader(b'abcde' + b'x' * 10000)
+
+    def open_with_growth(path, mode='r', *args, **kwargs):
+        if path == asset and mode == 'rb':
+            return reader
+        return original_open(path, mode, *args, **kwargs)
+
+    monkeypatch.setattr(Path, 'open', open_with_growth)
+    with pytest.raises(ArchiveError, match='too large'):
+        b.write_bundle({}, {'assets/growing.wav': asset}, output)
+    assert reader.bytes_read == 5
+    assert not output.exists()
+
+
+@pytest.mark.parametrize(('replacement', 'expected_bytes_read'), [
+    (b'abcde' + b'x' * 10000, 5),
+    (b'wxyz', 4),
+])
+def test_export_rejects_growth_or_change_while_streaming_asset(
+        tmp_path, monkeypatch, replacement, expected_bytes_read):
+    asset = tmp_path / 'changing.wav'
+    asset.write_bytes(b'abcd')
+    output = tmp_path / 'export.vsproject'
+    manifest = json.loads((FIXTURES/'desktop-book.json').read_text())
+    monkeypatch.setattr(b, 'MAX_MEMBER', 4)
+    original_open = Path.open
+    opens = 0
+
+    class ChangingReader(io.BytesIO):
+        bytes_read = 0
+
+        def read(self, size=-1):
+            block = super().read(size)
+            self.bytes_read += len(block)
+            return block
+
+    reader = ChangingReader(replacement)
+
+    def change_after_hash(path, mode='r', *args, **kwargs):
+        nonlocal opens
+        if path == asset and mode == 'rb':
+            opens += 1
+            if opens == 2:
+                return reader
+        return original_open(path, mode, *args, **kwargs)
+
+    monkeypatch.setattr(Path, 'open', change_after_hash)
+    with pytest.raises(ArchiveError, match='changed during export'):
+        b.write_bundle(manifest, {'assets/changing.wav': asset}, output)
+    assert reader.bytes_read == expected_bytes_read
+    assert not output.exists()
