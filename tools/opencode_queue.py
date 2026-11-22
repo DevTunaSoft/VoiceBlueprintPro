@@ -268,6 +268,8 @@ def work(model: str | None, timeout: int, once: bool) -> None:
                 task["status"] = "blocked" if task["attempts"] >= MAX_ATTEMPTS else "pending"
                 task["blocker"] = "Recovered interrupted supervisor execution"
         atomic_write(STATE_FILE, state)
+        systemic_failures = 0
+        last_failure = ""
         while (task := ready_task(state["tasks"])) is not None:
             task["status"] = "running"
             task["attempts"] += 1
@@ -283,6 +285,19 @@ def work(model: str | None, timeout: int, once: bool) -> None:
             task["updated"] = utc()
             atomic_write(STATE_FILE, state)
             print(f"{task['id']} => {task['status']}: {reason or 'receipt received'}", flush=True)
+            # Broken CLI/provider connectivity or missing receipts affects every
+            # workstream. Stop after two identical infrastructure failures;
+            # don't burn forty invocations blocking unrelated work.
+            systemic = reason.startswith(("OpenCode exited", "OpenCode launch failure",
+                                          "missing or invalid receipt"))
+            if systemic and reason == last_failure:
+                systemic_failures += 1
+            else:
+                systemic_failures = 1 if systemic else 0
+            last_failure = reason if systemic else ""
+            if systemic_failures >= 2:
+                print("Systemic OpenCode failure detected twice; stopping safely.", flush=True)
+                break
             if once:
                 break
         else:
