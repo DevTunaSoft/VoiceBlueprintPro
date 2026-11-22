@@ -457,7 +457,7 @@ def test_mobile_voice_design_traits_match_electron():
     result = subprocess.run([_bun(), "scripts/export-mobile-design.ts", "--check"], cwd=ROOT, capture_output=True, text=True, timeout=60)
     assert result.returncode == 0, result.stderr
     catalogue = json.loads((CONTRACT / "design.json").read_text())
-    locales = [json.loads(path.read_text()) for path in (ROOT / "electron/src/renderer/src/i18n/locales").glob("*.json")]
+    locales = [json.loads(path.read_text(encoding="utf-8")) for path in (ROOT / "electron/src/renderer/src/i18n/locales").glob("*.json")]
     for category in catalogue["categories"]:
         for key in [category["label"], *[option["label"] for option in category["options"]]]:
             for locale in locales:
