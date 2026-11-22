@@ -3,6 +3,8 @@
 .github/CCLA-*.md text eol=lf
 mobile/ios/VoiceBlueprint/Resources/NativeLicences/*.txt text eol=lf
 mobile/android/app/src/main/assets/licenses/*.txt text eol=lf
+# Hash-pinned phone model text must keep exact bytes across Windows checkouts.
+mobile/contract/tts/zipvoice-lexicon.txt text eol=lf
 
 # Windows batch files break goto/labels with LF endings.
 *.bat text eol=crlf
