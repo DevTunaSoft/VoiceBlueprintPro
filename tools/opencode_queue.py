@@ -77,6 +77,21 @@ def plan() -> list[dict]:
                 "evidence": [], "blocker": "",
             })
             previous = ident
+    # Cross-track prerequisites describe actual shared contracts, without
+    # forcing unrelated workstreams to wait behind a single failed gate.
+    by_id = {task["id"]: task for task in tasks}
+    cross_track = {
+        "VBP-05-01": ["VBP-04-01"],  # archive fixtures require archive format audit
+        "VBP-07-01": ["VBP-06-01"],  # asset packaging follows Android build audit
+        "VBP-08-01": ["VBP-06-01"],  # version stamps require build contract audit
+        "VBP-11-01": ["VBP-10-01"],  # UI smokes follow renderer audit
+        "VBP-12-01": ["VBP-11-01"],  # package checks follow UI smoke audit
+        "VBP-17-01": ["VBP-04-01", "VBP-10-01"],
+        "VBP-19-01": ["VBP-15-01", "VBP-16-01"],
+        "VBP-20-01": ["VBP-06-01", "VBP-10-01"],
+    }
+    for task_id, prerequisites in cross_track.items():
+        by_id[task_id]["depends_on"].extend(prerequisites)
     assert len(tasks) == 200 and len({t["id"] for t in tasks}) == 200
     return tasks
 
