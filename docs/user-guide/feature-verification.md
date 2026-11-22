@@ -30,7 +30,7 @@
 - Commits [8e51c10](https://github.com/DevTunaSoft/VoiceBlueprintPro/commit/8e51c10f514dde3b7ca637636d3c349245002a74) and [a44d7a3](https://github.com/DevTunaSoft/VoiceBlueprintPro/commit/a44d7a3107be829807567132d7243fbca2a87eda) reject oversized, excessive-count, invalid-extension and duplicate-case asset names before hashing rejected files.
 - Three focused regression tests were added to `tests/test_project_bundle.py`, with a digest guard ensuring rejected inputs are not hashed. Source and test changes were read back from GitHub.
 - **Execution status: PASS on `238e8b9663c8edd22b98f4409aa8200d1ed5ec04`.** `python -m pytest -q tests/test_project_bundle.py` → 34 passed. The seven earlier fixture failures came from `desktop-book.vsproject` and `desktop-dub.vsproject` still declaring `voicestudio.project`; both manifests now declare `voiceblueprint.project`, matching the backend, iOS and Android readers and the fixture README. Asset bytes and ZIP metadata are unchanged.
-- Full Python CI, real-device import/export interoperability and measured peak RAM/disk I/O remain **UNVERIFIED**. Other CI failures are unrelated test/fixture drift grouped in `docs/ROADMAP.md` under CI-002.
+- Full CI run `44985656362` on `8f18712` had zero `test_project_bundle.py` failures: Python went from 72 to 65 failures and 12,638 to 12,645 passes. Main still fails other jobs. Real-device import/export interoperability and measured peak RAM/disk I/O remain **UNVERIFIED**; other CI failures are unrelated test/fixture drift grouped in `docs/ROADMAP.md` under CI-002.
 
 ## Screenshot provenance
 
